@@ -81,6 +81,7 @@ public class Ventana extends javax.swing.JFrame {
          Archivotxt txt = new Archivotxt();
         Ventana.Archtxt = txt.abrirArchivo();
         jTextArea1.setText(Ventana.Archtxt);
+        txt.lectorString(Archtxt);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

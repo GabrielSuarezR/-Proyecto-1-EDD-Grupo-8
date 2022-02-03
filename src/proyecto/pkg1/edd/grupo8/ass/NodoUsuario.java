@@ -11,11 +11,15 @@ package proyecto.pkg1.edd.grupo8.ass;
  */
 public class NodoUsuario {
     private int ID;
-    private Object nombreDeUsuario;
+    private String nombreDeUsuario;
+    private int posicion;
+    private NodoUsuario siguiente;
 
-    public NodoUsuario(int ID, Object nombreDeUsuario) {
+    public NodoUsuario(int ID, String nombreDeUsuario, int posicion) {
         this.ID = ID;
         this.nombreDeUsuario = nombreDeUsuario;
+        this.posicion= posicion;
+        this.siguiente=null;
     }
 
     public int getID() {
@@ -26,14 +30,29 @@ public class NodoUsuario {
         this.ID = ID;
     }
 
-    public Object getNombreDeUsuario() {
+    public String getNombreDeUsuario() {
         return nombreDeUsuario;
     }
 
-    public void setNombreDeUsuario(Object nombreDeUsuario) {
+    public void setNombreDeUsuario(String nombreDeUsuario) {
         this.nombreDeUsuario = nombreDeUsuario;
     }
-    
-    
+
+    public int getPosicion() {
+        return posicion;
+    }
+
+    public void setPosicion(int posicion) {
+        this.posicion = posicion;
+    }
+
+    public NodoUsuario getSiguiente() {
+        return siguiente;
+    }
+
+    public void setSiguiente(NodoUsuario siguiente) {
+        this.siguiente = siguiente;
+    }
+
     
 }
