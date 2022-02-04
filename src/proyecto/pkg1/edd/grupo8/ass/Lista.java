@@ -47,7 +47,17 @@ public class Lista {
             setUltimo(nodo);
             setTamanio(getTamanio()+1);
         }
-    }    
+    }
+    
+//    public int BuscarPosicion(int id){
+//        Nodo aux= getPrimero();
+////        if (!estaVacia()) {
+////            while () {                
+////                
+////            }
+////        }
+//        
+//    }
     /**
      * @return the primero
      */

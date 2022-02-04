@@ -19,6 +19,9 @@ import javax.swing.JTextArea;
  * @author gabriel
  */
 public class Archivotxt {
+    int numero_posicion=0;
+    ListaUsuarios lista_usuarios= new ListaUsuarios();
+    ListaRelaciones lista_relaciones= new ListaRelaciones();
      public String abrirArchivo(){
         String aux="";   
         String texto="";
@@ -74,18 +77,32 @@ public class Archivotxt {
                         }else{
                             if (divisor.equals("Usuarios")){
                                 String [] SplitUsuario = txtSplit[i].split(",");
-                                NodoUsuario usuario = new NodoUsuario(Integer.parseInt(SplitUsuario[0]),SplitUsuario[1]);
+                                NodoUsuario usuario = new NodoUsuario(Integer.parseInt(SplitUsuario[0]),SplitUsuario[1], numero_posicion++);
+                                lista_usuarios.agregarAlFinal(usuario);
                             }
                             if (divisor.equals("Relaciones")){
                                 String [] RelacionesSplit = txtSplit[i].split(",");
-                                NodoRelaciones relacion = new NodoRelaciones(Integer.parseInt(RelacionesSplit[0]), Integer.parseInt(RelacionesSplit[1]), Integer.parseInt(RelacionesSplit[2]));                              
+                                int posicion_1=0;
+                                int posicion_2=0;
+                                RelacionesSplit[1]= RelacionesSplit[1].replace(" ", "");
+                                RelacionesSplit[2]= RelacionesSplit[2].replace(" ", "");
+                                posicion_1= lista_usuarios.BuscarPosicion(Integer.parseInt(RelacionesSplit[0]));
+                                posicion_2= lista_usuarios.BuscarPosicion(Integer.parseInt(RelacionesSplit[1]));
+                                NodoRelaciones relacion = new NodoRelaciones(posicion_1, posicion_2, Integer.parseInt(RelacionesSplit[2])); 
+                                lista_relaciones.agregarAlFinal(relacion);
 
-                        
                             }
                             
                         }
                         }
         }
+      GrafoMatriz grafo= new GrafoMatriz(lista_usuarios.getSize());
+      NodoRelaciones aux= lista_relaciones.getPfirst();
+        for (int i = 0; i < lista_relaciones.getSize(); i++) {
+            grafo.agregar_arista(aux.getInicio(), aux.getFin(), aux.getTiempo());
+            aux=aux.getSiguiente();
+        }
+       grafo.ImprimirGrafo();
     }
 }
     

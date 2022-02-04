@@ -10,30 +10,34 @@ package proyecto.pkg1.edd.grupo8.ass;
  * @author gabriel
  */
 public class NodoRelaciones {
-    private int Id1;
-    private int Id2;
+    private int inicio;
+    private int fin;
     private int tiempo;
+    private NodoRelaciones siguiente;
 
-    public NodoRelaciones(int Id1, int Id2, int tiempo) {
-        this.Id1 = Id1;
-        this.Id2 = Id2;
+    public NodoRelaciones(int inicio, int fin, int tiempo) {
+        this.inicio = inicio;
+        this.fin = fin;
         this.tiempo = tiempo;
+        this.siguiente=null;
     }
 
-    public int getId1() {
-        return Id1;
+    
+    
+    public int getInicio() {
+        return inicio;
     }
 
-    public void setId1(int Id1) {
-        this.Id1 = Id1;
+    public void setInicio(int inicio) {
+        this.inicio = inicio;
     }
 
-    public int getId2() {
-        return Id2;
+    public int getFin() {
+        return fin;
     }
 
-    public void setId2(int Id2) {
-        this.Id2 = Id2;
+    public void setFin(int fin) {
+        this.fin = fin;
     }
 
     public int getTiempo() {
@@ -43,7 +47,14 @@ public class NodoRelaciones {
     public void setTiempo(int tiempo) {
         this.tiempo = tiempo;
     }
-    
-    
-    
+
+    public NodoRelaciones getSiguiente() {
+        return siguiente;
+    }
+
+    public void setSiguiente(NodoRelaciones siguiente) {
+        this.siguiente = siguiente;
+    }
+
+
 }
