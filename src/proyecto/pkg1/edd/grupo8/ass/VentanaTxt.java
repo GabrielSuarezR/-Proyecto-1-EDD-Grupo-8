@@ -17,10 +17,22 @@ import javax.swing.JOptionPane;
  */
 public class VentanaTxt extends javax.swing.JFrame {
     public static String Archtxt;
+    ListaUsuarios listau = new ListaUsuarios();
+    ListaRelaciones listar = new ListaRelaciones();
+    public static ListaUsuarios listau2;
+    public static ListaRelaciones listar2;
     /**
      * Creates new form Ventana
      */
-    public VentanaTxt() {
+    public VentanaTxt(ListaUsuarios listau2, ListaRelaciones listar2) {
+        this.listau2 = listau2;
+        this.listar2 = listar2;
+        if (listau2!=null) {
+         listau = listau2;   
+        }
+        if (listar2!=null) {
+          listar = listar2;   
+        }
         initComponents();
         this.setVisible(true);
         this.setLocationRelativeTo(null);
@@ -63,6 +75,11 @@ public class VentanaTxt extends javax.swing.JFrame {
         jPanel1.add(SeleccionarArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 230, 60));
 
         jButton1.setText("ACTUALIZAR ARCHIVO DE TEXTO");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, 230, 60));
 
         exit.setText("X");
@@ -90,6 +107,8 @@ public class VentanaTxt extends javax.swing.JFrame {
          Archivotxt txt = new Archivotxt();
         VentanaTxt.Archtxt = txt.abrirArchivo();
         pantallaTxt.setText(VentanaTxt.Archtxt);
+        txt.lectorString(Archtxt, listau,listar);
+        txt.mostrarMatrizGrafo(listau, listar);
     }//GEN-LAST:event_SeleccionarArchivoActionPerformed
 
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
@@ -98,8 +117,16 @@ public class VentanaTxt extends javax.swing.JFrame {
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         this.dispose();
-        new VentanaInicio().setVisible(true);
+        new VentanaInicio(listau,listar).setVisible(true);
     }//GEN-LAST:event_backActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        listau.ImprimirLista(pantallaTxt);
+        listar.ImprimirLista(pantallaTxt);
+        Archivotxt txt = new Archivotxt();
+         txt.guardarArchivo(pantallaTxt);
+         dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -138,7 +165,7 @@ public class VentanaTxt extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VentanaTxt().setVisible(true);
+                new VentanaTxt(listau2,listar2).setVisible(true);
             }
         });
     }

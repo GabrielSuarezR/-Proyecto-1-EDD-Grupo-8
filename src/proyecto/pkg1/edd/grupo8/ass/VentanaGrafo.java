@@ -10,12 +10,15 @@ package proyecto.pkg1.edd.grupo8.ass;
  * @author sebas
  */
 public class VentanaGrafo extends javax.swing.JFrame {
-
+    public static ListaUsuarios listau;
+    public static ListaRelaciones listar;
     /**
      * Creates new form VentanaGrafo
      */
-    public VentanaGrafo() {
+    public VentanaGrafo(ListaUsuarios listau,ListaRelaciones listar) {
         initComponents();
+        this.listau=listau;
+        this.listar=listar;
         this.setVisible(true);
         this.setLocationRelativeTo(null);
     }
@@ -73,6 +76,11 @@ public class VentanaGrafo extends javax.swing.JFrame {
         jPanel1.add(mostrarPuentes, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 240, -1));
 
         modificarGrafo.setText("MODIFICAR GRAFO");
+        modificarGrafo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarGrafoActionPerformed(evt);
+            }
+        });
         jPanel1.add(modificarGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, 230, -1));
 
         mostrarIslas.setText("MOSTRAR ISLAS");
@@ -89,8 +97,13 @@ public class VentanaGrafo extends javax.swing.JFrame {
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         this.dispose();
-        new VentanaInicio().setVisible(true);
+        new VentanaInicio(listau,listar).setVisible(true);
     }//GEN-LAST:event_backActionPerformed
+
+    private void modificarGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarGrafoActionPerformed
+      this.dispose();
+      new VentanaModificarGrafo(listau,listar).setVisible(true);
+    }//GEN-LAST:event_modificarGrafoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -122,7 +135,7 @@ public class VentanaGrafo extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VentanaGrafo().setVisible(true);
+                new VentanaGrafo(listau,listar).setVisible(true);
             }
         });
     }

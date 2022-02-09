@@ -10,12 +10,19 @@ package proyecto.pkg1.edd.grupo8.ass;
  * @author sebas
  */
 public class VentanaInicio extends javax.swing.JFrame {
-
+    public static ListaUsuarios listau;
+    public static ListaRelaciones listar;
+    public static ListaUsuarios listau2;
+    public static ListaRelaciones listar2;
     /**
      * Creates new form VentanaInicio
      */
-    public VentanaInicio() {
+    public VentanaInicio(ListaUsuarios listau,ListaRelaciones listar) {
         initComponents();
+        this.listau=listau;
+        this.listar=listar;
+        this.listau2 = listau;
+        this.listar2 = listar;
         this.setVisible(true);
         this.setLocationRelativeTo(null);
     }
@@ -82,12 +89,12 @@ public class VentanaInicio extends javax.swing.JFrame {
 
     private void archivoTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_archivoTextoActionPerformed
         this.dispose();
-        new VentanaTxt().setVisible(true);
+        new VentanaTxt(listau2,listar2).setVisible(true);
     }//GEN-LAST:event_archivoTextoActionPerformed
 
     private void grafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grafoActionPerformed
         this.dispose();
-        new VentanaGrafo().setVisible(true);
+        new VentanaGrafo(listau,listar).setVisible(true);
     }//GEN-LAST:event_grafoActionPerformed
 
     /**
@@ -120,7 +127,7 @@ public class VentanaInicio extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VentanaInicio().setVisible(true);
+                new VentanaInicio(listau,listar).setVisible(true);
             }
         });
     }

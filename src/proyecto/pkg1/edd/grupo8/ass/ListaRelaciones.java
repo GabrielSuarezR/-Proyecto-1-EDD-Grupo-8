@@ -5,6 +5,8 @@
  */
 package proyecto.pkg1.edd.grupo8.ass;
 
+import javax.swing.JTextArea;
+
 /**
  *
  * @author johnd
@@ -36,7 +38,14 @@ public class ListaRelaciones {
         }
         size++;
     }
-
+    public void ImprimirLista(JTextArea texto){
+        texto.append("Relaciones"+"\n");
+        NodoRelaciones aux = pfirst;
+        while (aux!=null) {
+            texto.append(aux.getInicio()+","+aux.getFin()+","+aux.getTiempo()+"\n");
+            aux = aux.getSiguiente();
+        }
+    }
     /**
      * @return the pfirst
      */
