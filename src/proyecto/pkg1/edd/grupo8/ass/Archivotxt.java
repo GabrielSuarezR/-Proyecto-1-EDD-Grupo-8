@@ -107,6 +107,9 @@ public class Archivotxt {
             aux=aux.getSiguiente();
         }
        grafo.ImprimirGrafo();
+       grafo.setLista_relaciones(lista_relaciones);
+       grafo.setLista_usuarios(lista_usuarios);
+       grafo.CantidadIslasBFS();
     }
     public void guardarArchivo(JTextArea area){
         try

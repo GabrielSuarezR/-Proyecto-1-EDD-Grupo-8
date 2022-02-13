@@ -73,6 +73,11 @@ public class VentanaGrafo extends javax.swing.JFrame {
         jPanel1.add(mostrarGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 240, -1));
 
         mostrarPuentes.setText("MOSTRAR CANTIDAD DE PUENTES");
+        mostrarPuentes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mostrarPuentesActionPerformed(evt);
+            }
+        });
         jPanel1.add(mostrarPuentes, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 240, -1));
 
         modificarGrafo.setText("MODIFICAR GRAFO");
@@ -84,6 +89,11 @@ public class VentanaGrafo extends javax.swing.JFrame {
         jPanel1.add(modificarGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, 230, -1));
 
         mostrarIslas.setText("MOSTRAR ISLAS");
+        mostrarIslas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mostrarIslasActionPerformed(evt);
+            }
+        });
         jPanel1.add(mostrarIslas, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, 230, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 400));
@@ -104,6 +114,15 @@ public class VentanaGrafo extends javax.swing.JFrame {
       this.dispose();
       new VentanaModificarGrafo(listau,listar).setVisible(true);
     }//GEN-LAST:event_modificarGrafoActionPerformed
+
+    private void mostrarIslasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarIslasActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_mostrarIslasActionPerformed
+
+    private void mostrarPuentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarPuentesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mostrarPuentesActionPerformed
 
     /**
      * @param args the command line arguments
