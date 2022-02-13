@@ -51,7 +51,7 @@ public class VentanaTxt extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         pantallaTxt = new javax.swing.JTextArea();
         SeleccionarArchivo = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        Actualizar = new javax.swing.JButton();
         exit = new javax.swing.JToggleButton();
         back = new javax.swing.JButton();
 
@@ -74,13 +74,13 @@ public class VentanaTxt extends javax.swing.JFrame {
         });
         jPanel1.add(SeleccionarArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 230, 60));
 
-        jButton1.setText("ACTUALIZAR ARCHIVO DE TEXTO");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Actualizar.setText("ACTUALIZAR ARCHIVO DE TEXTO");
+        Actualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                ActualizarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, 230, 60));
+        jPanel1.add(Actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, 230, 60));
 
         exit.setText("X");
         exit.addActionListener(new java.awt.event.ActionListener() {
@@ -120,13 +120,13 @@ public class VentanaTxt extends javax.swing.JFrame {
         new VentanaInicio(listau,listar).setVisible(true);
     }//GEN-LAST:event_backActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void ActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarActionPerformed
         listau.ImprimirLista(pantallaTxt);
         listar.ImprimirLista(pantallaTxt);
         Archivotxt txt = new Archivotxt();
          txt.guardarArchivo(pantallaTxt);
          dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_ActualizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -171,10 +171,10 @@ public class VentanaTxt extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Actualizar;
     private javax.swing.JButton SeleccionarArchivo;
     private javax.swing.JButton back;
     private javax.swing.JToggleButton exit;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea pantallaTxt;

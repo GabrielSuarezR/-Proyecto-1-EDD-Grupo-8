@@ -153,6 +153,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="ID2">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ID2ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="tiempo">
     </Component>

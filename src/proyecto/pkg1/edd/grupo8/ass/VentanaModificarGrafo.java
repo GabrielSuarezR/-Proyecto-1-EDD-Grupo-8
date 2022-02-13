@@ -20,6 +20,7 @@ public class VentanaModificarGrafo extends javax.swing.JFrame {
         this.listau = listau;
         this.listar = listar;
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -67,6 +68,12 @@ public class VentanaModificarGrafo extends javax.swing.JFrame {
         jLabel4.setText("ID");
 
         jLabel5.setText("Tiempo");
+
+        ID2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ID2ActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Agregar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -176,6 +183,10 @@ public class VentanaModificarGrafo extends javax.swing.JFrame {
         new VentanaInicio(listau, listar).setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void ID2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ID2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ID2ActionPerformed
 
     /**
      * @param args the command line arguments
