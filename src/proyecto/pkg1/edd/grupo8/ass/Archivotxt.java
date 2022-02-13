@@ -89,13 +89,19 @@ public class Archivotxt {
                                 lista_relaciones.agregarAlFinal(relacion);
 
                             }
+
                             
                         }
                         }
         }
     }
-    public void mostrarMatrizGrafo(ListaUsuarios lista_usuarios,ListaRelaciones lista_relaciones){
-        GrafoMatriz grafo= new GrafoMatriz(lista_usuarios.getSize());
+    public GrafoMatriz cargarMatrizGrafo(ListaUsuarios lista_usuarios,ListaRelaciones lista_relaciones){
+        GrafoMatriz grafo= new GrafoMatriz();
+        grafo.setNum_vertices(lista_usuarios.getSize());
+        int matriz [][]= new int[lista_usuarios.getSize()][lista_usuarios.getSize()];
+        grafo.setMatriz(matriz);
+        grafo.setLista_usuarios(lista_usuarios);
+        grafo.setLista_relaciones(lista_relaciones);
       NodoRelaciones aux= lista_relaciones.getPfirst();
         for (int i = 0; i < lista_relaciones.getSize(); i++) {
             int posicion_1=0;
@@ -107,9 +113,8 @@ public class Archivotxt {
             aux=aux.getSiguiente();
         }
        grafo.ImprimirGrafo();
-       grafo.setLista_relaciones(lista_relaciones);
-       grafo.setLista_usuarios(lista_usuarios);
        grafo.CantidadIslasBFS();
+        return grafo;
     }
     public void guardarArchivo(JTextArea area){
         try

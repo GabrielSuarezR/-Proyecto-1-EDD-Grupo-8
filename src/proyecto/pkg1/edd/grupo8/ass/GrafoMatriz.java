@@ -15,11 +15,11 @@ public class GrafoMatriz {
     ListaUsuarios lista_usuarios;
     ListaRelaciones lista_relaciones;
 
-    public GrafoMatriz(int num_vertices) {
+    public GrafoMatriz() {
         this.num_vertices = num_vertices;
         this.matriz = new int[num_vertices][num_vertices];
-        this.lista_relaciones= lista_relaciones;
-        this.lista_usuarios= lista_usuarios;
+        this.lista_relaciones= lista_relaciones; //Aristas
+        this.lista_usuarios= lista_usuarios; //Vértices
     }
 
     /**
