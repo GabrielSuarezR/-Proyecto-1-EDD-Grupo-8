@@ -5,80 +5,37 @@
  */
 package proyecto.pkg1.edd.grupo8.ass;
 
-import javax.swing.JOptionPane;
-
 /**
  *
- * @author johnderek
+ * @author johnd
  */
-public class Nodo {
-    
-    private Object elemento;
-    private Nodo siguiente;
-    private Nodo anterior;
+public class Nodo<T> {
+    int vertice;
+    Nodo<T> siguiente;
 
-    public Nodo(Object elemento) {
-        this.elemento = elemento;
-        this.siguiente = null;
-        this.anterior = null;
-    }
-
-    /**
-     * @return the elemento
-     */
-    public Object getElemento() {
-        return elemento;
-    }
-
-    /**
-     * @param elemento the elemento to set
-     */
-    public void setElemento(Object elemento) {
-        this.elemento = elemento;
-    }
-
-    /**
-     * @return the siguiente
-     */
-    public Nodo getSiguiente() {
-        return siguiente;
-    }
-
-    /**
-     * @param siguiente the siguiente to set
-     */
-    public void setSiguiente(Nodo siguiente) {
+    public Nodo() {
+        this.vertice = vertice;
         this.siguiente = siguiente;
     }
 
-    /**
-     * @return the anterior
-     */
-    public Nodo getAnterior() {
-        return anterior;
+    public int getVertice() {
+        return vertice;
     }
 
-    /**
-     * @param anterior the previo to set
-     */
-    public void setAnterior(Nodo anterior) {
-        this.anterior = anterior;
+    public void setVertice(int vertice) {
+        this.vertice = vertice;
     }
+
+    public Nodo<T> getSiguiente() {
+        return siguiente;
+    }
+
+    public void setSiguiente(Nodo<T> siguiente) {
+        this.siguiente = siguiente;
+    }
+
     
-     public Nodo eliminar (Nodo nodoelim, String dato) {
-          Nodo resul = nodoelim;
-         if(nodoelim != null){
-            JOptionPane.showMessageDialog(null, nodoelim.getElemento() + dato);
-            if (nodoelim!= null){
-                if (nodoelim.getElemento() != dato){
-                    nodoelim.siguiente = eliminar (nodoelim.siguiente, dato);
-                }
-                else {resul = nodoelim.siguiente;}
-            }
-     }else{
-             resul = null;
-         }
-          return resul;
     
-}
+    
+    
 }

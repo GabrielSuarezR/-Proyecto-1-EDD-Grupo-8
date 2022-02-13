@@ -113,7 +113,8 @@ public class Archivotxt {
             aux=aux.getSiguiente();
         }
        grafo.ImprimirGrafo();
-       grafo.CantidadIslasBFS();
+       //grafo.CantidadIslasBFS();
+       grafo.CantidadIslasDFS();
         return grafo;
     }
     public void guardarArchivo(JTextArea area){

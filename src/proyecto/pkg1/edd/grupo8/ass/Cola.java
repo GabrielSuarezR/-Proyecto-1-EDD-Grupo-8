@@ -9,9 +9,9 @@ package proyecto.pkg1.edd.grupo8.ass;
  *
  * @author johnd
  */
-public class Cola {
-   NodoCola pfirst;
-   NodoCola plast;
+public class Cola<T> {
+   Nodo<T> pfirst;
+   Nodo<T> plast;
    int size;
 
     public Cola() {
@@ -20,19 +20,19 @@ public class Cola {
         this.size = 0;
     }
 
-    public NodoCola getPfirst() {
+    public Nodo<T> getPfirst() {
         return pfirst;
     }
 
-    public void setPfirst(NodoCola pfirst) {
+    public void setPfirst(Nodo<T> pfirst) {
         this.pfirst = pfirst;
     }
 
-    public NodoCola getPlast() {
+    public Nodo<T> getPlast() {
         return plast;
     }
 
-    public void setPlast(NodoCola plast) {
+    public void setPlast(Nodo<T> plast) {
         this.plast = plast;
     }
 
@@ -43,6 +43,8 @@ public class Cola {
     public void setSize(int size) {
         this.size = size;
     }
+
+    
    
    public boolean esta_vacia(){
        return size==0;
@@ -53,7 +55,7 @@ public class Cola {
    }
    
    public void Encolar(int vertice){
-       NodoCola nuevo_nodo= new NodoCola();
+       Nodo nuevo_nodo= new Nodo();
        nuevo_nodo.setVertice(vertice);
        
        if (pfirst==null) {
@@ -78,7 +80,7 @@ public class Cola {
    
    public String imprimirCola(){
        String cadena="";
-       NodoCola aux= pfirst;
+       Nodo aux= pfirst;
            while (aux!=null) {            
             cadena= cadena + aux.getVertice()+ ", ";
                aux= aux.getSiguiente();

@@ -136,4 +136,55 @@ public class GrafoMatriz {
         return false;
     }
     
-}
+    public void CantidadIslasDFS(){
+        
+        boolean array_visitado []=new boolean[num_vertices];
+        boolean array_marcado[]= new boolean[num_vertices];
+        int cantidad_islas=1;
+        boolean flag=true;
+        Pila pila= new Pila();
+        int primer_vertice=lista_usuarios.getPfirst().getPosicion();
+        array_visitado[primer_vertice]=true;
+        array_marcado[primer_vertice]=true;
+        pila.Apilar(primer_vertice);
+        
+        while (flag==true) {            
+            while (!pila.esta_vacia()) {            
+            int valor= pila.getCima().getVertice();
+            pila.Desapilar();
+            System.out.println("Vértice " + valor + "visitado");
+            array_visitado[valor]=true;
+            for (int i = 0; i < num_vertices; i++) {
+                if ((matriz[valor][i]>0) && (array_visitado[i]==false)) {
+                    if (array_marcado[i]==false) {
+                        pila.Apilar(i);
+                        array_marcado[i]=true;
+                    }
+                    
+                }
+            }
+        }
+        if ((pila.esta_vacia()) && (Vertices_por_visitar(array_visitado))) {
+            cantidad_islas=cantidad_islas+1;
+            for (int i = 0; i < array_visitado.length; i++) {
+                if (array_visitado[i]==false) {
+                    pila.Apilar(i);
+                    break;
+            }
+            }
+        }
+        else{
+            flag=false;
+        }
+        
+        }
+        System.out.println("La cantidad de islas es: " + cantidad_islas);
+        
+    }
+        
+        
+        
+        
+    }
+    
+
