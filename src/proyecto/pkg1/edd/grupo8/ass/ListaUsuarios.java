@@ -5,6 +5,8 @@
  */
 package proyecto.pkg1.edd.grupo8.ass;
 
+import javax.swing.JTextArea;
+
 /**
  *
  * @author johnd
@@ -44,6 +46,15 @@ public class ListaUsuarios {
             aux= aux.getSiguiente();
         }
         return aux.getPosicion();
+    }
+    public void ImprimirLista(JTextArea texto){
+        texto.append("Usuarios"+"\n");
+        NodoUsuario aux = pfirst;
+        while (aux!=null) {
+            texto.append(aux.getID()+","+aux.getNombreDeUsuario()+"\n");
+            aux = aux.getSiguiente();
+            
+        }
     }
     /**
      * @return the pfirst

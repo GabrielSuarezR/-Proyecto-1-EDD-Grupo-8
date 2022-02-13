@@ -18,6 +18,7 @@ import javax.swing.JTextArea;
  *
  * @author gabriel
  */
+
 public class Archivotxt {
     int numero_posicion=0;
     ListaUsuarios lista_usuarios= new ListaUsuarios();
@@ -66,7 +67,7 @@ public class Archivotxt {
         
         }  
 
-    public void lectorString(String txt){
+    public void lectorString(String txt, ListaUsuarios lista_usuarios,ListaRelaciones lista_relaciones){
         if (!"".equals(txt) && !txt.isEmpty()){
                     String[] txtSplit = txt.split("\n");
                     int corte =0;
@@ -82,13 +83,9 @@ public class Archivotxt {
                             }
                             if (divisor.equals("Relaciones")){
                                 String [] RelacionesSplit = txtSplit[i].split(",");
-                                int posicion_1=0;
-                                int posicion_2=0;
                                 RelacionesSplit[1]= RelacionesSplit[1].replace(" ", "");
                                 RelacionesSplit[2]= RelacionesSplit[2].replace(" ", "");
-                                posicion_1= lista_usuarios.BuscarPosicion(Integer.parseInt(RelacionesSplit[0]));
-                                posicion_2= lista_usuarios.BuscarPosicion(Integer.parseInt(RelacionesSplit[1]));
-                                NodoRelaciones relacion = new NodoRelaciones(posicion_1, posicion_2, Integer.parseInt(RelacionesSplit[2])); 
+                                NodoRelaciones relacion = new NodoRelaciones(Integer.parseInt(RelacionesSplit[0]),Integer.parseInt(RelacionesSplit[1]), Integer.parseInt(RelacionesSplit[2])); 
                                 lista_relaciones.agregarAlFinal(relacion);
 
                             }
@@ -96,13 +93,57 @@ public class Archivotxt {
                         }
                         }
         }
-      GrafoMatriz grafo= new GrafoMatriz(lista_usuarios.getSize());
+    }
+    public void mostrarMatrizGrafo(ListaUsuarios lista_usuarios,ListaRelaciones lista_relaciones){
+        GrafoMatriz grafo= new GrafoMatriz(lista_usuarios.getSize());
       NodoRelaciones aux= lista_relaciones.getPfirst();
         for (int i = 0; i < lista_relaciones.getSize(); i++) {
-            grafo.agregar_arista(aux.getInicio(), aux.getFin(), aux.getTiempo());
+            int posicion_1=0;
+            int posicion_2=0;
+            System.out.println(aux.getInicio());
+            posicion_1= lista_usuarios.BuscarPosicion(aux.getInicio());
+            posicion_2= lista_usuarios.BuscarPosicion(aux.getFin());
+            grafo.agregar_arista(posicion_1, posicion_2, aux.getTiempo());
             aux=aux.getSiguiente();
         }
        grafo.ImprimirGrafo();
     }
+    public void guardarArchivo(JTextArea area){
+        try
+        {
+         String nombre= "";
+         JFileChooser file=new JFileChooser();
+         file.showSaveDialog(null);
+         File guarda =file.getSelectedFile();
+         nombre = guarda.getName();
+         String [] identificador = nombre.split("\\.(?=[^\\.]+$)");
+         if (identificador.length == 1){
+            if(guarda !=null){
+               FileWriter  save=new FileWriter(guarda+".txt");
+               save.write(area.getText());
+               save.close();
+               JOptionPane.showMessageDialog(null,
+                    "El archivo se a guardado Exitosamente",
+                        "Información",JOptionPane.INFORMATION_MESSAGE);
+            }
+                 }else if (guarda !=null){
+              FileWriter  save=new FileWriter(guarda);
+            save.write(area.getText());
+            save.close();
+            JOptionPane.showMessageDialog(null,
+                 "El archivo se a guardado Exitosamente",
+                     "Información",JOptionPane.INFORMATION_MESSAGE);
+            
+         
+         }
+         
+        }
+         catch(IOException ex)
+         {
+          JOptionPane.showMessageDialog(null,
+               "Su archivo no se ha guardado",
+                  "Advertencia",JOptionPane.WARNING_MESSAGE);
+         }
+        
+    }
 }
-    
