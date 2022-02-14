@@ -169,7 +169,7 @@ public class VentanaModificarGrafo extends javax.swing.JFrame {
         NodoRelaciones nodor = new NodoRelaciones(Integer.parseInt(ID.getText()), Integer.parseInt(ID2.getText()), Integer.parseInt(tiempo.getText()));
         grafo.getLista_relaciones().agregarAlFinal(nodor);
         Archivotxt txt = new Archivotxt();
-        grafo=txt.cargarMatrizGrafo(grafo.getLista_usuarios(),grafo.getLista_relaciones());
+        grafo=txt.cargarMatrizGrafo(grafo.getLista_usuarios(),grafo.getLista_relaciones(),grafo.getLista_aristas());
         nombre.setText("");
         ID.setText("");
         ID2.setText("");

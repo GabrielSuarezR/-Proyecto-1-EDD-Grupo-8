@@ -120,7 +120,7 @@ public class VentanaGrafo extends javax.swing.JFrame {
     }//GEN-LAST:event_mostrarIslasActionPerformed
 
     private void mostrarPuentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarPuentesActionPerformed
-        // TODO add your handling code here:
+       grafo.IdentificadorPuentes(pantallaGrafo);
     }//GEN-LAST:event_mostrarPuentesActionPerformed
 
     /**
