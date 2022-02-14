@@ -23,6 +23,7 @@ public class Archivotxt {
     int numero_posicion=0;
     ListaUsuarios lista_usuarios= new ListaUsuarios();
     ListaRelaciones lista_relaciones= new ListaRelaciones();
+    ListaAristas aristas = new ListaAristas();
      public String abrirArchivo(){
         String aux="";   
         String texto="";
@@ -67,7 +68,7 @@ public class Archivotxt {
         
         }  
 
-    public void lectorString(String txt, ListaUsuarios lista_usuarios,ListaRelaciones lista_relaciones){
+    public void lectorString(String txt, ListaUsuarios lista_usuarios,ListaRelaciones lista_relaciones,ListaAristas aristas){
         if (!"".equals(txt) && !txt.isEmpty()){
                     String[] txtSplit = txt.split("\n");
                     int corte =0;
@@ -78,6 +79,7 @@ public class Archivotxt {
                         }else{
                             if (divisor.equals("Usuarios")){
                                 String [] SplitUsuario = txtSplit[i].split(",");
+                                SplitUsuario[1]=SplitUsuario[1].replace(" ", "");
                                 NodoUsuario usuario = new NodoUsuario(Integer.parseInt(SplitUsuario[0]),SplitUsuario[1], numero_posicion++);
                                 lista_usuarios.agregarAlFinal(usuario);
                             }
@@ -87,6 +89,8 @@ public class Archivotxt {
                                 RelacionesSplit[2]= RelacionesSplit[2].replace(" ", "");
                                 NodoRelaciones relacion = new NodoRelaciones(Integer.parseInt(RelacionesSplit[0]),Integer.parseInt(RelacionesSplit[1]), Integer.parseInt(RelacionesSplit[2])); 
                                 lista_relaciones.agregarAlFinal(relacion);
+                                NodoArista nodoa = new NodoArista(lista_usuarios.BuscarPosicion(Integer.parseInt(RelacionesSplit[0])),lista_usuarios.BuscarPosicion(Integer.parseInt(RelacionesSplit[1])));
+                                aristas.agregarAlFinal(nodoa);
 
                             }
 
@@ -95,13 +99,14 @@ public class Archivotxt {
                         }
         }
     }
-    public GrafoMatriz cargarMatrizGrafo(ListaUsuarios lista_usuarios,ListaRelaciones lista_relaciones){
+    public GrafoMatriz cargarMatrizGrafo(ListaUsuarios lista_usuarios,ListaRelaciones lista_relaciones, ListaAristas aristas){
         GrafoMatriz grafo= new GrafoMatriz();
         grafo.setNum_vertices(lista_usuarios.getSize());
         int matriz [][]= new int[lista_usuarios.getSize()][lista_usuarios.getSize()];
         grafo.setMatriz(matriz);
         grafo.setLista_usuarios(lista_usuarios);
         grafo.setLista_relaciones(lista_relaciones);
+        grafo.setLista_aristas(aristas);
       NodoRelaciones aux= lista_relaciones.getPfirst();
         for (int i = 0; i < lista_relaciones.getSize(); i++) {
             int posicion_1=0;
