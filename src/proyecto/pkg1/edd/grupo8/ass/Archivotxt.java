@@ -5,6 +5,7 @@
  */
 package proyecto.pkg1.edd.grupo8.ass;
 
+import java.awt.geom.Area;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -118,8 +119,6 @@ public class Archivotxt {
             aux=aux.getSiguiente();
         }
        grafo.ImprimirGrafo();
-       //grafo.CantidadIslasBFS();
-       grafo.CantidadIslasDFS();
         return grafo;
     }
     public void guardarArchivo(JTextArea area){

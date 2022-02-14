@@ -115,7 +115,8 @@ public class VentanaGrafo extends javax.swing.JFrame {
     }//GEN-LAST:event_modificarGrafoActionPerformed
 
     private void mostrarIslasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarIslasActionPerformed
-        // TODO add your handling code here:
+        pantallaGrafo.setText("La cantidad de islas por BFS es: "+grafo.CantidadIslasBFS()+"\n");
+        grafo.CantidadIslasDFS(pantallaGrafo);
         
     }//GEN-LAST:event_mostrarIslasActionPerformed
 

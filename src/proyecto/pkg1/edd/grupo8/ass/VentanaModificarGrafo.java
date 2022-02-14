@@ -169,6 +169,8 @@ public class VentanaModificarGrafo extends javax.swing.JFrame {
         NodoRelaciones nodor = new NodoRelaciones(Integer.parseInt(ID.getText()), Integer.parseInt(ID2.getText()), Integer.parseInt(tiempo.getText()));
         grafo.getLista_relaciones().agregarAlFinal(nodor);
         Archivotxt txt = new Archivotxt();
+        NodoArista nodoa = new NodoArista(pos, pos2);
+        grafo.getLista_aristas().agregarAlFinal(nodoa);
         grafo=txt.cargarMatrizGrafo(grafo.getLista_usuarios(),grafo.getLista_relaciones(),grafo.getLista_aristas());
         nombre.setText("");
         ID.setText("");
