@@ -297,7 +297,7 @@ public class GrafoMatriz {
         array_marcado[j]=true;
         cola.Encolar(primer_vertice);
              
->>>>>>> 57966b04bfc00ec59c68eed8758ab82e2b505b79
+
         
         while (flag==true) {            
             while (!cola.esta_vacia()) {            
