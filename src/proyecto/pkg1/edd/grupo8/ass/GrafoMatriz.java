@@ -181,7 +181,20 @@ public class GrafoMatriz {
         System.out.println("La cantidad de islas es: " + cantidad_islas);
         
     }
-        
+    
+     public void IdentificadorPuentes(){
+         NodoRelaciones arista= lista_relaciones.getPfirst();
+         while (arista!=null) {
+            int posicion_1= lista_usuarios.BuscarPosicion(arista.getInicio());
+            int posicion_2= lista_usuarios.BuscarPosicion(arista.getFin());
+            
+            
+            arista = arista.getSiguiente();
+            
+            
+            
+        }
+     }   
         
         
         
