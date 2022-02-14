@@ -132,7 +132,6 @@ public class GrafoMatriz {
         }
         
         }
-        System.out.println("La cantidad de islas es: " + cantidad_islas);
         return cantidad_islas;
     }
     
@@ -145,7 +144,7 @@ public class GrafoMatriz {
         return false;
     }
     
-    public void CantidadIslasDFS(){
+    public void CantidadIslasDFS(JTextArea area){
         
         boolean array_visitado []=new boolean[num_vertices];
         boolean array_marcado[]= new boolean[num_vertices];
@@ -186,117 +185,58 @@ public class GrafoMatriz {
         }
         
         }
-        System.out.println("La cantidad de islas es: " + cantidad_islas);
+        
+        area.append("La cantidad de islas por DFS es: " + cantidad_islas+"\n");
         
     }
-        
-     public void buscadorExtremos(ListaUsuarios lista){
-         NodoUsuario nodo = lista_usuarios.getPfirst();
-         for (int i = 0; i < lista_usuarios.getSize(); i++) {
-            int contador = 0;
-            int id = nodo.getID();
-            NodoUsuario nodo2 = nodo;
-                if (nodo.getSiguiente()!=null) {
-                  nodo = nodo.getSiguiente();
-               }
-            NodoRelaciones nodop = lista_relaciones.getPfirst();
-            for (int k = 0; k < lista_relaciones.getSize(); k++) {
-                int pos1 = nodop.getInicio();
-                int pos2 = nodop.getFin();
-                if (nodop.getSiguiente()!=null) {
-                     nodop = nodop.getSiguiente();
-                }
-               
-                if (id==pos1) {
-                    contador+=1;
-                }
-                if(id==pos2){
-                     contador+=1;
-                }
-               
-                 }
-            if (contador==1) {
-                lista.agregarAlFinal(nodo2);
-
-
-            
-            }
-            
-            }
-     }
-            
-     
+ 
     public void IdentificadorPuentes(JTextArea area){
-        NodoUsuario persona = lista_usuarios.getPfirst();
-        ListaUsuarios listapuente = new ListaUsuarios();
-        for (int i = lista_usuarios.getPfirst().getPosicion(); i < lista_usuarios.getSize(); i++) {   
-            if (CantidadIslasBFS()< CantidadIslasBFS2(i)) {
-                NodoUsuario nodo = new NodoUsuario(persona.getID(), persona.getNombreDeUsuario(), i);
-                listapuente.agregarAlFinal(nodo);
-                persona = persona.getSiguiente();
+        area.setText("");
+        NodoArista arista = lista_aristas.getPfirst();
+        int contador = 0;
+        for (int i = 0; i < lista_aristas.getSize(); i++) {
+            int pos1 = arista.getInicio();
+            int pos2 = arista.getFin();
+            arista = arista.getSiguiente();
+            if (CantidadIslasBFS()< CantidadIslasBFS2(pos1,pos2)) {
+                NodoUsuario persona = lista_usuarios.getPfirst();
+                 String persona1="";
+                 String persona2="";
+                 contador +=1;
+                for (int j = 0; j < lista_usuarios.getSize(); j++) {
+                    if (pos1==j) {
+                        persona1 = persona.getNombreDeUsuario();
+                    }
+                    if (pos2==j) {
+                        persona2 = persona.getNombreDeUsuario();
+                        persona=persona.getSiguiente();
+                    }else{
+                    persona = persona.getSiguiente();
+                }
+                }
+                area.append(persona1+"-----"+persona2+"\n");
+           
+            }
                 
-            }else{
-                if (persona.getSiguiente()!=null) {
-                persona = persona.getSiguiente();
-                }
-            }
-
-    }
-        int contador=0;
-        buscadorExtremos(listapuente);
-        NodoUsuario personap = listapuente.getPfirst();
-        for (int i = 0; i < listapuente.getSize(); i++) {
-            String nombre1 = personap.getNombreDeUsuario();
-            int id1 = personap.getID();
-            NodoUsuario personap2 = listapuente.getPfirst();
-            for (int j = 0; j < listapuente.getSize(); j++) {
-            String nombre2 = personap2.getNombreDeUsuario();
-            int id2 = personap2.getID();
-                if (personap2.getSiguiente()!=null) {
-                    personap2 = personap2.getSiguiente();
-                }
-            NodoRelaciones nodop = lista_relaciones.getPfirst();
-            for (int k = 0; k < lista_relaciones.getSize(); k++) {
-                int pos1 = nodop.getInicio();
-                int pos2 = nodop.getFin();
-                nodop = nodop.getSiguiente();
-                if (pos1 == id1 & pos2==id2) {
-                    contador +=1;
-                    area.append(nombre1+" ----- "+nombre2+"\n");
-                }
-            }
-            
-
-                }
-            if (personap.getSiguiente() !=null) {
-            personap = personap.getSiguiente();
-            }
         }
-        String puentes = area.getText();
-        area.setText("Hay " + contador+" Puentes:"+"\n");
-        area.append(puentes);
- {
-            
-        }
+        String texto = area.getText();
+        area.setText("Hay "+contador+" Puentes:"+"\n");
+        area.append(texto);
 }
-     public int CantidadIslasBFS2(int j){
+     public int CantidadIslasBFS2(int pos1, int pos2){
         boolean array_visitado []=new boolean[num_vertices];
         boolean array_marcado[]= new boolean[num_vertices];
         int cantidad_islas=1;
         boolean flag=true;
         Cola cola= new  Cola();
         int primer_vertice=0;
-         if (lista_usuarios.getPfirst().getPosicion() == j) {
-             primer_vertice=lista_usuarios.getPfirst().getSiguiente().getPosicion();
-         }else{
-            primer_vertice=lista_usuarios.getPfirst().getPosicion(); 
-         }
+        primer_vertice=lista_usuarios.getPfirst().getPosicion(); 
         array_visitado[primer_vertice]=true;
         array_marcado[primer_vertice]=true;
-        array_visitado[j]=true;
-        array_marcado[j]=true;
         cola.Encolar(primer_vertice);
-             
+        int tiempoaux = matriz[pos1][pos2];
+        matriz[pos1][pos2]=0;
+        matriz[pos2][pos1]=0;     
         
         while (flag==true) {            
             while (!cola.esta_vacia()) {            
@@ -326,6 +266,8 @@ public class GrafoMatriz {
             flag=false;
         }
         }
+        matriz[pos1][pos2]=tiempoaux;
+        matriz[pos2][pos1]=tiempoaux;
         return cantidad_islas;
     }
     
