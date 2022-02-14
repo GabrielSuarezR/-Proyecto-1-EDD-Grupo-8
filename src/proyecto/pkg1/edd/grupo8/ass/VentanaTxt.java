@@ -19,6 +19,7 @@ public class VentanaTxt extends javax.swing.JFrame {
     public static String Archtxt;
     ListaUsuarios listau = new ListaUsuarios();
     ListaRelaciones listar = new ListaRelaciones();
+    ListaAristas listaa = new ListaAristas();
     public static GrafoMatriz grafo;
     public static ListaUsuarios listau2;
     public static ListaRelaciones listar2;
@@ -29,6 +30,7 @@ public class VentanaTxt extends javax.swing.JFrame {
         this.listau = listau;
         this.listar = listar;
         this.grafo= grafo;
+        this.listaa = listaa;
         initComponents();
         this.setVisible(true);
         this.setLocationRelativeTo(null);
@@ -108,8 +110,8 @@ public class VentanaTxt extends javax.swing.JFrame {
          Archivotxt txt = new Archivotxt();
         VentanaTxt.Archtxt = txt.abrirArchivo();
         pantallaTxt.setText(VentanaTxt.Archtxt);
-        txt.lectorString(Archtxt, listau,listar);
-        grafo= txt.cargarMatrizGrafo(listau, listar);
+        txt.lectorString(Archtxt, listau,listar,listaa);
+        grafo= txt.cargarMatrizGrafo(listau, listar,listaa);
     }//GEN-LAST:event_SeleccionarArchivoActionPerformed
 
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
