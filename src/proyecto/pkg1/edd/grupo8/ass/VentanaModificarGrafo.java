@@ -10,17 +10,18 @@ package proyecto.pkg1.edd.grupo8.ass;
  * @author gabriel
  */
 public class VentanaModificarGrafo extends javax.swing.JFrame {
-    public static ListaUsuarios listau;
-    public static  ListaRelaciones listar;
-    public static String Archtxt;
+    public static GrafoMatriz grafo;
     /**
      * Creates new form VentanaModificarGrafo
      */
-    public VentanaModificarGrafo(ListaUsuarios listau,ListaRelaciones listar) {
-        this.listau = listau;
-        this.listar = listar;
+    public VentanaModificarGrafo(GrafoMatriz grafo) {
+        this.grafo= grafo;
         initComponents();
         setLocationRelativeTo(null);
+        if (grafo!=null) {
+            grafo.getLista_usuarios().ImprimirLista(Usuarios);
+        grafo.getLista_relaciones().ImprimirLista(Usuarios);
+        }
     }
 
     /**
@@ -48,6 +49,7 @@ public class VentanaModificarGrafo extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        Usuarios.setEditable(false);
         Usuarios.setColumns(20);
         Usuarios.setRows(5);
         jScrollPane1.setViewportView(Usuarios);
@@ -158,21 +160,25 @@ public class VentanaModificarGrafo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int posicion = listau.getPlast().getPosicion();
+        int posicion = grafo.getLista_usuarios().getPlast().getPosicion();
         posicion +=1;
         NodoUsuario nodo = new NodoUsuario(Integer.parseInt(ID.getText()),nombre.getText(),posicion);
-        listau.agregarAlFinal(nodo);
-        System.out.println(listau.getPfirst().getNombreDeUsuario());
-        int pos= listau.BuscarPosicion(Integer.parseInt(ID.getText()));
-        int pos2= listau.BuscarPosicion(Integer.parseInt(ID2.getText()));
+        grafo.getLista_usuarios().agregarAlFinal(nodo);
+        int pos= grafo.getLista_usuarios().BuscarPosicion(Integer.parseInt(ID.getText()));
+        int pos2= grafo.getLista_usuarios().BuscarPosicion(Integer.parseInt(ID2.getText()));
         NodoRelaciones nodor = new NodoRelaciones(Integer.parseInt(ID.getText()), Integer.parseInt(ID2.getText()), Integer.parseInt(tiempo.getText()));
-        listar.agregarAlFinal(nodor);
+        grafo.getLista_relaciones().agregarAlFinal(nodor);
         Archivotxt txt = new Archivotxt();
-        txt.mostrarMatrizGrafo(listau,listar);
+        NodoArista nodoa = new NodoArista(pos, pos2);
+        grafo.getLista_aristas().agregarAlFinal(nodoa);
+        grafo=txt.cargarMatrizGrafo(grafo.getLista_usuarios(),grafo.getLista_relaciones(),grafo.getLista_aristas());
         nombre.setText("");
         ID.setText("");
         ID2.setText("");
         tiempo.setText("");
+        Usuarios.setText("");
+        grafo.getLista_usuarios().ImprimirLista(Usuarios);
+        grafo.getLista_relaciones().ImprimirLista(Usuarios);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed
@@ -180,7 +186,7 @@ public class VentanaModificarGrafo extends javax.swing.JFrame {
     }//GEN-LAST:event_nombreActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        new VentanaInicio(listau, listar).setVisible(true);
+        new VentanaInicio(grafo).setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -218,7 +224,7 @@ public class VentanaModificarGrafo extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VentanaModificarGrafo(listau,listar).setVisible(true);
+                new VentanaModificarGrafo(grafo).setVisible(true);
             }
         });
     }

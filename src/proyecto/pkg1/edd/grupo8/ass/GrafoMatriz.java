@@ -5,6 +5,8 @@
  */
 package proyecto.pkg1.edd.grupo8.ass;
 
+import javax.swing.JTextArea;
+
 /**
  *
  * @author johnd
@@ -14,12 +16,14 @@ public class GrafoMatriz {
     private int [][] matriz;
     ListaUsuarios lista_usuarios;
     ListaRelaciones lista_relaciones;
+    ListaAristas lista_aristas;
 
-    public GrafoMatriz(int num_vertices) {
+    public GrafoMatriz() {
         this.num_vertices = num_vertices;
         this.matriz = new int[num_vertices][num_vertices];
-        this.lista_relaciones= lista_relaciones;
-        this.lista_usuarios= lista_usuarios;
+        this.lista_relaciones= lista_relaciones; //Aristas
+        this.lista_usuarios= lista_usuarios; //Vértices
+        this.lista_aristas = lista_aristas;
     }
 
     /**
@@ -81,8 +85,14 @@ public class GrafoMatriz {
     public void setLista_relaciones(ListaRelaciones lista_relaciones) {
         this.lista_relaciones = lista_relaciones;
     }
-    
-    public void CantidadIslasBFS(){
+    public ListaAristas getLista_aristas() {
+        return lista_aristas;
+    }
+
+    public void setLista_aristas(ListaAristas lista_aristas) {
+        this.lista_aristas = lista_aristas;
+    }
+    public int CantidadIslasBFS(){
         boolean array_visitado []=new boolean[num_vertices];
         boolean array_marcado[]= new boolean[num_vertices];
         int cantidad_islas=1;
@@ -97,7 +107,6 @@ public class GrafoMatriz {
             while (!cola.esta_vacia()) {            
             int valor= cola.Leer_cabeza();
             cola.Desencolar();
-            System.out.println("Vértice " + valor + "visitado");
             array_visitado[valor]=true;
             for (int i = 0; i < num_vertices; i++) {
                 if ((matriz[valor][i]>0) && (array_visitado[i]==false)) {
@@ -123,8 +132,7 @@ public class GrafoMatriz {
         }
         
         }
-        System.out.println("La cantidad de islas es: " + cantidad_islas);
-        
+        return cantidad_islas;
     }
     
     public boolean Vertices_por_visitar(boolean array_visitado[]){
@@ -136,4 +144,138 @@ public class GrafoMatriz {
         return false;
     }
     
+    public void CantidadIslasDFS(JTextArea area){
+        
+        boolean array_visitado []=new boolean[num_vertices];
+        boolean array_marcado[]= new boolean[num_vertices];
+        int cantidad_islas=1;
+        boolean flag=true;
+        Pila pila= new Pila();
+        int primer_vertice=lista_usuarios.getPfirst().getPosicion();
+        array_visitado[primer_vertice]=true;
+        array_marcado[primer_vertice]=true;
+        pila.Apilar(primer_vertice);
+        
+        while (flag==true) {            
+            while (!pila.esta_vacia()) {            
+            int valor= pila.getCima().getVertice();
+            pila.Desapilar();
+            array_visitado[valor]=true;
+            for (int i = 0; i < num_vertices; i++) {
+                if ((matriz[valor][i]>0) && (array_visitado[i]==false)) {
+                    if (array_marcado[i]==false) {
+                        pila.Apilar(i);
+                        array_marcado[i]=true;
+                    }
+                    
+                }
+            }
+        }
+        if ((pila.esta_vacia()) && (Vertices_por_visitar(array_visitado))) {
+            cantidad_islas=cantidad_islas+1;
+            for (int i = 0; i < array_visitado.length; i++) {
+                if (array_visitado[i]==false) {
+                    pila.Apilar(i);
+                    break;
+            }
+            }
+        }
+        else{
+            flag=false;
+        }
+        
+        }
+        
+        area.append("La cantidad de islas por DFS es: " + cantidad_islas+"\n");
+        
+    }
+ 
+    public void IdentificadorPuentes(JTextArea area){
+        area.setText("");
+        NodoArista arista = lista_aristas.getPfirst();
+        int contador = 0;
+        for (int i = 0; i < lista_aristas.getSize(); i++) {
+            int pos1 = arista.getInicio();
+            int pos2 = arista.getFin();
+            arista = arista.getSiguiente();
+            if (CantidadIslasBFS()< CantidadIslasBFS2(pos1,pos2)) {
+                NodoUsuario persona = lista_usuarios.getPfirst();
+                 String persona1="";
+                 String persona2="";
+                 contador +=1;
+                for (int j = 0; j < lista_usuarios.getSize(); j++) {
+                    if (pos1==j) {
+                        persona1 = persona.getNombreDeUsuario();
+                    }
+                    if (pos2==j) {
+                        persona2 = persona.getNombreDeUsuario();
+                        persona=persona.getSiguiente();
+                    }else{
+                    persona = persona.getSiguiente();
+                }
+                }
+                area.append(persona1+"-----"+persona2+"\n");
+           
+            }
+                
+        }
+        String texto = area.getText();
+        area.setText("Hay "+contador+" Puentes:"+"\n");
+        area.append(texto);
 }
+     public int CantidadIslasBFS2(int pos1, int pos2){
+        boolean array_visitado []=new boolean[num_vertices];
+        boolean array_marcado[]= new boolean[num_vertices];
+        int cantidad_islas=1;
+        boolean flag=true;
+        Cola cola= new  Cola();
+        int primer_vertice=0;
+        primer_vertice=lista_usuarios.getPfirst().getPosicion(); 
+        array_visitado[primer_vertice]=true;
+        array_marcado[primer_vertice]=true;
+        cola.Encolar(primer_vertice);
+        int tiempoaux = matriz[pos1][pos2];
+        matriz[pos1][pos2]=0;
+        matriz[pos2][pos1]=0;     
+        
+        while (flag==true) {            
+            while (!cola.esta_vacia()) {            
+            int valor= cola.Leer_cabeza();
+            cola.Desencolar();
+            array_visitado[valor]=true;
+            for (int i = 0; i < num_vertices; i++) {
+                if ((matriz[valor][i]>0) && (array_visitado[i]==false)) {
+                    if (array_marcado[i]==false) {
+                        cola.Encolar(i);
+                        array_marcado[i]=true;
+                    }
+                    
+                }
+            }
+        }
+        if ((cola.esta_vacia()) && (Vertices_por_visitar(array_visitado))) {
+            cantidad_islas=cantidad_islas+1;
+            for (int i = 0; i < array_visitado.length; i++) {
+                if (array_visitado[i]==false) {
+                    cola.Encolar(i);
+                    break;
+            }
+            }
+        }
+        else{
+            flag=false;
+        }
+        }
+        matriz[pos1][pos2]=tiempoaux;
+        matriz[pos2][pos1]=tiempoaux;
+        return cantidad_islas;
+    }
+    
+    
+
+}
+        
+
+
+    
+

@@ -10,20 +10,14 @@ package proyecto.pkg1.edd.grupo8.ass;
  * @author sebas
  */
 public class VentanaInicio extends javax.swing.JFrame {
-    public static ListaUsuarios listau;
-    public static ListaRelaciones listar;
-    public static ListaUsuarios listau2;
-    public static ListaRelaciones listar2;
+    public static GrafoMatriz grafo;
     /**
      * Creates new form VentanaInicio
      */
-    public VentanaInicio(ListaUsuarios listau,ListaRelaciones listar) {
+    public VentanaInicio(GrafoMatriz grafo) {
         initComponents();
-        this.listau=listau;
-        this.listar=listar;
-        this.listau2 = listau;
-        this.listar2 = listar;
         this.setVisible(true);
+        this.grafo= grafo;
         this.setLocationRelativeTo(null);
     }
 
@@ -40,7 +34,7 @@ public class VentanaInicio extends javax.swing.JFrame {
         exit = new javax.swing.JToggleButton();
         jLabel1 = new javax.swing.JLabel();
         archivoTexto = new javax.swing.JButton();
-        grafo = new javax.swing.JButton();
+        boton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -69,14 +63,14 @@ public class VentanaInicio extends javax.swing.JFrame {
         });
         jPanel1.add(archivoTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, 290, 80));
 
-        grafo.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
-        grafo.setText("GRAFO");
-        grafo.addActionListener(new java.awt.event.ActionListener() {
+        boton.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        boton.setText("GRAFO");
+        boton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                grafoActionPerformed(evt);
+                botonActionPerformed(evt);
             }
         });
-        jPanel1.add(grafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, 290, 80));
+        jPanel1.add(boton, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, 290, 80));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 400));
 
@@ -89,13 +83,13 @@ public class VentanaInicio extends javax.swing.JFrame {
 
     private void archivoTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_archivoTextoActionPerformed
         this.dispose();
-        new VentanaTxt(listau2,listar2).setVisible(true);
+        new VentanaTxt(grafo).setVisible(true);
     }//GEN-LAST:event_archivoTextoActionPerformed
 
-    private void grafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grafoActionPerformed
+    private void botonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonActionPerformed
         this.dispose();
-        new VentanaGrafo(listau,listar).setVisible(true);
-    }//GEN-LAST:event_grafoActionPerformed
+        new VentanaGrafo(grafo).setVisible(true);
+    }//GEN-LAST:event_botonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -127,15 +121,15 @@ public class VentanaInicio extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VentanaInicio(listau,listar).setVisible(true);
+                new VentanaInicio(grafo).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton archivoTexto;
+    private javax.swing.JButton boton;
     private javax.swing.JToggleButton exit;
-    private javax.swing.JButton grafo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

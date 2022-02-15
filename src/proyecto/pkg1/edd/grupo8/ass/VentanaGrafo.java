@@ -10,15 +10,13 @@ package proyecto.pkg1.edd.grupo8.ass;
  * @author sebas
  */
 public class VentanaGrafo extends javax.swing.JFrame {
-    public static ListaUsuarios listau;
-    public static ListaRelaciones listar;
+    public static GrafoMatriz grafo;
     /**
      * Creates new form VentanaGrafo
      */
-    public VentanaGrafo(ListaUsuarios listau,ListaRelaciones listar) {
+    public VentanaGrafo(GrafoMatriz grafo) {
         initComponents();
-        this.listau=listau;
-        this.listar=listar;
+        this.grafo= grafo;
         this.setVisible(true);
         this.setLocationRelativeTo(null);
     }
@@ -55,6 +53,7 @@ public class VentanaGrafo extends javax.swing.JFrame {
         });
         jPanel1.add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 10, 70, 30));
 
+        pantallaGrafo.setEditable(false);
         pantallaGrafo.setColumns(20);
         pantallaGrafo.setRows(5);
         jScrollPane1.setViewportView(pantallaGrafo);
@@ -107,21 +106,22 @@ public class VentanaGrafo extends javax.swing.JFrame {
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         this.dispose();
-        new VentanaInicio(listau,listar).setVisible(true);
+        new VentanaInicio(grafo).setVisible(true);
     }//GEN-LAST:event_backActionPerformed
 
     private void modificarGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarGrafoActionPerformed
       this.dispose();
-      new VentanaModificarGrafo(listau,listar).setVisible(true);
+      new VentanaModificarGrafo(grafo).setVisible(true);
     }//GEN-LAST:event_modificarGrafoActionPerformed
 
     private void mostrarIslasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarIslasActionPerformed
-        // TODO add your handling code here:
+        pantallaGrafo.setText("La cantidad de islas por BFS es: "+grafo.CantidadIslasBFS()+"\n");
+        grafo.CantidadIslasDFS(pantallaGrafo);
         
     }//GEN-LAST:event_mostrarIslasActionPerformed
 
     private void mostrarPuentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarPuentesActionPerformed
-        // TODO add your handling code here:
+       grafo.IdentificadorPuentes(pantallaGrafo);
     }//GEN-LAST:event_mostrarPuentesActionPerformed
 
     /**
@@ -154,7 +154,7 @@ public class VentanaGrafo extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VentanaGrafo(listau,listar).setVisible(true);
+                new VentanaGrafo(grafo).setVisible(true);
             }
         });
     }
