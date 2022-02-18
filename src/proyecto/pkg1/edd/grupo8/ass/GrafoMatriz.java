@@ -280,6 +280,10 @@ public class GrafoMatriz {
     
     
  public void eliminarNodo(int id){
+     if (lista_usuarios.estaVacia()) {
+         JOptionPane.showMessageDialog(null, "No se puede eliminar ya que el grafo ya se encuentra vacío ");
+         return;
+     }
      NodoUsuario elimusuario = lista_usuarios.getPfirst();
      NodoUsuario anterior = lista_usuarios.getPfirst();
      boolean eliminado = false;
@@ -306,7 +310,14 @@ public class GrafoMatriz {
             }
             elimusuario = elimusuario.getSiguiente();
             if (eliminado==true) {
-                elimusuario.setPosicion(elimusuario.getPosicion()-1);
+                if (lista_usuarios.getSize()!=0) {
+                    elimusuario.setPosicion(elimusuario.getPosicion()-1);
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Se ha eliminado al último usuario del grafo");
+                    return;
+                }
+                
             }
             if (i>0) {
                 anterior = anterior.getSiguiente();

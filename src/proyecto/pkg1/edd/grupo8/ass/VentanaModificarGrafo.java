@@ -292,6 +292,10 @@ public class VentanaModificarGrafo extends javax.swing.JFrame {
     }//GEN-LAST:event_ID2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        if (grafo.lista_usuarios.estaVacia()) {
+            JOptionPane.showMessageDialog(null, "El grafo se encuentra vacío, no se puede eliminar");
+            return;
+        }
         boolean flag_id_1= func.Validar_ID(IDelim.getText());
         if (flag_id_1==false) {
             return;
