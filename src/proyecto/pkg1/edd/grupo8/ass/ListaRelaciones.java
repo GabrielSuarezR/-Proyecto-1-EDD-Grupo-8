@@ -46,6 +46,7 @@ public class ListaRelaciones {
             aux = aux.getSiguiente();
         }
     }
+  
     /**
      * @return the pfirst
      */

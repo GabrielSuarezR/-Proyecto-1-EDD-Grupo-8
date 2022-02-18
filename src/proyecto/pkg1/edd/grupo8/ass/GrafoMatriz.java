@@ -5,6 +5,7 @@
  */
 package proyecto.pkg1.edd.grupo8.ass;
 
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
 /**
@@ -278,8 +279,94 @@ public class GrafoMatriz {
     
     
     
+ public void eliminarNodo(int id){
+     NodoUsuario elimusuario = lista_usuarios.getPfirst();
+     NodoUsuario anterior = lista_usuarios.getPfirst();
+     boolean eliminado = false;
+     boolean encontrado = false;
+        for (int i = 0; i < lista_usuarios.getSize(); i++) {
+            if (elimusuario.getID() == id) {
+                encontrado = true;
+                NodoUsuario aux =elimusuario.getSiguiente();
+                if (i==0) {
+                    lista_usuarios.setPfirst(aux);
+                    lista_usuarios.setSize(lista_usuarios.getSize()-1);
+                    eliminado=true;
+                }else{
+                    if (aux == null) {
+                        anterior.setSiguiente(null);
+                        lista_usuarios.setSize(lista_usuarios.getSize()-1);
+                        eliminado=true;
+                    }else{
+                    anterior.setSiguiente(aux);
+                    lista_usuarios.setSize(lista_usuarios.getSize()-1);
+                        eliminado=true;
+                    }
+                }
+            }
+            elimusuario = elimusuario.getSiguiente();
+            if (eliminado==true) {
+                elimusuario.setPosicion(elimusuario.getPosicion()-1);
+            }
+            if (i>0) {
+                anterior = anterior.getSiguiente();
+            }
+     }
+        NodoRelaciones elimrelacion = lista_relaciones.getPfirst();
+        NodoRelaciones ant = lista_relaciones.getPfirst();
+        lista_aristas.setPfirst(null);
+        lista_aristas.setPlast(null);
+        lista_aristas.vaciar();
+        int nodoelim =0;
+        for (int i = 0; i < lista_relaciones.getSize(); i++) {
+            int si = 0;
+          if (elimrelacion.getInicio() == id | elimrelacion.getFin() == id) {
+                NodoRelaciones aux =elimrelacion.getSiguiente();
+                if (elimrelacion == lista_relaciones.getPfirst()) {
+                    lista_relaciones.setPfirst(aux);
+                    elimrelacion = lista_relaciones.getPfirst();
+                    ant = lista_relaciones.getPfirst();
+                    nodoelim +=1;
+                    si +=1;
+                }else{
+                    if (aux == null) {
+                        ant.setSiguiente(null);
+                        nodoelim +=1;
+                    }else{
+                    ant.setSiguiente(aux);
+                    si+=1;
+                    elimrelacion = elimrelacion.getSiguiente(); 
+                    nodoelim +=1;
+                }
+                }
+            }
+            if (si == 0) {
+                
+            if (elimrelacion!=null) {
+                NodoRelaciones comp = lista_relaciones.getPfirst();
+            if (elimrelacion != comp) {
+                ant = ant.getSiguiente();
+            }
+            elimrelacion = elimrelacion.getSiguiente(); 
 
-}
+            }
+            }
+     }
+        lista_relaciones.setSize(lista_relaciones.getSize()-nodoelim);
+        NodoRelaciones rela = lista_relaciones.getPfirst();
+        for (int i = 0; i < lista_relaciones.getSize(); i++) {
+         NodoArista arista = new NodoArista(lista_usuarios.BuscarPosicion(rela.getInicio()), lista_usuarios.BuscarPosicion(rela.getFin()));
+         lista_aristas.agregarAlFinal(arista);
+         rela = rela.getSiguiente();
+     }
+        if (encontrado==false) {
+              JOptionPane.showMessageDialog(null, "El ID indicado no existe");
+     }else{
+            JOptionPane.showMessageDialog(null, "eliminado exitosamente");
+        }
+    }
+    }
+
         
 
 
