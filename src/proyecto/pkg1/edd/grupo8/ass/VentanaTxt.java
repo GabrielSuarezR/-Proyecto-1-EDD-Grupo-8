@@ -18,19 +18,19 @@ import javax.swing.JOptionPane;
  */
 public class VentanaTxt extends javax.swing.JFrame {
     public static String Archtxt;
+    public static GrafoMatriz grafo;
+    public static GrafoMatriz grafo2;
     ListaUsuarios listau = new ListaUsuarios();
     ListaRelaciones listar = new ListaRelaciones();
     ListaAristas listaa = new ListaAristas();
-    public static GrafoMatriz grafo;
-    public static ListaUsuarios listau2;
-    public static ListaRelaciones listar2;
+
     /**
      * Creates new form Ventana
      */
     public VentanaTxt(GrafoMatriz grafoMatriz) {
+        this.grafo= grafo;
         this.listau = listau;
         this.listar = listar;
-        this.grafo= grafo;
         this.listaa = listaa;
         initComponents();
         this.setVisible(true);
