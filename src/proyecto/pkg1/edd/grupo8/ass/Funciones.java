@@ -52,4 +52,16 @@ public class Funciones {
         }
         return true;
     }
+    public boolean validarArchivo(String divisor){
+        try {
+            if(divisor!= "Usuarios" || divisor!="Relaciones"){
+            JOptionPane.showMessageDialog(null,"el archivo no pede ser cargado \n asgurese que es el archivo correcto o que los datos esten ordenados");
+            return false;
+        }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"el archivo no pede ser cargado \n asgurese que es el archivo correcto o que los datos esten ordenados");
+            return false;
+        }
+        return true;
+    }
 }

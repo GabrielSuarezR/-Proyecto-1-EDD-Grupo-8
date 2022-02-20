@@ -5,6 +5,8 @@
  */
 package proyecto.pkg1.edd.grupo8.ass;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author sebas
@@ -39,6 +41,7 @@ public class VentanaGrafo extends javax.swing.JFrame {
         mostrarPuentes = new javax.swing.JButton();
         modificarGrafo = new javax.swing.JButton();
         mostrarIslas = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -58,7 +61,7 @@ public class VentanaGrafo extends javax.swing.JFrame {
         pantallaGrafo.setRows(5);
         jScrollPane1.setViewportView(pantallaGrafo);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 580, 300));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 580, 280));
 
         back.setText(">>>");
         back.addActionListener(new java.awt.event.ActionListener() {
@@ -85,15 +88,23 @@ public class VentanaGrafo extends javax.swing.JFrame {
                 modificarGrafoActionPerformed(evt);
             }
         });
-        jPanel1.add(modificarGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, 230, -1));
+        jPanel1.add(modificarGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 230, -1));
 
-        mostrarIslas.setText("MOSTRAR ISLAS");
+        mostrarIslas.setText("MOSTRAR ISLAS DFS");
         mostrarIslas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mostrarIslasActionPerformed(evt);
             }
         });
         jPanel1.add(mostrarIslas, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, 230, -1));
+
+        jButton1.setText("MOSTRAR ISLAS BFS");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, 230, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 400));
 
@@ -111,18 +122,35 @@ public class VentanaGrafo extends javax.swing.JFrame {
 
     private void modificarGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarGrafoActionPerformed
       this.dispose();
+        JOptionPane.showMessageDialog(null, "AVISO: Si desea crear un archivo desde cero, debe agregar al primer ususario en una relacion consigo mismo");
       new VentanaModificarGrafo(grafo).setVisible(true);
     }//GEN-LAST:event_modificarGrafoActionPerformed
 
     private void mostrarIslasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarIslasActionPerformed
-        pantallaGrafo.setText("La cantidad de islas por BFS es: "+grafo.CantidadIslasBFS()+"\n");
+        if (grafo != null) {
+        pantallaGrafo.setText("");
         grafo.CantidadIslasDFS(pantallaGrafo);
-        
+        }else{
+            pantallaGrafo.setText("No hay Islas existentes");
+        }
     }//GEN-LAST:event_mostrarIslasActionPerformed
 
     private void mostrarPuentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarPuentesActionPerformed
-       grafo.IdentificadorPuentes(pantallaGrafo);
+        if (grafo != null) {
+        grafo.IdentificadorPuentes(pantallaGrafo);
+       }else{
+            pantallaGrafo.setText("No hay usuarios en la base de datos");
+        }
     }//GEN-LAST:event_mostrarPuentesActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if (grafo != null) {
+        pantallaGrafo.setText("La cantidad de islas por BFS es: "+grafo.CantidadIslasBFS()+"\n");
+        }else{
+            pantallaGrafo.setText("No hay Islas existentes");
+
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -162,6 +190,7 @@ public class VentanaGrafo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton back;
     private javax.swing.JToggleButton exit;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton modificarGrafo;

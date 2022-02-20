@@ -27,6 +27,7 @@ public class GrafoMatriz {
         this.lista_aristas = lista_aristas;
     }
 
+      
     /**
      * @return the num_vertices
      */

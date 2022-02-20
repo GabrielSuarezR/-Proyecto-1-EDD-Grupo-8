@@ -40,6 +40,11 @@ public class ListaUsuarios {
         }
         size++;
     }
+      public void vaciar(){
+        this.pfirst=null;
+        this.plast=null;
+        this.size=0;
+    }
     
     public int BuscarPosicion(int id){
         NodoUsuario aux= getPfirst();
