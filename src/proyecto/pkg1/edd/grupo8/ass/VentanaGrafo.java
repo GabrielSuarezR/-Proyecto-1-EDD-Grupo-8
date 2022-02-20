@@ -18,6 +18,7 @@ public class VentanaGrafo extends javax.swing.JFrame {
      */
     public VentanaGrafo(GrafoMatriz grafo) {
         initComponents();
+        
         this.grafo= grafo;
         this.setVisible(true);
         this.setLocationRelativeTo(null);
@@ -72,6 +73,11 @@ public class VentanaGrafo extends javax.swing.JFrame {
         jPanel1.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 40, 70, -1));
 
         mostrarGrafo.setText("MOSTRAR GRAFO");
+        mostrarGrafo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mostrarGrafoActionPerformed(evt);
+            }
+        });
         jPanel1.add(mostrarGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 240, -1));
 
         mostrarPuentes.setText("MOSTRAR CANTIDAD DE PUENTES");
@@ -151,6 +157,10 @@ public class VentanaGrafo extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void mostrarGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarGrafoActionPerformed
+        grafo.mostrarGrafo();
+    }//GEN-LAST:event_mostrarGrafoActionPerformed
 
     /**
      * @param args the command line arguments

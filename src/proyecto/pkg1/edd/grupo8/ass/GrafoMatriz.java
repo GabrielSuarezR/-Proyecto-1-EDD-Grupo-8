@@ -7,6 +7,11 @@ package proyecto.pkg1.edd.grupo8.ass;
 
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
+import org.graphstream.graph.Edge;
+import org.graphstream.graph.Graph;
+import org.graphstream.graph.Node;
+import org.graphstream.graph.implementations.SingleGraph;
+import org.graphstream.ui.view.Viewer;
 
 /**
  *
@@ -376,6 +381,39 @@ public class GrafoMatriz {
      }else{
             JOptionPane.showMessageDialog(null, "eliminado exitosamente");
         }
+    }
+ 
+    public void mostrarGrafo(){
+        System.setProperty("org.graphstream.ui", "swing");
+        Graph graph = new SingleGraph("Grafo");
+        
+        NodoUsuario auxUsuario = lista_usuarios.getPfirst();
+        NodoRelaciones auxRelaciones = lista_relaciones.getPfirst();
+        
+        for (int i = 0; i < lista_usuarios.getSize(); i++) {
+            String usuarioId = Integer.toString(auxUsuario.getID());
+            String usuarioName = auxUsuario.getNombreDeUsuario();
+            Node addNode = graph.addNode(usuarioId);
+            addNode.setAttribute("ui.label", usuarioName);
+            auxUsuario = auxUsuario.getSiguiente();
+            
+
+        }
+         
+        for (int i = 0; i < lista_relaciones.getSize(); i++) {
+            String tiempo = Integer.toString(auxRelaciones.getTiempo());
+            String usuario1 = Integer.toString(auxRelaciones.getInicio());
+            String usuario2 = Integer.toString(auxRelaciones.getFin());
+            Edge addEdge = graph.addEdge(tiempo+usuario1+usuario2,usuario1 ,usuario2 );
+            addEdge.setAttribute("ui.label", tiempo);
+            auxRelaciones = auxRelaciones.getSiguiente();
+
+        }
+        
+        Viewer viewer = graph.display();
+        viewer.setCloseFramePolicy(Viewer.CloseFramePolicy.HIDE_ONLY);
+        
+        
     }
     }
 
