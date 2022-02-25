@@ -61,31 +61,42 @@ public class VentanaTxt extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(255, 102, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pantallaTxt.setEditable(false);
+        pantallaTxt.setBackground(new java.awt.Color(51, 51, 51));
         pantallaTxt.setColumns(20);
+        pantallaTxt.setForeground(new java.awt.Color(255, 255, 255));
         pantallaTxt.setRows(5);
         jScrollPane1.setViewportView(pantallaTxt);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 580, 300));
 
+        SeleccionarArchivo.setBackground(new java.awt.Color(51, 51, 51));
+        SeleccionarArchivo.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        SeleccionarArchivo.setForeground(new java.awt.Color(255, 255, 255));
         SeleccionarArchivo.setText("SELECCIONAR ARCHIVO DE TEXTO");
         SeleccionarArchivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SeleccionarArchivoActionPerformed(evt);
             }
         });
-        jPanel1.add(SeleccionarArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 230, 60));
+        jPanel1.add(SeleccionarArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 250, 60));
 
+        Actualizar.setBackground(new java.awt.Color(51, 51, 51));
+        Actualizar.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        Actualizar.setForeground(new java.awt.Color(255, 255, 255));
         Actualizar.setText("ACTUALIZAR ARCHIVO DE TEXTO");
         Actualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ActualizarActionPerformed(evt);
             }
         });
-        jPanel1.add(Actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, 230, 60));
+        jPanel1.add(Actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, 240, 60));
 
+        exit.setBackground(new java.awt.Color(51, 51, 51));
+        exit.setForeground(new java.awt.Color(255, 255, 255));
         exit.setText("X");
         exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,6 +105,8 @@ public class VentanaTxt extends javax.swing.JFrame {
         });
         jPanel1.add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 10, 70, 30));
 
+        back.setBackground(new java.awt.Color(51, 51, 51));
+        back.setForeground(new java.awt.Color(255, 255, 255));
         back.setText(">>>");
         back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
