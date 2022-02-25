@@ -234,6 +234,7 @@ public class VentanaModificarGrafo extends javax.swing.JFrame {
             return;
         }
         if (grafo!=null) {
+            if (!grafo.lista_usuarios.estaVacia()) {
         if (grafo.getLista_usuarios().Buscar_ID(Integer.parseInt(ID.getText()))) {
             JOptionPane.showMessageDialog(null, "El ID del nuevo usuario ingresado no esta disponible");
             return;
@@ -247,45 +248,58 @@ public class VentanaModificarGrafo extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "El ID ingresado no se encuentra registrado");
             return;
         }
-        }
+        
         boolean flag_tiempo= func.Validar_tiempo(tiempo.getText());
         if (flag_tiempo==false) {
             JOptionPane.showMessageDialog(null, "El tiempo de amistad no puede estar vacío, ser negativo o igual a cero");
             return;
         }
-        
-        
-        
-        String nom = "@"+nombre.getText();
-        Archivotxt txt = new Archivotxt();
-        if (grafo!=null) {
-        int posicion = grafo.getLista_usuarios().getPlast().getPosicion();
-        posicion +=1; 
-        NodoUsuario nodo = new NodoUsuario(Integer.parseInt(ID.getText()),nom,posicion);
-        grafo.getLista_usuarios().agregarAlFinal(nodo);
-        int pos= grafo.getLista_usuarios().BuscarPosicion(Integer.parseInt(ID.getText()));
-        int pos2= grafo.getLista_usuarios().BuscarPosicion(Integer.parseInt(ID2.getText()));
-        NodoRelaciones nodor = new NodoRelaciones(Integer.parseInt(ID.getText()), Integer.parseInt(ID2.getText()), Integer.parseInt(tiempo.getText()));
-        NodoArista nodoa = new NodoArista(pos, pos2);
-        grafo.getLista_relaciones().agregarAlFinal(nodor);
-        grafo.getLista_aristas().agregarAlFinal(nodoa);
-        grafo=txt.cargarMatrizGrafo(grafo.getLista_usuarios(),grafo.getLista_relaciones(),grafo.getLista_aristas());
-
         }
-        if (grafo==null) {
-            System.out.println("hola");
-            ListaUsuarios lista_usuarios = new ListaUsuarios();
+        }
+        
+        Archivotxt txt = new Archivotxt();
+        String nom = "@"+nombre.getText();
+        if (grafo!=null ) {
+            if (!grafo.lista_usuarios.estaVacia()) {
+            int posicion = grafo.getLista_usuarios().getPlast().getPosicion();
+            posicion +=1; 
+            NodoUsuario nodo = new NodoUsuario(Integer.parseInt(ID.getText()),nom,posicion);
+            grafo.getLista_usuarios().agregarAlFinal(nodo);
+            int pos= grafo.getLista_usuarios().BuscarPosicion(Integer.parseInt(ID.getText()));
+            int pos2= grafo.getLista_usuarios().BuscarPosicion(Integer.parseInt(ID2.getText()));
+            NodoRelaciones nodor = new NodoRelaciones(Integer.parseInt(ID.getText()), Integer.parseInt(ID2.getText()), Integer.parseInt(tiempo.getText()));
+            NodoArista nodoa = new NodoArista(pos, pos2);
+            grafo.getLista_relaciones().agregarAlFinal(nodor);
+            grafo.getLista_aristas().agregarAlFinal(nodoa);
+            grafo=txt.cargarMatrizGrafo(grafo.getLista_usuarios(),grafo.getLista_relaciones(),grafo.getLista_aristas());
+            }else{
+               ListaUsuarios lista_usuarios = new ListaUsuarios();
             NodoUsuario nodo = new NodoUsuario(Integer.parseInt(ID.getText()),nom,0);
             lista_usuarios.agregarAlFinal(nodo);
             ListaRelaciones lista_relaciones = new ListaRelaciones();
-            NodoRelaciones nodor = new NodoRelaciones(Integer.parseInt(ID.getText()), Integer.parseInt(ID2.getText()), Integer.parseInt(tiempo.getText()));
+            NodoRelaciones nodor = new NodoRelaciones(Integer.parseInt(ID.getText()), Integer.parseInt(ID.getText()),0);
             lista_relaciones.agregarAlFinal(nodor);
             ListaAristas lista_aristas = new ListaAristas();
             NodoArista nodoa = new NodoArista(0, 0);
             lista_aristas.agregarAlFinal(nodoa);
             grafo=txt.cargarMatrizGrafo(lista_usuarios,lista_relaciones,lista_aristas);
-
-            
+            grafo.getLista_relaciones().vaciar();
+            grafo.getLista_aristas().vaciar(); 
+            }   
+        }
+        if (grafo==null) {
+            ListaUsuarios lista_usuarios = new ListaUsuarios();
+            NodoUsuario nodo = new NodoUsuario(Integer.parseInt(ID.getText()),nom,0);
+            lista_usuarios.agregarAlFinal(nodo);
+            ListaRelaciones lista_relaciones = new ListaRelaciones();
+            NodoRelaciones nodor = new NodoRelaciones(Integer.parseInt(ID.getText()), Integer.parseInt(ID.getText()),0);
+            lista_relaciones.agregarAlFinal(nodor);
+            ListaAristas lista_aristas = new ListaAristas();
+            NodoArista nodoa = new NodoArista(0, 0);
+            lista_aristas.agregarAlFinal(nodoa);
+            grafo=txt.cargarMatrizGrafo(lista_usuarios,lista_relaciones,lista_aristas);
+            grafo.lista_relaciones.vaciar();
+            grafo.lista_aristas.vaciar();
         }
         nombre.setText("");
         ID.setText("");
@@ -294,6 +308,7 @@ public class VentanaModificarGrafo extends javax.swing.JFrame {
         Usuarios.setText("");
         grafo.getLista_usuarios().ImprimirLista(Usuarios);
         grafo.getLista_relaciones().ImprimirLista(Usuarios);
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed

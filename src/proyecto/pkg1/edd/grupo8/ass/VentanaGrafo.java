@@ -128,7 +128,6 @@ public class VentanaGrafo extends javax.swing.JFrame {
 
     private void modificarGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarGrafoActionPerformed
       this.dispose();
-        JOptionPane.showMessageDialog(null, "AVISO: Si desea crear un archivo desde cero, debe agregar al primer ususario en una relacion consigo mismo");
       new VentanaModificarGrafo(grafo).setVisible(true);
     }//GEN-LAST:event_modificarGrafoActionPerformed
 

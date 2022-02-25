@@ -72,11 +72,11 @@ public class Archivotxt {
     public void lectorString(String txt, ListaUsuarios lista_usuarios,ListaRelaciones lista_relaciones,ListaAristas aristas){
         try {
         if (!"".equals(txt) && !txt.isEmpty()){
-                    String error = "Error";
+                    String error1 = "Error";
                     String[] txtSplit = txt.split("\n");
-                    int corte =0;
                     String divisor ="";
                     for (int i = 0; i < txtSplit.length; i++){
+                        String error0 = "Error";
                         if(!txtSplit[i].contains(",") && !txtSplit[i].isEmpty()){
                             divisor = txtSplit[i];
                         }else{
@@ -85,7 +85,8 @@ public class Archivotxt {
                                 SplitUsuario[1]=SplitUsuario[1].replace(" ", "");
                                 NodoUsuario usuario = new NodoUsuario(Integer.parseInt(SplitUsuario[0]),SplitUsuario[1], numero_posicion++);
                                 lista_usuarios.agregarAlFinal(usuario);
-                                error = "1";
+                                error1 = "1";
+                                error0 = "0";
                             }
                             if (divisor.equals("Relaciones")){
                                 String [] RelacionesSplit = txtSplit[i].split(",");
@@ -95,15 +96,18 @@ public class Archivotxt {
                                 lista_relaciones.agregarAlFinal(relacion);
                                 NodoArista nodoa = new NodoArista(lista_usuarios.BuscarPosicion(Integer.parseInt(RelacionesSplit[0])),lista_usuarios.BuscarPosicion(Integer.parseInt(RelacionesSplit[1])));
                                 aristas.agregarAlFinal(nodoa);
-                                error = "2";
+                                error1 = "2";
+                                error0 = "0";
 
                             }else{
-                                int comprobante = Integer.parseInt(error);
+                                int comprobante0 = Integer.parseInt(error0);
+                               
                             }
 
                             
                         }
                         }
+                    int comprobante1 = Integer.parseInt(error1);
         }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "el archivo de texto no es valido");
