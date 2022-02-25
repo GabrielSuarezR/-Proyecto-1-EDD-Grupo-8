@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import javax.security.auth.callback.ConfirmationCallback;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 /**
@@ -107,11 +108,21 @@ public class VentanaTxt extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void SeleccionarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeleccionarArchivoActionPerformed
-         Archivotxt txt = new Archivotxt();
-        VentanaTxt.Archtxt = txt.abrirArchivo();
-        pantallaTxt.setText(VentanaTxt.Archtxt);
-        txt.lectorString(Archtxt, listau,listar,listaa);
+        int respuesta = JOptionPane.showConfirmDialog(null, "Desea abrir un nuevo archivo?", "Verificacion", ConfirmationCallback.YES_NO_CANCEL_OPTION);
+        if (respuesta ==0) {
+        Archivotxt txt = new Archivotxt();
+        listaa.vaciar();
+        listau.vaciar();
+        listar.vaciar();
         grafo= txt.cargarMatrizGrafo(listau, listar,listaa);
+        pantallaTxt.setText("");
+        VentanaTxt.Archtxt = txt.abrirArchivo();
+        txt.lectorString(Archtxt, listau,listar,listaa);
+        if (listau.getPfirst()!=null) {
+        pantallaTxt.setText(VentanaTxt.Archtxt);
+        grafo= txt.cargarMatrizGrafo(listau, listar,listaa);
+        }
+        }
     }//GEN-LAST:event_SeleccionarArchivoActionPerformed
 
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
@@ -134,7 +145,7 @@ public class VentanaTxt extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
+        
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 

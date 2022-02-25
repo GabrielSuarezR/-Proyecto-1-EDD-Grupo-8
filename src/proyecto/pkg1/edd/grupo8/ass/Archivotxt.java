@@ -70,7 +70,9 @@ public class Archivotxt {
         }  
 
     public void lectorString(String txt, ListaUsuarios lista_usuarios,ListaRelaciones lista_relaciones,ListaAristas aristas){
+        try {
         if (!"".equals(txt) && !txt.isEmpty()){
+                    String error = "Error";
                     String[] txtSplit = txt.split("\n");
                     int corte =0;
                     String divisor ="";
@@ -83,6 +85,7 @@ public class Archivotxt {
                                 SplitUsuario[1]=SplitUsuario[1].replace(" ", "");
                                 NodoUsuario usuario = new NodoUsuario(Integer.parseInt(SplitUsuario[0]),SplitUsuario[1], numero_posicion++);
                                 lista_usuarios.agregarAlFinal(usuario);
+                                error = "1";
                             }
                             if (divisor.equals("Relaciones")){
                                 String [] RelacionesSplit = txtSplit[i].split(",");
@@ -92,13 +95,20 @@ public class Archivotxt {
                                 lista_relaciones.agregarAlFinal(relacion);
                                 NodoArista nodoa = new NodoArista(lista_usuarios.BuscarPosicion(Integer.parseInt(RelacionesSplit[0])),lista_usuarios.BuscarPosicion(Integer.parseInt(RelacionesSplit[1])));
                                 aristas.agregarAlFinal(nodoa);
+                                error = "2";
 
+                            }else{
+                                int comprobante = Integer.parseInt(error);
                             }
 
                             
                         }
                         }
         }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "el archivo de texto no es valido");
+        }
+         
     }
     public GrafoMatriz cargarMatrizGrafo(ListaUsuarios lista_usuarios,ListaRelaciones lista_relaciones, ListaAristas aristas){
         GrafoMatriz grafo= new GrafoMatriz();

@@ -5,7 +5,13 @@
  */
 package proyecto.pkg1.edd.grupo8.ass;
 
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
+import org.graphstream.graph.Edge;
+import org.graphstream.graph.Graph;
+import org.graphstream.graph.Node;
+import org.graphstream.graph.implementations.SingleGraph;
+import org.graphstream.ui.view.Viewer;
 
 /**
  *
@@ -26,6 +32,7 @@ public class GrafoMatriz {
         this.lista_aristas = lista_aristas;
     }
 
+      
     /**
      * @return the num_vertices
      */
@@ -234,9 +241,14 @@ public class GrafoMatriz {
         array_visitado[primer_vertice]=true;
         array_marcado[primer_vertice]=true;
         cola.Encolar(primer_vertice);
+
+             
+
+
         int tiempoaux = matriz[pos1][pos2];
         matriz[pos1][pos2]=0;
         matriz[pos2][pos1]=0;     
+
         
         while (flag==true) {            
             while (!cola.esta_vacia()) {            
@@ -272,8 +284,139 @@ public class GrafoMatriz {
     }
     
     
+    
+ public void eliminarNodo(int id){
+     if (lista_usuarios.estaVacia()) {
+         JOptionPane.showMessageDialog(null, "No se puede eliminar ya que el grafo ya se encuentra vacío ");
+         return;
+     }
+     NodoUsuario elimusuario = lista_usuarios.getPfirst();
+     NodoUsuario anterior = lista_usuarios.getPfirst();
+     boolean eliminado = false;
+     boolean encontrado = false;
+        for (int i = 0; i < lista_usuarios.getSize(); i++) {
+            if (elimusuario.getID() == id) {
+                encontrado = true;
+                NodoUsuario aux =elimusuario.getSiguiente();
+                if (i==0) {
+                    lista_usuarios.setPfirst(aux);
+                    lista_usuarios.setSize(lista_usuarios.getSize()-1);
+                    eliminado=true;
+                }else{
+                    if (aux == null) {
+                        anterior.setSiguiente(null);
+                        lista_usuarios.setSize(lista_usuarios.getSize()-1);
+                        eliminado=true;
+                    }else{
+                    anterior.setSiguiente(aux);
+                    lista_usuarios.setSize(lista_usuarios.getSize()-1);
+                        eliminado=true;
+                    }
+                }
+            }
+            elimusuario = elimusuario.getSiguiente();
+            if (eliminado==true) {
+                if (lista_usuarios.getSize()!=0) {
+                    elimusuario.setPosicion(elimusuario.getPosicion()-1);
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Se ha eliminado al último usuario del grafo");
+                    return;
+                }
+                
+            }
+            if (i>0) {
+                anterior = anterior.getSiguiente();
+            }
+     }
+        NodoRelaciones elimrelacion = lista_relaciones.getPfirst();
+        NodoRelaciones ant = lista_relaciones.getPfirst();
+        lista_aristas.setPfirst(null);
+        lista_aristas.setPlast(null);
+        lista_aristas.vaciar();
+        int nodoelim =0;
+        for (int i = 0; i < lista_relaciones.getSize(); i++) {
+            int si = 0;
+          if (elimrelacion.getInicio() == id | elimrelacion.getFin() == id) {
+                NodoRelaciones aux =elimrelacion.getSiguiente();
+                if (elimrelacion == lista_relaciones.getPfirst()) {
+                    lista_relaciones.setPfirst(aux);
+                    elimrelacion = lista_relaciones.getPfirst();
+                    ant = lista_relaciones.getPfirst();
+                    nodoelim +=1;
+                    si +=1;
+                }else{
+                    if (aux == null) {
+                        ant.setSiguiente(null);
+                        nodoelim +=1;
+                    }else{
+                    ant.setSiguiente(aux);
+                    si+=1;
+                    elimrelacion = elimrelacion.getSiguiente(); 
+                    nodoelim +=1;
+                }
+                }
+            }
+            if (si == 0) {
+                
+            if (elimrelacion!=null) {
+                NodoRelaciones comp = lista_relaciones.getPfirst();
+            if (elimrelacion != comp) {
+                ant = ant.getSiguiente();
+            }
+            elimrelacion = elimrelacion.getSiguiente(); 
 
-}
+            }
+            }
+     }
+        lista_relaciones.setSize(lista_relaciones.getSize()-nodoelim);
+        NodoRelaciones rela = lista_relaciones.getPfirst();
+        for (int i = 0; i < lista_relaciones.getSize(); i++) {
+         NodoArista arista = new NodoArista(lista_usuarios.BuscarPosicion(rela.getInicio()), lista_usuarios.BuscarPosicion(rela.getFin()));
+         lista_aristas.agregarAlFinal(arista);
+         rela = rela.getSiguiente();
+     }
+        if (encontrado==false) {
+              JOptionPane.showMessageDialog(null, "El ID indicado no existe");
+     }else{
+            JOptionPane.showMessageDialog(null, "eliminado exitosamente");
+        }
+    }
+ 
+    public void mostrarGrafo(){
+        System.setProperty("org.graphstream.ui", "swing");
+        Graph graph = new SingleGraph("Grafo");
+        
+        NodoUsuario auxUsuario = lista_usuarios.getPfirst();
+        NodoRelaciones auxRelaciones = lista_relaciones.getPfirst();
+        
+        for (int i = 0; i < lista_usuarios.getSize(); i++) {
+            String usuarioId = Integer.toString(auxUsuario.getID());
+            String usuarioName = auxUsuario.getNombreDeUsuario();
+            Node addNode = graph.addNode(usuarioId);
+            addNode.setAttribute("ui.label", usuarioName);
+            auxUsuario = auxUsuario.getSiguiente();
+            
+
+        }
+         
+        for (int i = 0; i < lista_relaciones.getSize(); i++) {
+            String tiempo = Integer.toString(auxRelaciones.getTiempo());
+            String usuario1 = Integer.toString(auxRelaciones.getInicio());
+            String usuario2 = Integer.toString(auxRelaciones.getFin());
+            Edge addEdge = graph.addEdge(tiempo+usuario1+usuario2,usuario1 ,usuario2 );
+            addEdge.setAttribute("ui.label", tiempo);
+            auxRelaciones = auxRelaciones.getSiguiente();
+
+        }
+        
+        Viewer viewer = graph.display();
+        viewer.setCloseFramePolicy(Viewer.CloseFramePolicy.HIDE_ONLY);
+        
+        
+    }
+    }
+
         
 
 

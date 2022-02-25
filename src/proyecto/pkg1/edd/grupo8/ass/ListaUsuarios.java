@@ -5,6 +5,7 @@
  */
 package proyecto.pkg1.edd.grupo8.ass;
 
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
 /**
@@ -39,6 +40,11 @@ public class ListaUsuarios {
         }
         size++;
     }
+      public void vaciar(){
+        this.pfirst=null;
+        this.plast=null;
+        this.size=0;
+    }
     
     public int BuscarPosicion(int id){
         NodoUsuario aux= getPfirst();
@@ -47,6 +53,21 @@ public class ListaUsuarios {
         }
         return aux.getPosicion();
     }
+    
+    public boolean Buscar_ID(int id){
+        NodoUsuario aux= getPfirst();
+        while ( aux.getID()!=id ) {            
+            aux= aux.getSiguiente();
+            if (aux==null) {
+                return false;
+            }
+        }
+        if (aux.getID()==id) {
+            return true;
+        }
+        return false;
+    }
+    
     public void ImprimirLista(JTextArea texto){
         texto.append("Usuarios"+"\n");
         NodoUsuario aux = pfirst;

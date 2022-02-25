@@ -46,6 +46,11 @@ public class ListaRelaciones {
             aux = aux.getSiguiente();
         }
     }
+    public void vaciar(){
+        this.pfirst=null;
+        this.plast=null;
+        this.size=0;
+    }
     /**
      * @return the pfirst
      */

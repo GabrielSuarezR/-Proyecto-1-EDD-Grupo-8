@@ -59,5 +59,10 @@ public class ListaAristas {
         }
         size++;
     }
+    public void vaciar(){
+        this.pfirst=null;
+        this.plast=null;
+        this.size=0;
+    }
     
 }
