@@ -152,7 +152,6 @@ public class GrafoMatriz {
     }
     
     public void CantidadIslasDFS(JTextArea area){
-        
         boolean array_visitado []=new boolean[num_vertices];
         boolean array_marcado[]= new boolean[num_vertices];
         int cantidad_islas=1;
