@@ -9,25 +9,39 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
 /**
- *
+ *Clase ListaUsuarios
+ * crea la lista de usuarios
  * @author johnd
  */
 public class ListaUsuarios {
     private NodoUsuario pfirst;
     private NodoUsuario plast;
     private int size;
-
+/**
+ * ListaUsuarios
+ * constructor de la clase
+ */
     public ListaUsuarios() {
         this.pfirst = null;
         this.plast = null;
         this.size = 0;
     }
 
-    
+     /**
+     * estaVacia 
+     * verifica el estado de la lista
+     * @return 
+     * boolean: si pFirst apunta a null la lista esta vacia
+     */
     public boolean estaVacia(){
         return getPfirst()==null;
     }
-    
+    /**
+     * agregarAlFinal 
+     * busca si la lista esta vacia y agrega al inicio o al final
+     * dependiendo del estado de la lista
+     * @param nodo el nodo que se quiere agregar
+     */
     public void agregarAlFinal(NodoUsuario nodo){
         if (estaVacia()) {
             setPfirst(nodo);
@@ -40,20 +54,38 @@ public class ListaUsuarios {
         }
         size++;
     }
+    /**
+     * vaciar
+     * vacia la lista
+     */
       public void vaciar(){
         this.pfirst=null;
         this.plast=null;
         this.size=0;
     }
-    
+    /**
+     * BuscarPosicion
+     * recibe como parametro un id y buscar cual es la proxima posicion en la 
+     * lista de usuarios para el id
+     * @param id id del nuevo usuario
+     * @return 
+     * int: retorna la posicion del nuevo usuario en la lista
+     */
     public int BuscarPosicion(int id){
         NodoUsuario aux= getPfirst();
-        while ( aux.getID()!=id ) {            
+        while ( aux.getID()!=id ) { 
             aux= aux.getSiguiente();
         }
         return aux.getPosicion();
     }
-    
+    /**
+     * Buscar_ID
+     * recibe un id por parametro y busca que el id no sea un id ya ocupado
+     * por otro usuario
+     * @param id id del nuevo usuarios
+     * @return 
+     * boolean: retorna true o false si existe el id
+     */
     public boolean Buscar_ID(int id){
         NodoUsuario aux= getPfirst();
         while ( aux.getID()!=id ) {            
@@ -67,12 +99,27 @@ public class ListaUsuarios {
         }
         return false;
     }
-    
+   /**
+     * ImprimirLista
+     * itera sobre cada nodo de la lista y los va imprimiendo en un area de 
+     * texto que es pasada como parametro
+     * @param texto area de texto donde se imprime la lista
+     */
     public void ImprimirLista(JTextArea texto){
         texto.append("Usuarios"+"\n");
         NodoUsuario aux = pfirst;
         while (aux!=null) {
             texto.append(aux.getID()+","+aux.getNombreDeUsuario()+"\n");
+            aux = aux.getSiguiente();
+            
+        }
+    }
+    
+    
+    public void ImprimirLista_2(){
+        NodoUsuario aux = pfirst;
+        while (aux!=null) {
+            System.out.println(aux.getID());
             aux = aux.getSiguiente();
             
         }

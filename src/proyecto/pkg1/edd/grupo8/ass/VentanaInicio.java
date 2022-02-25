@@ -39,8 +39,11 @@ public class VentanaInicio extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(255, 102, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        exit.setBackground(new java.awt.Color(204, 0, 0));
+        exit.setForeground(new java.awt.Color(255, 255, 255));
         exit.setText("X");
         exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -49,12 +52,15 @@ public class VentanaInicio extends javax.swing.JFrame {
         });
         jPanel1.add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 10, 70, 30));
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Rockwell", 1, 48)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(153, 153, 153));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("SAMAGRAM");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 600, 70));
 
-        archivoTexto.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        archivoTexto.setBackground(new java.awt.Color(51, 51, 51));
+        archivoTexto.setFont(new java.awt.Font("Rockwell", 1, 36)); // NOI18N
+        archivoTexto.setForeground(new java.awt.Color(255, 255, 255));
         archivoTexto.setText("TXT");
         archivoTexto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,7 +69,9 @@ public class VentanaInicio extends javax.swing.JFrame {
         });
         jPanel1.add(archivoTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, 290, 80));
 
-        boton.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        boton.setBackground(new java.awt.Color(51, 51, 51));
+        boton.setFont(new java.awt.Font("Rockwell", 1, 36)); // NOI18N
+        boton.setForeground(new java.awt.Color(255, 255, 255));
         boton.setText("GRAFO");
         boton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

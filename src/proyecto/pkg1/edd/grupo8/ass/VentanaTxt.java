@@ -20,18 +20,13 @@ public class VentanaTxt extends javax.swing.JFrame {
     public static String Archtxt;
     public static GrafoMatriz grafo;
     public static GrafoMatriz grafo2;
-    ListaUsuarios listau = new ListaUsuarios();
-    ListaRelaciones listar = new ListaRelaciones();
-    ListaAristas listaa = new ListaAristas();
+
 
     /**
      * Creates new form Ventana
      */
-    public VentanaTxt(GrafoMatriz grafoMatriz) {
+    public VentanaTxt(GrafoMatriz grafo) {
         this.grafo= grafo;
-        this.listau = listau;
-        this.listar = listar;
-        this.listaa = listaa;
         initComponents();
         this.setVisible(true);
         this.setLocationRelativeTo(null);
@@ -61,31 +56,42 @@ public class VentanaTxt extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(255, 102, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pantallaTxt.setEditable(false);
+        pantallaTxt.setBackground(new java.awt.Color(51, 51, 51));
         pantallaTxt.setColumns(20);
+        pantallaTxt.setForeground(new java.awt.Color(255, 255, 255));
         pantallaTxt.setRows(5);
         jScrollPane1.setViewportView(pantallaTxt);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 580, 300));
 
+        SeleccionarArchivo.setBackground(new java.awt.Color(51, 51, 51));
+        SeleccionarArchivo.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        SeleccionarArchivo.setForeground(new java.awt.Color(255, 255, 255));
         SeleccionarArchivo.setText("SELECCIONAR ARCHIVO DE TEXTO");
         SeleccionarArchivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SeleccionarArchivoActionPerformed(evt);
             }
         });
-        jPanel1.add(SeleccionarArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 230, 60));
+        jPanel1.add(SeleccionarArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 250, 60));
 
+        Actualizar.setBackground(new java.awt.Color(51, 51, 51));
+        Actualizar.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        Actualizar.setForeground(new java.awt.Color(255, 255, 255));
         Actualizar.setText("ACTUALIZAR ARCHIVO DE TEXTO");
         Actualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ActualizarActionPerformed(evt);
             }
         });
-        jPanel1.add(Actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, 230, 60));
+        jPanel1.add(Actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, 240, 60));
 
+        exit.setBackground(new java.awt.Color(51, 51, 51));
+        exit.setForeground(new java.awt.Color(255, 255, 255));
         exit.setText("X");
         exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,6 +100,8 @@ public class VentanaTxt extends javax.swing.JFrame {
         });
         jPanel1.add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 10, 70, 30));
 
+        back.setBackground(new java.awt.Color(51, 51, 51));
+        back.setForeground(new java.awt.Color(255, 255, 255));
         back.setText(">>>");
         back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,9 +119,14 @@ public class VentanaTxt extends javax.swing.JFrame {
         int respuesta = JOptionPane.showConfirmDialog(null, "Desea abrir un nuevo archivo?", "Verificacion", ConfirmationCallback.YES_NO_CANCEL_OPTION);
         if (respuesta ==0) {
         Archivotxt txt = new Archivotxt();
-        listaa.vaciar();
-        listau.vaciar();
-        listar.vaciar();
+            if (grafo!=null) {
+        grafo.lista_aristas.vaciar();
+        grafo.lista_usuarios.vaciar();
+        grafo.lista_relaciones.vaciar();
+            }
+        ListaUsuarios listau = new ListaUsuarios();
+        ListaRelaciones listar = new ListaRelaciones();
+        ListaAristas listaa = new ListaAristas();
         grafo= txt.cargarMatrizGrafo(listau, listar,listaa);
         pantallaTxt.setText("");
         VentanaTxt.Archtxt = txt.abrirArchivo();
@@ -121,6 +134,7 @@ public class VentanaTxt extends javax.swing.JFrame {
         if (listau.getPfirst()!=null) {
         pantallaTxt.setText(VentanaTxt.Archtxt);
         grafo= txt.cargarMatrizGrafo(listau, listar,listaa);
+        JOptionPane.showMessageDialog(null,"RECUERDE GUARDAR LOS DATOS DE LAS MODIFICACIONES QUE HAGA \nUSE EL BOTÓN ACTUALIZAR ARCHIVO DE TEXTO");
         }
         }
     }//GEN-LAST:event_SeleccionarArchivoActionPerformed
@@ -138,7 +152,6 @@ public class VentanaTxt extends javax.swing.JFrame {
 
         Archivotxt txt = new Archivotxt();
          txt.guardarArchivo(pantallaTxt);
-         dispose();
     }//GEN-LAST:event_ActualizarActionPerformed
 
     /**

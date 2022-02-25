@@ -43,123 +43,168 @@ public class VentanaGrafo extends javax.swing.JFrame {
         modificarGrafo = new javax.swing.JButton();
         mostrarIslas = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(255, 102, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        exit.setBackground(new java.awt.Color(204, 0, 0));
+        exit.setForeground(new java.awt.Color(255, 255, 255));
         exit.setText("X");
         exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exitActionPerformed(evt);
             }
         });
-        jPanel1.add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 10, 70, 30));
+        jPanel1.add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 60, 30));
+
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
         pantallaGrafo.setEditable(false);
+        pantallaGrafo.setBackground(new java.awt.Color(51, 51, 51));
         pantallaGrafo.setColumns(20);
+        pantallaGrafo.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        pantallaGrafo.setForeground(new java.awt.Color(255, 255, 255));
         pantallaGrafo.setRows(5);
         jScrollPane1.setViewportView(pantallaGrafo);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 580, 280));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 100, 270, 230));
 
+        back.setBackground(new java.awt.Color(51, 51, 51));
+        back.setForeground(new java.awt.Color(255, 255, 255));
         back.setText(">>>");
         back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backActionPerformed(evt);
             }
         });
-        jPanel1.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 40, 70, -1));
+        jPanel1.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 350, 70, -1));
 
+        mostrarGrafo.setBackground(new java.awt.Color(51, 51, 51));
+        mostrarGrafo.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        mostrarGrafo.setForeground(new java.awt.Color(255, 255, 255));
         mostrarGrafo.setText("MOSTRAR GRAFO");
         mostrarGrafo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mostrarGrafoActionPerformed(evt);
             }
         });
-        jPanel1.add(mostrarGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 240, -1));
+        jPanel1.add(mostrarGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 240, 50));
 
+        mostrarPuentes.setBackground(new java.awt.Color(51, 51, 51));
+        mostrarPuentes.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        mostrarPuentes.setForeground(new java.awt.Color(255, 255, 255));
         mostrarPuentes.setText("MOSTRAR CANTIDAD DE PUENTES");
         mostrarPuentes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mostrarPuentesActionPerformed(evt);
             }
         });
-        jPanel1.add(mostrarPuentes, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 240, -1));
+        jPanel1.add(mostrarPuentes, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 240, 50));
 
+        modificarGrafo.setBackground(new java.awt.Color(51, 51, 51));
+        modificarGrafo.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        modificarGrafo.setForeground(new java.awt.Color(255, 255, 255));
         modificarGrafo.setText("MODIFICAR GRAFO");
         modificarGrafo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 modificarGrafoActionPerformed(evt);
             }
         });
-        jPanel1.add(modificarGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 230, -1));
+        jPanel1.add(modificarGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 240, 50));
 
+        mostrarIslas.setBackground(new java.awt.Color(51, 51, 51));
+        mostrarIslas.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        mostrarIslas.setForeground(new java.awt.Color(255, 255, 255));
         mostrarIslas.setText("MOSTRAR ISLAS DFS");
         mostrarIslas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mostrarIslasActionPerformed(evt);
             }
         });
-        jPanel1.add(mostrarIslas, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, 230, -1));
+        jPanel1.add(mostrarIslas, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 240, 50));
 
+        jButton1.setBackground(new java.awt.Color(51, 51, 51));
+        jButton1.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("MOSTRAR ISLAS BFS");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, 230, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 240, 50));
+
+        jLabel1.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 50, 190, -1));
+
+        jLabel2.setFont(new java.awt.Font("Rockwell", 1, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("MENU GRAFO");
+        jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, 270, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 400));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_exitActionPerformed
-
-    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
-        this.dispose();
-        new VentanaInicio(grafo).setVisible(true);
-    }//GEN-LAST:event_backActionPerformed
-
-    private void modificarGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarGrafoActionPerformed
-      this.dispose();
-      new VentanaModificarGrafo(grafo).setVisible(true);
-    }//GEN-LAST:event_modificarGrafoActionPerformed
-
-    private void mostrarIslasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarIslasActionPerformed
-        if (grafo != null) {
-        pantallaGrafo.setText("");
-        grafo.CantidadIslasDFS(pantallaGrafo);
-        }else{
-            pantallaGrafo.setText("No hay Islas existentes");
-        }
-    }//GEN-LAST:event_mostrarIslasActionPerformed
-
-    private void mostrarPuentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarPuentesActionPerformed
-        if (grafo != null) {
-        grafo.IdentificadorPuentes(pantallaGrafo);
-       }else{
-            pantallaGrafo.setText("No hay usuarios en la base de datos");
-        }
-    }//GEN-LAST:event_mostrarPuentesActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (grafo != null) {
-        pantallaGrafo.setText("La cantidad de islas por BFS es: "+grafo.CantidadIslasBFS()+"\n");
+        if (grafo != null && !grafo.getLista_usuarios().estaVacia()) {
+            pantallaGrafo.setText("La cantidad de islas por BFS es: "+grafo.CantidadIslasBFS()+"\n");
         }else{
             pantallaGrafo.setText("No hay Islas existentes");
 
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void mostrarIslasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarIslasActionPerformed
+        if (grafo != null && !grafo.getLista_usuarios().estaVacia()) {
+            pantallaGrafo.setText("");
+            grafo.CantidadIslasDFS(pantallaGrafo);
+        }else{
+            pantallaGrafo.setText("No hay Islas existentes");
+        }
+    }//GEN-LAST:event_mostrarIslasActionPerformed
+
+    private void modificarGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarGrafoActionPerformed
+        this.dispose();
+        new VentanaModificarGrafo(grafo).setVisible(true);
+    }//GEN-LAST:event_modificarGrafoActionPerformed
+
+    private void mostrarPuentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarPuentesActionPerformed
+        if (grafo != null) {
+            grafo.IdentificadorPuentes(pantallaGrafo);
+        }else{
+            pantallaGrafo.setText("No hay usuarios en la base de datos");
+        }
+    }//GEN-LAST:event_mostrarPuentesActionPerformed
+
     private void mostrarGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarGrafoActionPerformed
-        grafo.mostrarGrafo();
+        if (grafo != null && !grafo.getLista_usuarios().estaVacia()) {
+            grafo.mostrarGrafo();
+        }else{
+            pantallaGrafo.setText("No hay usuarios en la base de datos");
+        }
     }//GEN-LAST:event_mostrarGrafoActionPerformed
+
+    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
+        this.dispose();
+        new VentanaInicio(grafo).setVisible(true);
+    }//GEN-LAST:event_backActionPerformed
+
+    private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_exitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -200,6 +245,8 @@ public class VentanaGrafo extends javax.swing.JFrame {
     private javax.swing.JButton back;
     private javax.swing.JToggleButton exit;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton modificarGrafo;
