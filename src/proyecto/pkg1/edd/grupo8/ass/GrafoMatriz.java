@@ -320,7 +320,7 @@ public class GrafoMatriz {
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Se ha eliminado al último usuario del grafo");
-                    return;
+                   
                 }
                 
             }
