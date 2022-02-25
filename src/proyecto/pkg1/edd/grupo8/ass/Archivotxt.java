@@ -142,6 +142,7 @@ public class Archivotxt {
          JFileChooser file=new JFileChooser();
          file.showSaveDialog(null);
          File guarda =file.getSelectedFile();
+            if (guarda!=null) {
          nombre = guarda.getName();
          String [] identificador = nombre.split("\\.(?=[^\\.]+$)");
          if (identificador.length == 1){
@@ -163,7 +164,7 @@ public class Archivotxt {
             
          
          }
-         
+            }
         }
          catch(IOException ex)
          {

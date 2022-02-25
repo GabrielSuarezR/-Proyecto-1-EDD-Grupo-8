@@ -20,18 +20,13 @@ public class VentanaTxt extends javax.swing.JFrame {
     public static String Archtxt;
     public static GrafoMatriz grafo;
     public static GrafoMatriz grafo2;
-    ListaUsuarios listau = new ListaUsuarios();
-    ListaRelaciones listar = new ListaRelaciones();
-    ListaAristas listaa = new ListaAristas();
+
 
     /**
      * Creates new form Ventana
      */
-    public VentanaTxt(GrafoMatriz grafoMatriz) {
+    public VentanaTxt(GrafoMatriz grafo) {
         this.grafo= grafo;
-        this.listau = listau;
-        this.listar = listar;
-        this.listaa = listaa;
         initComponents();
         this.setVisible(true);
         this.setLocationRelativeTo(null);
@@ -124,9 +119,14 @@ public class VentanaTxt extends javax.swing.JFrame {
         int respuesta = JOptionPane.showConfirmDialog(null, "Desea abrir un nuevo archivo?", "Verificacion", ConfirmationCallback.YES_NO_CANCEL_OPTION);
         if (respuesta ==0) {
         Archivotxt txt = new Archivotxt();
-        listaa.vaciar();
-        listau.vaciar();
-        listar.vaciar();
+            if (grafo!=null) {
+        grafo.lista_aristas.vaciar();
+        grafo.lista_usuarios.vaciar();
+        grafo.lista_relaciones.vaciar();
+            }
+        ListaUsuarios listau = new ListaUsuarios();
+        ListaRelaciones listar = new ListaRelaciones();
+        ListaAristas listaa = new ListaAristas();
         grafo= txt.cargarMatrizGrafo(listau, listar,listaa);
         pantallaTxt.setText("");
         VentanaTxt.Archtxt = txt.abrirArchivo();
@@ -151,7 +151,6 @@ public class VentanaTxt extends javax.swing.JFrame {
 
         Archivotxt txt = new Archivotxt();
          txt.guardarArchivo(pantallaTxt);
-         dispose();
     }//GEN-LAST:event_ActualizarActionPerformed
 
     /**

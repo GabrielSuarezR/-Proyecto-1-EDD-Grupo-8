@@ -48,7 +48,8 @@ public class ListaUsuarios {
     
     public int BuscarPosicion(int id){
         NodoUsuario aux= getPfirst();
-        while ( aux.getID()!=id ) {            
+        while ( aux.getID()!=id ) { 
+            System.out.println("yo");
             aux= aux.getSiguiente();
         }
         return aux.getPosicion();

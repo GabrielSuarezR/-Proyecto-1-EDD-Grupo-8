@@ -315,7 +315,7 @@ public class GrafoMatriz {
                 }
             }
             elimusuario = elimusuario.getSiguiente();
-            if (eliminado==true) {
+            if (eliminado==true & elimusuario!=null) {
                 if (lista_usuarios.getSize()!=0) {
                     elimusuario.setPosicion(elimusuario.getPosicion()-1);
                 }
