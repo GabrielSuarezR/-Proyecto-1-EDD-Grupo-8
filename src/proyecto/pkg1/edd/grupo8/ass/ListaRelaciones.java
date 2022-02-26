@@ -117,7 +117,10 @@ public class ListaRelaciones {
         this.size = size;
     }
     
-    
+    /**
+     * ImprimirLista_2
+     * itera sobre cada nodo de la lista y los va imprimiendo 
+     */
     public void ImprimirLista_2(){
         NodoRelaciones aux = pfirst;
         System.out.println("Relaciones");

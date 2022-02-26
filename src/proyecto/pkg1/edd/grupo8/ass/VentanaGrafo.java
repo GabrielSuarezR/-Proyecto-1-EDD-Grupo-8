@@ -94,7 +94,7 @@ public class VentanaGrafo extends javax.swing.JFrame {
                 mostrarGrafoActionPerformed(evt);
             }
         });
-        jPanel1.add(mostrarGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 240, 50));
+        jPanel1.add(mostrarGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 250, 50));
 
         mostrarPuentes.setBackground(new java.awt.Color(51, 51, 51));
         mostrarPuentes.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
@@ -105,7 +105,7 @@ public class VentanaGrafo extends javax.swing.JFrame {
                 mostrarPuentesActionPerformed(evt);
             }
         });
-        jPanel1.add(mostrarPuentes, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 240, 50));
+        jPanel1.add(mostrarPuentes, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, 50));
 
         modificarGrafo.setBackground(new java.awt.Color(51, 51, 51));
         modificarGrafo.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
@@ -116,7 +116,7 @@ public class VentanaGrafo extends javax.swing.JFrame {
                 modificarGrafoActionPerformed(evt);
             }
         });
-        jPanel1.add(modificarGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 240, 50));
+        jPanel1.add(modificarGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 250, 50));
 
         mostrarIslas.setBackground(new java.awt.Color(51, 51, 51));
         mostrarIslas.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
@@ -138,10 +138,9 @@ public class VentanaGrafo extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 240, 50));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 250, 50));
 
         jLabel1.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 50, 190, -1));

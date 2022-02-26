@@ -9,14 +9,25 @@ import javax.swing.JApplet;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Clase Funciones
+ * contiene diversas funciones usadas en el programa
  * @author johnd
  */
 public class Funciones {
-
+    /**
+     * Constructor
+     */
     public Funciones() {
     }
     
+    /**
+     * Validar_Nombre_Usuario
+     * verifica si el nombre de usuario introducido es valido
+     * @param usuario
+     * @return 
+     * boolean true: el nombre de usuario introducido es valido
+     * booolean false: el nombre de usuario introducido es invalido
+     */
     public boolean Validar_Nombre_Usuario(String usuario){
         
             if ((usuario.contains("@")) || (usuario.contains(",")) || (usuario.isBlank()) || (usuario.isEmpty()) ) {
@@ -26,7 +37,14 @@ public class Funciones {
             return true;
         
     }
-    
+    /**
+     * Validar_ID
+     * verifica si el id del usuario introducido es valido
+     * @param id
+     * @return 
+     * boolean true: el id del usuario introducido es valido
+     * booolean false: el id del usuario introducido es invalido
+     */
     public boolean Validar_ID(String id){
         try {
             int valor= Integer.parseInt(id);
@@ -40,7 +58,14 @@ public class Funciones {
         }
         return true;
     }
-    
+    /**
+     * Validar_tiempo
+     * verifica si el tiempo de relacion introducido es valido
+     * @param tiempo
+     * @return 
+     * boolean true: el tiempo de relacion introducido es valido
+     * booolean false: el tiempo de relacion introducido es invalido
+     */    
     public boolean Validar_tiempo(String tiempo){
         try {
             int valor= Integer.parseInt(tiempo);
@@ -52,14 +77,23 @@ public class Funciones {
         }
         return true;
     }
+    
+    /**
+     * validarArchivo
+     * verifica si archivo Txt cargado al programa es valido
+     * @param divisor
+     * @return 
+     * boolean true: el archivo Txt cargado al programa es valido
+     * booolean false: el archivo Txt cargado al programa es invalido
+     */  
     public boolean validarArchivo(String divisor){
         try {
             if(divisor!= "Usuarios" || divisor!="Relaciones"){
-            JOptionPane.showMessageDialog(null,"el archivo no pede ser cargado \n asgurese que es el archivo correcto o que los datos esten ordenados");
+            JOptionPane.showMessageDialog(null,"el archivo no puede ser cargado \n asegurese que es el archivo correcto o que los datos esten ordenados");
             return false;
         }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null,"el archivo no pede ser cargado \n asgurese que es el archivo correcto o que los datos esten ordenados");
+            JOptionPane.showMessageDialog(null,"el archivo no puede ser cargado \n asegurese que es el archivo correcto o que los datos esten ordenados");
             return false;
         }
         return true;

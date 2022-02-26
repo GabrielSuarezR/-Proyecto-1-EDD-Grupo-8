@@ -78,6 +78,8 @@ public class ListaUsuarios {
         }
         return aux.getPosicion();
     }
+    
+    
     /**
      * Buscar_ID
      * recibe un id por parametro y busca que el id no sea un id ya ocupado

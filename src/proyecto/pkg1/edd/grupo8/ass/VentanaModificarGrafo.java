@@ -289,7 +289,7 @@ public class VentanaModificarGrafo extends javax.swing.JFrame {
         }
         
         if (grafo.getLista_usuarios().Buscar_ID(Integer.parseInt(ID2.getText()))==false) {
-            JOptionPane.showMessageDialog(null, "El ID ingresado no se encuentra registrado");
+            JOptionPane.showMessageDialog(null, "El ID Friend ingresado no se encuentra registrado");
             return;
         }
         

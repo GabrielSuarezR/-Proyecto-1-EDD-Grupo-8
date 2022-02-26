@@ -6,13 +6,19 @@
 package proyecto.pkg1.edd.grupo8.ass;
 
 /**
- *
+ * Clase Nodo
+ * descripcion
  * @author johnd
  */
 public class Nodo<T> {
     int vertice;
     Nodo<T> siguiente;
-
+    /**
+     * Constructor con 2 parametros
+     * @param vertice nodo vertice
+     * @param siguiente nodo siguiente 
+     * 
+     */
     public Nodo() {
         this.vertice = vertice;
         this.siguiente = siguiente;

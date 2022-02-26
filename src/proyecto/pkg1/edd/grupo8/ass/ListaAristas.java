@@ -62,7 +62,8 @@ public class ListaAristas {
         return size;
     }
 /**
- * 
+ * setSize
+ * obtiene el tamaño de la lista
  * @param size 
  */
     public void setSize(int size) {
@@ -82,6 +83,7 @@ public class ListaAristas {
      * busca si la lista esta vacia y agrega al inicio o al final
      * dependiendo del estado de la lista
      * @param nodo el nodo que se quiere agregar
+     * @return 
      */
     public void agregarAlFinal(NodoArista nodo){
         if (estaVacia()) {
@@ -98,6 +100,7 @@ public class ListaAristas {
     /**
      * vaciar
      * vacia la lista
+     * @return 
      */
     public void vaciar(){
         this.pfirst=null;

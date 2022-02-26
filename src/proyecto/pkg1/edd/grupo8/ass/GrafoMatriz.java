@@ -7,6 +7,7 @@ package proyecto.pkg1.edd.grupo8.ass;
 
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
+import javax.swing.text.html.StyleSheet;
 import org.graphstream.graph.Edge;
 import org.graphstream.graph.Graph;
 import org.graphstream.graph.Node;
@@ -15,10 +16,11 @@ import org.graphstream.ui.view.Viewer;
 
 /**
  * Clase grafo 
- * tiene las funciones para cargar el grafo como para iterar sobre
+ * tiene las funciones para cargar el grafo, iterar sobre
  * el mismo y realizar modificaciones
  * @author johnd
  * @author gabriel
+ * @author sebas
  */
 public class GrafoMatriz {
     private int num_vertices;
@@ -26,7 +28,15 @@ public class GrafoMatriz {
     ListaUsuarios lista_usuarios;
     ListaRelaciones lista_relaciones;
     ListaAristas lista_aristas;
-
+    
+    /**
+     * Constructor con 5 parametros
+     * @param num_vertices numero de vertices 
+     * @param matriz matriz de adyacencia
+     * @param lista_usuarios lista de usuarios
+     * @param lista_relaciones lista de relaciones
+     * @param lista_aristas lista de aristas
+     */
     public GrafoMatriz() {
         this.num_vertices = num_vertices;
         this.matriz = new int[num_vertices][num_vertices];
@@ -35,41 +45,64 @@ public class GrafoMatriz {
         this.lista_aristas = lista_aristas;
     }
 
-      
+    
     /**
-     * @return the num_vertices
+     * getNum_vertices
+     * obtiene el numero de vertices de la matriz
+     * @return 
+     * int: cantidad de vertices de la matriz
      */
     public int getNum_vertices() {
         return num_vertices;
     }
 
     /**
-     * @param num_vertices the num_vertices to set
+     * setNum_vertices
+     * establece el numero de vertices de la matriz
+     * @param num_vertices numero de vertices de la matriz
+     * @return 
      */
     public void setNum_vertices(int num_vertices) {
         this.num_vertices = num_vertices;
     }
 
     /**
-     * @return the matriz
+     * getMatriz
+     * obtiene la matriz de adyacencia
+     * @return 
+     * int[][]: matriz de adyacencia
      */
     public int[][] getMatriz() {
         return matriz;
     }
 
     /**
-     * @param matriz the matriz to set
+     * setMatriz
+     * establece la matriz de adyacencia
+     * @param matriz matriz de adyacencia
+     * @return 
      */
     public void setMatriz(int[][] matriz) {
         this.matriz = matriz;
     }
-    
+    /**
+     * agregar_arista
+     * agrega las aristas de la matriz de adyacencia
+     * @param inicio primera arista de la matriz
+     * @param fin ultima arista de la matriz
+     * @param tiempo valor de la arista
+     * @return 
+     */
     public void agregar_arista(int inicio, int fin, int tiempo){
         matriz[inicio][fin]=tiempo;
         matriz[fin][inicio]=tiempo;
     }
     
-    
+    /**
+     * ImprimirGrafo
+     * imprime el grafo 
+     * @return 
+     */
     public void ImprimirGrafo() {
         System.out.println("Grafo: Matriz");
         for (int i = 0; i < num_vertices; i++) {
@@ -79,26 +112,58 @@ public class GrafoMatriz {
             System.out.println();
         }
     }
-
+    /**
+     * getLista_usuarios
+     * obtiene lista que contiene a los usuarios
+     * @return 
+     * ListaUsuarios: lista de usuarios
+     */
     public ListaUsuarios getLista_usuarios() {
         return lista_usuarios;
     }
-
+    /**
+     * setLista_usuarios
+     * establece la lista que contiene a los usuarios 
+     * @param lista_usuarios lista de usuarios
+     * @return 
+     */
     public void setLista_usuarios(ListaUsuarios lista_usuarios) {
         this.lista_usuarios = lista_usuarios;
     }
-
+    /**
+     * getLista_relaciones
+     * obtiene lista que contiene las relaciones
+     * @return 
+     * ListaRelaciones: lista de relaciones
+     */
     public ListaRelaciones getLista_relaciones() {
         return lista_relaciones;
     }
-
+    
+    /**
+     * setLista_relaciones
+     * establece la lista que contiene las relaciones 
+     * @param lista_relaciones lista de relaciones
+     * @return 
+     */
     public void setLista_relaciones(ListaRelaciones lista_relaciones) {
         this.lista_relaciones = lista_relaciones;
     }
+    /**
+     * getLista_aristas
+     * obtiene lista que contiene las aristas
+     * @return 
+     * ListaAristas: lista de aristas
+     */
     public ListaAristas getLista_aristas() {
         return lista_aristas;
     }
-
+    /**
+     * setLista_aristas
+     * establece la lista que contiene las aristas 
+     * @param lista_aristas lista de aristas
+     * @return 
+     */
     public void setLista_aristas(ListaAristas lista_aristas) {
         this.lista_aristas = lista_aristas;
     }
@@ -151,7 +216,14 @@ public class GrafoMatriz {
         }
         return cantidad_islas;
     }
-    
+     /**
+     * Vertices_por_visitar
+     * descripcion
+     * @param array_visitado
+     * @return 
+     * boolean true:
+     * boolean false:
+     */
     public boolean Vertices_por_visitar(boolean array_visitado[]){
         for (int i = 0; i < array_visitado.length; i++) {
             if (array_visitado[i]==false) {
@@ -164,7 +236,9 @@ public class GrafoMatriz {
      * CantidadIslasDFS 
      * Hace un recorrido de los puentes entre los nodos del 
      * grafo, para determinar a cantidad de islas que hay por un recorrido DFS
-     * 
+     * @param area area de texto de la interfaz donde se imprime el resultado
+     * * @return 
+     * int: retorna la cantidad de islas por DFS
      */
     public void CantidadIslasDFS(JTextArea area){
         boolean array_visitado []=new boolean[num_vertices];
@@ -176,6 +250,7 @@ public class GrafoMatriz {
         array_visitado[primer_vertice]=true;
         array_marcado[primer_vertice]=true;
         pila.Apilar(primer_vertice);
+        //String recorrido = "";
         
         while (flag==true) {            
             while (!pila.esta_vacia()) {            
@@ -187,14 +262,18 @@ public class GrafoMatriz {
                     if (array_marcado[i]==false) {
                         pila.Apilar(i);
                         array_marcado[i]=true;
+                        
+                        
                     }
                     
                 }
             }
+            
         }
         if ((pila.esta_vacia()) && (Vertices_por_visitar(array_visitado))) {
             cantidad_islas=cantidad_islas+1;
             for (int i = 0; i < array_visitado.length; i++) {
+                
                 if (array_visitado[i]==false) {
                     pila.Apilar(i);
                     break;
@@ -216,6 +295,7 @@ public class GrafoMatriz {
      * buscando las relaciones entre usuarios, y llama nuevamente a una funcion
      * de recorrido por BFS para determinar que usuarios son puentes.
      * @param area area de texto de la interfaz donde se imprime el resultado
+     * @return 
      */
     public void IdentificadorPuentes(JTextArea area){
         area.setText("");
@@ -273,9 +353,6 @@ public class GrafoMatriz {
         array_marcado[primer_vertice]=true;
         cola.Encolar(primer_vertice);
 
-             
-
-
         int tiempoaux = matriz[pos1][pos2];
         matriz[pos1][pos2]=0;
         matriz[pos2][pos1]=0;     
@@ -321,6 +398,7 @@ public class GrafoMatriz {
      * relaciones, buscando que exista dicho usuario e eliminando su informacion
      * y sus todas sus relaciones con los demas ususarios
      * @param id un numero de id introducido por el susuario para eliminar
+     * @return 
      */
  public void eliminarNodo(int id){
      if (lista_usuarios.estaVacia()) {
@@ -422,9 +500,11 @@ public class GrafoMatriz {
             JOptionPane.showMessageDialog(null, "eliminado exitosamente");
         }
     }
- /**
-  * 
-  */
+    /**
+     * mostrarGrafo 
+     * muestra una representacion grafica del grafo
+     * @return 
+     */
     public void mostrarGrafo(){
         System.setProperty("org.graphstream.ui", "swing");
         Graph graph = new SingleGraph("Grafo");
@@ -451,7 +531,8 @@ public class GrafoMatriz {
             auxRelaciones = auxRelaciones.getSiguiente();
 
         }
-        
+        graph.setAttribute("ui.stylesheet", "graph { fill-color: orange; }");
+          
         Viewer viewer = graph.display();
         viewer.setCloseFramePolicy(Viewer.CloseFramePolicy.HIDE_ONLY);
         
