@@ -79,7 +79,13 @@ public class ListaUsuarios {
         return aux.getPosicion();
     }
     
-    
+    public NodoUsuario BuscarNombreUsuario(int pos){
+        NodoUsuario aux= getPfirst();
+        while ( aux.getPosicion()!=pos ) { 
+            aux= aux.getSiguiente();
+        }
+        return aux;
+    }
     /**
      * Buscar_ID
      * recibe un id por parametro y busca que el id no sea un id ya ocupado

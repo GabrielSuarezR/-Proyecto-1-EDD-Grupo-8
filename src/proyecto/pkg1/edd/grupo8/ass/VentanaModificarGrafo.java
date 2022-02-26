@@ -70,6 +70,8 @@ public class VentanaModificarGrafo extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 102, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        pantalla.setToolTipText("");
+
         Usuarios.setEditable(false);
         Usuarios.setBackground(new java.awt.Color(51, 51, 51));
         Usuarios.setColumns(20);
@@ -172,6 +174,7 @@ public class VentanaModificarGrafo extends javax.swing.JFrame {
         jScrollPane4.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane4.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
+        jTextArea4.setEditable(false);
         jTextArea4.setBackground(new java.awt.Color(51, 51, 51));
         jTextArea4.setColumns(20);
         jTextArea4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 10)); // NOI18N
@@ -212,6 +215,7 @@ public class VentanaModificarGrafo extends javax.swing.JFrame {
         jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
+        jTextArea2.setEditable(false);
         jTextArea2.setBackground(new java.awt.Color(51, 51, 51));
         jTextArea2.setColumns(20);
         jTextArea2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 10)); // NOI18N

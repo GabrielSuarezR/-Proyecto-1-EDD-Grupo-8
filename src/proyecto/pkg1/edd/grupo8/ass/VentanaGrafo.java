@@ -35,16 +35,16 @@ public class VentanaGrafo extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         exit = new javax.swing.JToggleButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        pantallaGrafo = new javax.swing.JTextArea();
         back = new javax.swing.JButton();
         mostrarGrafo = new javax.swing.JButton();
         mostrarPuentes = new javax.swing.JButton();
         modificarGrafo = new javax.swing.JButton();
-        mostrarIslas = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        mostrarIslasDFS = new javax.swing.JButton();
+        mostrarIslasBFS = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        pantallaGrafo = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -61,19 +61,6 @@ public class VentanaGrafo extends javax.swing.JFrame {
             }
         });
         jPanel1.add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 60, 30));
-
-        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
-
-        pantallaGrafo.setEditable(false);
-        pantallaGrafo.setBackground(new java.awt.Color(51, 51, 51));
-        pantallaGrafo.setColumns(20);
-        pantallaGrafo.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
-        pantallaGrafo.setForeground(new java.awt.Color(255, 255, 255));
-        pantallaGrafo.setRows(5);
-        jScrollPane1.setViewportView(pantallaGrafo);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 100, 270, 230));
 
         back.setBackground(new java.awt.Color(51, 51, 51));
         back.setForeground(new java.awt.Color(255, 255, 255));
@@ -94,7 +81,7 @@ public class VentanaGrafo extends javax.swing.JFrame {
                 mostrarGrafoActionPerformed(evt);
             }
         });
-        jPanel1.add(mostrarGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 250, 50));
+        jPanel1.add(mostrarGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 280, 50));
 
         mostrarPuentes.setBackground(new java.awt.Color(51, 51, 51));
         mostrarPuentes.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
@@ -105,7 +92,7 @@ public class VentanaGrafo extends javax.swing.JFrame {
                 mostrarPuentesActionPerformed(evt);
             }
         });
-        jPanel1.add(mostrarPuentes, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, 50));
+        jPanel1.add(mostrarPuentes, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 110, 250, 50));
 
         modificarGrafo.setBackground(new java.awt.Color(51, 51, 51));
         modificarGrafo.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
@@ -116,29 +103,29 @@ public class VentanaGrafo extends javax.swing.JFrame {
                 modificarGrafoActionPerformed(evt);
             }
         });
-        jPanel1.add(modificarGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 250, 50));
+        jPanel1.add(modificarGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 170, 250, 50));
 
-        mostrarIslas.setBackground(new java.awt.Color(51, 51, 51));
-        mostrarIslas.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
-        mostrarIslas.setForeground(new java.awt.Color(255, 255, 255));
-        mostrarIslas.setText("MOSTRAR ISLAS DFS");
-        mostrarIslas.addActionListener(new java.awt.event.ActionListener() {
+        mostrarIslasDFS.setBackground(new java.awt.Color(51, 51, 51));
+        mostrarIslasDFS.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        mostrarIslasDFS.setForeground(new java.awt.Color(255, 255, 255));
+        mostrarIslasDFS.setText("MOSTRAR ISLAS DFS");
+        mostrarIslasDFS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mostrarIslasActionPerformed(evt);
+                mostrarIslasDFSActionPerformed(evt);
             }
         });
-        jPanel1.add(mostrarIslas, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 240, 50));
+        jPanel1.add(mostrarIslasDFS, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 280, 50));
 
-        jButton1.setBackground(new java.awt.Color(51, 51, 51));
-        jButton1.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("MOSTRAR ISLAS BFS");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        mostrarIslasBFS.setBackground(new java.awt.Color(51, 51, 51));
+        mostrarIslasBFS.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        mostrarIslasBFS.setForeground(new java.awt.Color(255, 255, 255));
+        mostrarIslasBFS.setText("MOSTRAR ISLAS BFS");
+        mostrarIslasBFS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                mostrarIslasBFSActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 250, 50));
+        jPanel1.add(mostrarIslasBFS, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 280, 50));
 
         jLabel1.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -150,30 +137,42 @@ public class VentanaGrafo extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("MENU GRAFO");
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, 270, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 40, 270, -1));
+
+        pantallaGrafo.setEditable(false);
+        pantallaGrafo.setBackground(new java.awt.Color(51, 51, 51));
+        pantallaGrafo.setColumns(20);
+        pantallaGrafo.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        pantallaGrafo.setForeground(new java.awt.Color(255, 255, 255));
+        pantallaGrafo.setRows(5);
+        pantallaGrafo.setAutoscrolls(false);
+        jScrollPane3.setViewportView(pantallaGrafo);
+
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 560, 110));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 400));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void mostrarIslasBFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarIslasBFSActionPerformed
         if (grafo != null && !grafo.getLista_usuarios().estaVacia()) {
-            pantallaGrafo.setText("La cantidad de islas por BFS es: "+grafo.CantidadIslasBFS()+"\n");
+            pantallaGrafo.setText("");
+            Object[] objeto = grafo.CantidadIslasBFS();
+            pantallaGrafo.setText(objeto[1]+"\n"+"La cantidad de islas es: "+objeto[0]);
         }else{
             pantallaGrafo.setText("No hay Islas existentes");
-
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_mostrarIslasBFSActionPerformed
 
-    private void mostrarIslasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarIslasActionPerformed
+    private void mostrarIslasDFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarIslasDFSActionPerformed
         if (grafo != null && !grafo.getLista_usuarios().estaVacia()) {
             pantallaGrafo.setText("");
             grafo.CantidadIslasDFS(pantallaGrafo);
         }else{
             pantallaGrafo.setText("No hay Islas existentes");
         }
-    }//GEN-LAST:event_mostrarIslasActionPerformed
+    }//GEN-LAST:event_mostrarIslasDFSActionPerformed
 
     private void modificarGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarGrafoActionPerformed
         this.dispose();
@@ -181,11 +180,11 @@ public class VentanaGrafo extends javax.swing.JFrame {
     }//GEN-LAST:event_modificarGrafoActionPerformed
 
     private void mostrarPuentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarPuentesActionPerformed
-        if (grafo != null) {
-            grafo.IdentificadorPuentes(pantallaGrafo);
-        }else{
-            pantallaGrafo.setText("No hay usuarios en la base de datos");
-        }
+//        if (grafo != null) {
+//            grafo.IdentificadorPuentes(pantallaGrafo);
+//        }else{
+//            pantallaGrafo.setText("No hay usuarios en la base de datos");
+//        }
     }//GEN-LAST:event_mostrarPuentesActionPerformed
 
     private void mostrarGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarGrafoActionPerformed
@@ -243,14 +242,14 @@ public class VentanaGrafo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton back;
     private javax.swing.JToggleButton exit;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JButton modificarGrafo;
     private javax.swing.JButton mostrarGrafo;
-    private javax.swing.JButton mostrarIslas;
+    private javax.swing.JButton mostrarIslasBFS;
+    private javax.swing.JButton mostrarIslasDFS;
     private javax.swing.JButton mostrarPuentes;
     private javax.swing.JTextArea pantallaGrafo;
     // End of variables declaration//GEN-END:variables
