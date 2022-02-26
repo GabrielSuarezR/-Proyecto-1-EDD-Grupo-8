@@ -14,8 +14,11 @@ import org.graphstream.graph.implementations.SingleGraph;
 import org.graphstream.ui.view.Viewer;
 
 /**
- *
+ * Clase grafo 
+ * tiene las funciones para cargar el grafo como para iterar sobre
+ * el mismo y realizar modificaciones
  * @author johnd
+ * @author gabriel
  */
 public class GrafoMatriz {
     private int num_vertices;
@@ -99,6 +102,13 @@ public class GrafoMatriz {
     public void setLista_aristas(ListaAristas lista_aristas) {
         this.lista_aristas = lista_aristas;
     }
+    /**
+     * CantidadIslasBFS 
+     * Hace un recorrido de los puentes entre los nodos del 
+     * grafo, para determinar a cantidad de islas que hay por un recorrido BFS
+     * @return 
+     * int: retorna la cantidad de islas por BFS
+     */
     public int CantidadIslasBFS(){
         boolean array_visitado []=new boolean[num_vertices];
         boolean array_marcado[]= new boolean[num_vertices];
@@ -150,9 +160,13 @@ public class GrafoMatriz {
         }
         return false;
     }
-    
+     /**
+     * CantidadIslasDFS 
+     * Hace un recorrido de los puentes entre los nodos del 
+     * grafo, para determinar a cantidad de islas que hay por un recorrido DFS
+     * 
+     */
     public void CantidadIslasDFS(JTextArea area){
-        
         boolean array_visitado []=new boolean[num_vertices];
         boolean array_marcado[]= new boolean[num_vertices];
         int cantidad_islas=1;
@@ -196,7 +210,13 @@ public class GrafoMatriz {
         area.append("La cantidad de islas por DFS es: " + cantidad_islas+"\n");
         
     }
- 
+    /**
+     * IndentificadorPuentes 
+     * itera sobre la lista de aristas en la matriz, 
+     * buscando las relaciones entre usuarios, y llama nuevamente a una funcion
+     * de recorrido por BFS para determinar que usuarios son puentes.
+     * @param area area de texto de la interfaz donde se imprime el resultado
+     */
     public void IdentificadorPuentes(JTextArea area){
         area.setText("");
         NodoArista arista = lista_aristas.getPfirst();
@@ -230,6 +250,17 @@ public class GrafoMatriz {
         area.setText("Hay "+contador+" Puentes:"+"\n");
         area.append(texto);
 }
+    /**
+     * CantidadIslasBFS2 
+     * es la misma funcion que el recorrido BFS pero se le
+     * pasan 2 parametros de posicion de aristas, los cuales indicaran, que 
+     * puente no recorrer, y si al no recorrer dicho puente se forma una isla de 
+     * mas, quiere decir que dichas relacion es un puente.
+     * @param pos1 primera posicion de la relacion
+     * @param pos2 segunda posicion de la relacion
+     * @return 
+     * int: retorna un entero con la cantidad de islas
+     */
      public int CantidadIslasBFS2(int pos1, int pos2){
         boolean array_visitado []=new boolean[num_vertices];
         boolean array_marcado[]= new boolean[num_vertices];
@@ -284,7 +315,13 @@ public class GrafoMatriz {
     }
     
     
-    
+    /**
+     * EliminarNodo 
+     * utiliza un id para iterar sobre las listas de usuarios y 
+     * relaciones, buscando que exista dicho usuario e eliminando su informacion
+     * y sus todas sus relaciones con los demas ususarios
+     * @param id un numero de id introducido por el susuario para eliminar
+     */
  public void eliminarNodo(int id){
      if (lista_usuarios.estaVacia()) {
          JOptionPane.showMessageDialog(null, "No se puede eliminar ya que el grafo ya se encuentra vacío ");
@@ -302,9 +339,11 @@ public class GrafoMatriz {
                     lista_usuarios.setPfirst(aux);
                     lista_usuarios.setSize(lista_usuarios.getSize()-1);
                     eliminado=true;
-                }else{
+                }
+                else{
                     if (aux == null) {
                         anterior.setSiguiente(null);
+                        lista_usuarios.setPlast(anterior);
                         lista_usuarios.setSize(lista_usuarios.getSize()-1);
                         eliminado=true;
                     }else{
@@ -315,7 +354,7 @@ public class GrafoMatriz {
                 }
             }
             elimusuario = elimusuario.getSiguiente();
-            if (eliminado==true) {
+            if (eliminado==true & elimusuario!=null) {
                 if (lista_usuarios.getSize()!=0) {
                     elimusuario.setPosicion(elimusuario.getPosicion()-1);
                 }
@@ -348,6 +387,7 @@ public class GrafoMatriz {
                 }else{
                     if (aux == null) {
                         ant.setSiguiente(null);
+                        lista_relaciones.setPlast(ant);
                         nodoelim +=1;
                     }else{
                     ant.setSiguiente(aux);
@@ -382,7 +422,9 @@ public class GrafoMatriz {
             JOptionPane.showMessageDialog(null, "eliminado exitosamente");
         }
     }
- 
+ /**
+  * 
+  */
     public void mostrarGrafo(){
         System.setProperty("org.graphstream.ui", "swing");
         Graph graph = new SingleGraph("Grafo");

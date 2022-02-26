@@ -6,14 +6,20 @@
 package proyecto.pkg1.edd.grupo8.ass;
 
 /**
- *
+ *Clase NodoArista
+ * crea el nodo de una arista
  * @author gabriel
  */
 public class NodoArista {
     private int inicio;
     private int fin;
     private NodoArista siguiente;
-
+/**
+ * NodoArista
+ * constructor de la clase con 2 parametros
+ * @param inicio primera posicion
+ * @param fin segunda posicion
+ */
     public NodoArista(int inicio, int fin) {
         this.inicio = inicio;
         this.fin = fin;

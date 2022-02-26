@@ -159,7 +159,7 @@ public class VentanaGrafo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (grafo != null) {
+        if (grafo != null && !grafo.getLista_usuarios().estaVacia()) {
             pantallaGrafo.setText("La cantidad de islas por BFS es: "+grafo.CantidadIslasBFS()+"\n");
         }else{
             pantallaGrafo.setText("No hay Islas existentes");
@@ -168,7 +168,7 @@ public class VentanaGrafo extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void mostrarIslasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarIslasActionPerformed
-        if (grafo != null) {
+        if (grafo != null && !grafo.getLista_usuarios().estaVacia()) {
             pantallaGrafo.setText("");
             grafo.CantidadIslasDFS(pantallaGrafo);
         }else{
@@ -190,7 +190,11 @@ public class VentanaGrafo extends javax.swing.JFrame {
     }//GEN-LAST:event_mostrarPuentesActionPerformed
 
     private void mostrarGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarGrafoActionPerformed
-        grafo.mostrarGrafo();
+        if (grafo != null && !grafo.getLista_usuarios().estaVacia()) {
+            grafo.mostrarGrafo();
+        }else{
+            pantallaGrafo.setText("No hay usuarios en la base de datos");
+        }
     }//GEN-LAST:event_mostrarGrafoActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed

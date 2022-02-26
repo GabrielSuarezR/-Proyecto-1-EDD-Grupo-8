@@ -6,7 +6,8 @@
 package proyecto.pkg1.edd.grupo8.ass;
 
 /**
- *
+ *Clase NodoRelaciones
+ * crea el nodo de una relacion
  * @author gabriel
  */
 public class NodoRelaciones {
@@ -14,7 +15,13 @@ public class NodoRelaciones {
     private int fin;
     private int tiempo;
     private NodoRelaciones siguiente;
-
+/**
+ * NodoRelaciones
+ * constructor de la clase con 3 parametros
+ * @param inicio primer id de la realcion
+ * @param fin segundo id de la relacion
+ * @param tiempo tiempo de la relacion
+ */
     public NodoRelaciones(int inicio, int fin, int tiempo) {
         this.inicio = inicio;
         this.fin = fin;

@@ -6,7 +6,8 @@
 package proyecto.pkg1.edd.grupo8.ass;
 
 /**
- *
+ *Clase NodoUsuarios
+ * crea el nodo de un usuario
  * @author gabriel
  */
 public class NodoUsuario {
@@ -14,7 +15,13 @@ public class NodoUsuario {
     private String nombreDeUsuario;
     private int posicion;
     private NodoUsuario siguiente;
-
+/**
+ * NodoUsuario
+ * constructor de la clase con 3 parametros
+ * @param ID id del usuario
+ * @param nombreDeUsuario nombre del usuario
+ * @param posicion posicion del usuario
+ */
     public NodoUsuario(int ID, String nombreDeUsuario, int posicion) {
         this.ID = ID;
         this.nombreDeUsuario = nombreDeUsuario;

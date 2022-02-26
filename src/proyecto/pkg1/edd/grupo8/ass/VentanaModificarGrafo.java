@@ -309,11 +309,13 @@ public class VentanaModificarGrafo extends javax.swing.JFrame {
             posicion +=1; 
             NodoUsuario nodo = new NodoUsuario(Integer.parseInt(ID.getText()),nom,posicion);
             grafo.getLista_usuarios().agregarAlFinal(nodo);
+            grafo.getLista_usuarios().ImprimirLista_2();
             int pos= grafo.getLista_usuarios().BuscarPosicion(Integer.parseInt(ID.getText()));
             int pos2= grafo.getLista_usuarios().BuscarPosicion(Integer.parseInt(ID2.getText()));
             NodoRelaciones nodor = new NodoRelaciones(Integer.parseInt(ID.getText()), Integer.parseInt(ID2.getText()), Integer.parseInt(tiempo.getText()));
             NodoArista nodoa = new NodoArista(pos, pos2);
             grafo.getLista_relaciones().agregarAlFinal(nodor);
+            grafo.getLista_relaciones().ImprimirLista_2();
             grafo.getLista_aristas().agregarAlFinal(nodoa);
             grafo=txt.cargarMatrizGrafo(grafo.getLista_usuarios(),grafo.getLista_relaciones(),grafo.getLista_aristas());
             }else{

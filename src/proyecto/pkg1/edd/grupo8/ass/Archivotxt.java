@@ -16,7 +16,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
 /**
- *
+ *Clase Archivotxt
+ * abre y lee el archivo de texto indicdo por el ususario, para luego cargar la 
+ * informacion en el grafo
  * @author gabriel
  */
 
@@ -25,6 +27,12 @@ public class Archivotxt {
     ListaUsuarios lista_usuarios= new ListaUsuarios();
     ListaRelaciones lista_relaciones= new ListaRelaciones();
     ListaAristas aristas = new ListaAristas();
+    /**
+     * abrirArchivo
+     * abre el archivo y convierte su contenido en un string de texto
+     * @return 
+     * String: el texto del archivo como string
+     */
      public String abrirArchivo(){
         String aux="";   
         String texto="";
@@ -68,7 +76,16 @@ public class Archivotxt {
         return texto;
         
         }  
-
+/**
+ * lectorString
+ * agarra el string que contiene la informacion del archivo de texto, y va 
+ * iterando linea por linea, definiendo valores y cargando las listas de info
+ * @param txt string del archivo de texto
+ * @param lista_usuarios la lista de usuarios
+ * @param lista_relaciones la lista de relaciones
+ * @param aristas la lista de aristas
+ * 
+ */
     public void lectorString(String txt, ListaUsuarios lista_usuarios,ListaRelaciones lista_relaciones,ListaAristas aristas){
         try {
         if (!"".equals(txt) && !txt.isEmpty()){
@@ -114,6 +131,17 @@ public class Archivotxt {
         }
          
     }
+    /**
+     * cargarMatrizGrafo
+     * con las parametros de lista que se le pasan se carga la matriz del grafo,
+     * y se guarda toda la información de los usuarios y relaciones dentro del 
+     * mismo
+     * @param lista_usuarios lista de usuarios
+     * @param lista_relaciones lista de relaciones
+     * @param aristas lista de aristas
+     * @return 
+     * GrafoMatriz: retorna el grafo 
+     */
     public GrafoMatriz cargarMatrizGrafo(ListaUsuarios lista_usuarios,ListaRelaciones lista_relaciones, ListaAristas aristas){
         GrafoMatriz grafo= new GrafoMatriz();
         grafo.setNum_vertices(lista_usuarios.getSize());
@@ -135,6 +163,12 @@ public class Archivotxt {
        grafo.ImprimirGrafo();
         return grafo;
     }
+    /**
+     * guardarArchivo
+     * Agarra la información escrita en un area de texto de la
+     * interfaz y la guarda dentro de una archivo de texto seleccionado
+     * @param area area de texto donde esta la informacion a guardar
+     */
     public void guardarArchivo(JTextArea area){
         try
         {
@@ -142,6 +176,7 @@ public class Archivotxt {
          JFileChooser file=new JFileChooser();
          file.showSaveDialog(null);
          File guarda =file.getSelectedFile();
+            if (guarda!=null) {
          nombre = guarda.getName();
          String [] identificador = nombre.split("\\.(?=[^\\.]+$)");
          if (identificador.length == 1){
@@ -163,14 +198,15 @@ public class Archivotxt {
             
          
          }
-         
+            }
         }
-         catch(IOException ex)
+         catch(Exception e)
          {
           JOptionPane.showMessageDialog(null,
                "Su archivo no se ha guardado",
                   "Advertencia",JOptionPane.WARNING_MESSAGE);
          }
         
+       
     }
 }
