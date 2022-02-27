@@ -97,7 +97,7 @@ public class Lista {
     }
      /**
      * Validar_Usuario
-     * valida que no puedan haber dos usuarios iguales
+     * ayuda a validar que no puedan haber dos usuarios con el mismo nombre
      * @param usuario nombre del usuario
      * @return 
      * boolean: retorna true o false si el usuario existe

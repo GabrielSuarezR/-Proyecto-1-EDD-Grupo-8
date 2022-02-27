@@ -225,7 +225,7 @@ public class GrafoMatriz {
     }
      /**
      * Vertices_por_visitar
-     * descripcion
+     * Indica si algún vértice aún no ha sido visitado en el recorrido
      * @param array_visitado
      * @return 
      * boolean true:
@@ -407,7 +407,7 @@ public class GrafoMatriz {
      * EliminarNodo 
      * utiliza un id para iterar sobre las listas de usuarios y 
      * relaciones, buscando que exista dicho usuario e eliminando su informacion
-     * y sus todas sus relaciones con los demas ususarios
+     * y sus todas sus relaciones con los demas usuarios
      * @param id un numero de id introducido por el susuario para eliminar
      * @return 
      */
@@ -513,7 +513,7 @@ public class GrafoMatriz {
     }
     /**
      * mostrarGrafo 
-     * muestra una representacion grafica del grafo
+     * muestra una representacion grafica del grafo con la librería graphstream
      * @return 
      */
     public void mostrarGrafo(){

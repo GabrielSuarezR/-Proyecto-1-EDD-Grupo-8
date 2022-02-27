@@ -70,7 +70,7 @@ public class NodoGeneral {
     
     /**
      * getInicio
-     * obtiene el nodo donde empieza una relacion
+     * obtiene la posicion del usuario donde empieza una relacion
      * @return 
      * int inicio:nodo donde empieza una relacion
      */
@@ -79,7 +79,7 @@ public class NodoGeneral {
     }
     /**
      * setInicio
-     * establece el nodo donde empieza una relacion
+     *  establece la posicion del usuario donde empieza una relacion
      * @return 
      */
     public void setInicio(int inicio) {
@@ -87,7 +87,7 @@ public class NodoGeneral {
     }
     /**
      * getFin
-     * obtiene el nodo donde termina una relacion
+     * obtiene la posicion del usuario donde finaliza una relación
      * @return 
      * int fin: nodo donde termina una relacion
      */
@@ -96,7 +96,7 @@ public class NodoGeneral {
     }
     /**
      * setFin
-     * establece el nodo donde termina una relacion
+     * establace la posicion del usuario donde finaliza una relación
      * @param fin nodo donde termina una relacion
      * @return 
      * int fin: nodo donde termina una relacion
@@ -197,7 +197,7 @@ public class NodoGeneral {
     }
     /**
      * getPosicion
-     * retorna la posicion del nodo en la pila o la cola
+     * retorna la posicion del nodo en la lista de usuarios
      * @return
      * int posicion: posicion del nodo en la pila o la cola
      */
@@ -206,7 +206,7 @@ public class NodoGeneral {
     }
     /**
      * setPosicion
-     * establece la posicion del nodo en la pila o la cola
+     * establece la posicion del nodo en la lista de usuarios
      * @param posicion posicion del nodo en la pila o la cola
      * @return
      */

@@ -106,7 +106,7 @@ public class Cola<T> {
    }
    /**
      * Encolar
-     * (descripcion)
+     * Encola elemento a la cola
      * @param vertice
      * @return 
      */
@@ -125,7 +125,7 @@ public class Cola<T> {
    }
    /**
      * Desencolar
-     * (descripcion)
+     * Desencola elemento de la cola 
      * @return 
      */
    public void Desencolar(){

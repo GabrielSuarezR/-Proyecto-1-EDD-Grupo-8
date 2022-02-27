@@ -71,7 +71,7 @@ public class Pila<T> {
     }
     /**
      * Apilar
-     * apila los elementos de la pila 
+     * apila elemento en la pila 
      * @param vertice elemento de la pila
      * @return 
      */
@@ -84,7 +84,7 @@ public class Pila<T> {
     }
      /**
      * Desapilar
-     * desapila los elementos de la pila 
+     * desapila elemento de la pila 
      * @return 
      */
     public void Desapilar(){

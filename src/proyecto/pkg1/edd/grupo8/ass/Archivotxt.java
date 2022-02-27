@@ -17,7 +17,7 @@ import javax.swing.JTextArea;
 
 /**
  *Clase Archivotxt
- * abre y lee el archivo de texto indicdo por el ususario, para luego cargar la 
+ * abre y lee el archivo de texto indicado por el usuario, para luego cargar la 
  * informacion en el grafo
  * @author gabriel
  */
@@ -137,7 +137,7 @@ public class Archivotxt {
      * cargarMatrizGrafo
      * con las parametros de lista que se le pasan se carga la matriz del grafo,
      * y se guarda toda la información de los usuarios y relaciones dentro del 
-     * mismo
+     * mismo usando las listas
      * @param lista_usuarios lista de usuarios
      * @param lista_relaciones lista de relaciones
      * @param aristas lista de aristas
