@@ -24,7 +24,7 @@ public class VentanaModificarGrafo extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         if (grafo!=null) {
             grafo.getLista_usuarios().ImprimirLista(Usuarios);
-        grafo.getLista_relaciones().ImprimirLista(Usuarios);
+            grafo.getLista_relaciones().ImprimirListaRelaciones(Usuarios);
         }
     }
 
@@ -254,11 +254,11 @@ public class VentanaModificarGrafo extends javax.swing.JFrame {
         jTextArea1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
         jTextArea1.setForeground(new java.awt.Color(204, 204, 204));
         jTextArea1.setRows(5);
-        jTextArea1.setText("Para AGREGAR o ELIMINAR un usuario, solo\nllene una de las dos áreas.");
+        jTextArea1.setText("1. Para AGREGAR o ELIMINAR un usuario, solo\nllene una de las dos áreas. \n2. Para añadir al primer usuario solo llene \"@\" y  \"ID\"");
         jTextArea1.setAutoscrolls(false);
         jScrollPane1.setViewportView(jTextArea1);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 290, 50));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 300, 60));
 
         jLabel8.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(51, 51, 51));
@@ -327,13 +327,13 @@ public class VentanaModificarGrafo extends javax.swing.JFrame {
             grafo.getLista_aristas().agregarAlFinal(nodoa);
             grafo=txt.cargarMatrizGrafo(grafo.getLista_usuarios(),grafo.getLista_relaciones(),grafo.getLista_aristas());
             }else{
-               ListaUsuarios lista_usuarios = new ListaUsuarios();
+               Lista lista_usuarios = new Lista();
             NodoGeneral nodo = new NodoGeneral(Integer.parseInt(ID.getText()),nom,0);
             lista_usuarios.agregarAlFinal(nodo);
-            ListaRelaciones lista_relaciones = new ListaRelaciones();
+            Lista lista_relaciones = new Lista();
             NodoGeneral nodor = new NodoGeneral(Integer.parseInt(ID.getText()), Integer.parseInt(ID.getText()),0);
             lista_relaciones.agregarAlFinal(nodor);
-            ListaAristas lista_aristas = new ListaAristas();
+            Lista lista_aristas = new Lista();
             NodoGeneral nodoa = new NodoGeneral(0, 0);
             lista_aristas.agregarAlFinal(nodoa);
             grafo=txt.cargarMatrizGrafo(lista_usuarios,lista_relaciones,lista_aristas);
@@ -342,13 +342,13 @@ public class VentanaModificarGrafo extends javax.swing.JFrame {
             }   
         }
         if (grafo==null) {
-            ListaUsuarios lista_usuarios = new ListaUsuarios();
+            Lista lista_usuarios = new Lista();
             NodoGeneral nodo = new NodoGeneral(Integer.parseInt(ID.getText()),nom,0);
             lista_usuarios.agregarAlFinal(nodo);
-            ListaRelaciones lista_relaciones = new ListaRelaciones();
+            Lista lista_relaciones = new Lista();
             NodoGeneral nodor = new NodoGeneral(Integer.parseInt(ID.getText()), Integer.parseInt(ID.getText()),0);
             lista_relaciones.agregarAlFinal(nodor);
-            ListaAristas lista_aristas = new ListaAristas();
+            Lista lista_aristas = new Lista();
             NodoGeneral nodoa = new NodoGeneral(0, 0);
             lista_aristas.agregarAlFinal(nodoa);
             grafo=txt.cargarMatrizGrafo(lista_usuarios,lista_relaciones,lista_aristas);
@@ -361,7 +361,7 @@ public class VentanaModificarGrafo extends javax.swing.JFrame {
         tiempo.setText("");
         Usuarios.setText("");
         grafo.getLista_usuarios().ImprimirLista(Usuarios);
-        grafo.getLista_relaciones().ImprimirLista(Usuarios);
+        grafo.getLista_relaciones().ImprimirListaRelaciones(Usuarios);
         JOptionPane.showMessageDialog(null, "Usuario agregado con éxito");
     }//GEN-LAST:event_botonAgregarActionPerformed
 
@@ -394,7 +394,7 @@ public class VentanaModificarGrafo extends javax.swing.JFrame {
         Usuarios.setText("");
         IDelim.setText("");
         grafo.getLista_usuarios().ImprimirLista(Usuarios);
-        grafo.getLista_relaciones().ImprimirLista(Usuarios);
+        grafo.getLista_relaciones().ImprimirListaRelaciones(Usuarios);
     }//GEN-LAST:event_botonEliminarActionPerformed
 
     /**

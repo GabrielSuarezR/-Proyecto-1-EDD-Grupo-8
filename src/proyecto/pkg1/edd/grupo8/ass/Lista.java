@@ -13,7 +13,7 @@ import javax.swing.JTextArea;
  * crea la lista de usuarios
  * @author johnd
  */
-public class ListaUsuarios {
+public class Lista {
     private NodoGeneral pfirst;
     private NodoGeneral plast;
     private int size;
@@ -21,7 +21,7 @@ public class ListaUsuarios {
  * ListaUsuarios
  * constructor de la clase
  */
-    public ListaUsuarios() {
+    public Lista() {
         this.pfirst = null;
         this.plast = null;
         this.size = 0;
@@ -134,6 +134,15 @@ public class ListaUsuarios {
         }
     }
     
+    public void ImprimirListaRelaciones(JTextArea texto){
+        texto.append("Relaciones"+"\n");
+        NodoGeneral aux = pfirst;
+        while (aux!=null) {
+            texto.append(aux.getInicio()+","+aux.getFin()+","+aux.getTiempo()+"\n");
+            aux = aux.getSiguiente();
+            
+        }
+    }
 
     public NodoGeneral getPfirst() {
         return pfirst;
@@ -158,6 +167,8 @@ public class ListaUsuarios {
     public void setSize(int size) {
         this.size = size;
     }
+    
+
    
     
     

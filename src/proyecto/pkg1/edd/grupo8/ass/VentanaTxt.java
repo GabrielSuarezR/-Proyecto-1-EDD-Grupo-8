@@ -32,7 +32,7 @@ public class VentanaTxt extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         if (grafo!=null) {
             grafo.getLista_usuarios().ImprimirLista(pantallaTxt);
-        grafo.getLista_relaciones().ImprimirLista(pantallaTxt);
+        grafo.getLista_relaciones().ImprimirListaRelaciones(pantallaTxt);
         }
     }
 
@@ -124,9 +124,9 @@ public class VentanaTxt extends javax.swing.JFrame {
         grafo.getLista_usuarios().vaciar();
         grafo.getLista_relaciones().vaciar();
             }
-        ListaUsuarios listau = new ListaUsuarios();
-        ListaRelaciones listar = new ListaRelaciones();
-        ListaAristas listaa = new ListaAristas();
+        Lista listau = new Lista();
+        Lista listar = new Lista();
+        Lista listaa = new Lista();
         grafo= txt.cargarMatrizGrafo(listau, listar,listaa);
         pantallaTxt.setText("");
         VentanaTxt.Archtxt = txt.abrirArchivo();
