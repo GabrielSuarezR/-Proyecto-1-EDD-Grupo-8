@@ -293,6 +293,11 @@ public class VentanaModificarGrafo extends javax.swing.JFrame {
      */
     private void botonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarActionPerformed
 
+        if (grafo==null) {
+            JOptionPane.showMessageDialog(null, "Inicialice un archivo de texto para agregar personas al grafo");
+            return;
+        }
+        
         boolean flag_usuario= func.Validar_Nombre_Usuario(nombre.getText());
         if (flag_usuario==false) {
             return;
@@ -416,6 +421,12 @@ public class VentanaModificarGrafo extends javax.swing.JFrame {
      * @return 
      */
     private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
+        
+        if (grafo==null) {
+            JOptionPane.showMessageDialog(null, "Inicialice un archivo de texto para agregar personas al grafo");
+            return;
+        }
+        
         if (grafo.getLista_usuarios().estaVacia()) {
             JOptionPane.showMessageDialog(null, "El grafo se encuentra vacío, no se puede eliminar");
             return;

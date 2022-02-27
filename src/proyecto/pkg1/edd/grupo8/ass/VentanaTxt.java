@@ -122,7 +122,7 @@ public class VentanaTxt extends javax.swing.JFrame {
     private void SeleccionarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeleccionarArchivoActionPerformed
         int respuesta = JOptionPane.showConfirmDialog(null, "Desea abrir un nuevo archivo?", "Verificacion", ConfirmationCallback.YES_NO_CANCEL_OPTION);
         if (respuesta ==0) {
-        Archivotxt txt = new Archivotxt();
+            Archivotxt txt = new Archivotxt();
             if (grafo!=null) {
         grafo.getLista_aristas().vaciar();
         grafo.getLista_usuarios().vaciar();
