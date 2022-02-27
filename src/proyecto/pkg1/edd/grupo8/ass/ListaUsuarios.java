@@ -14,8 +14,8 @@ import javax.swing.JTextArea;
  * @author johnd
  */
 public class ListaUsuarios {
-    private NodoUsuario pfirst;
-    private NodoUsuario plast;
+    private NodoGeneral pfirst;
+    private NodoGeneral plast;
     private int size;
 /**
  * ListaUsuarios
@@ -42,7 +42,7 @@ public class ListaUsuarios {
      * dependiendo del estado de la lista
      * @param nodo el nodo que se quiere agregar
      */
-    public void agregarAlFinal(NodoUsuario nodo){
+    public void agregarAlFinal(NodoGeneral nodo){
         if (estaVacia()) {
             setPfirst(nodo);
             setPlast(nodo);
@@ -72,15 +72,15 @@ public class ListaUsuarios {
      * int: retorna la posicion del nuevo usuario en la lista
      */
     public int BuscarPosicion(int id){
-        NodoUsuario aux= getPfirst();
+        NodoGeneral aux= getPfirst();
         while ( aux.getID()!=id ) { 
             aux= aux.getSiguiente();
         }
         return aux.getPosicion();
     }
     
-    public NodoUsuario BuscarNombreUsuario(int pos){
-        NodoUsuario aux= getPfirst();
+    public NodoGeneral BuscarNombreUsuario(int pos){
+        NodoGeneral aux= getPfirst();
         while ( aux.getPosicion()!=pos ) { 
             aux= aux.getSiguiente();
         }
@@ -88,7 +88,7 @@ public class ListaUsuarios {
     }
     
     public boolean Validar_Usuario(String usuario){
-        NodoUsuario aux= getPfirst();
+        NodoGeneral aux= getPfirst();
         while (aux!=null) {            
             if (aux.getNombreDeUsuario().equals(usuario)) {
                 return true;
@@ -106,7 +106,7 @@ public class ListaUsuarios {
      * boolean: retorna true o false si existe el id
      */
     public boolean Buscar_ID(int id){
-        NodoUsuario aux= getPfirst();
+        NodoGeneral aux= getPfirst();
         while ( aux.getID()!=id ) {            
             aux= aux.getSiguiente();
             if (aux==null) {
@@ -126,7 +126,7 @@ public class ListaUsuarios {
      */
     public void ImprimirLista(JTextArea texto){
         texto.append("Usuarios"+"\n");
-        NodoUsuario aux = pfirst;
+        NodoGeneral aux = pfirst;
         while (aux!=null) {
             texto.append(aux.getID()+","+aux.getNombreDeUsuario()+"\n");
             aux = aux.getSiguiente();
@@ -134,56 +134,35 @@ public class ListaUsuarios {
         }
     }
     
-    
-    public void ImprimirLista_2(){
-        NodoUsuario aux = pfirst;
-        while (aux!=null) {
-            System.out.println(aux.getID());
-            aux = aux.getSiguiente();
-            
-        }
-    }
-    /**
-     * @return the pfirst
-     */
-    public NodoUsuario getPfirst() {
+
+    public NodoGeneral getPfirst() {
         return pfirst;
     }
 
-    /**
-     * @param pfirst the pfirst to set
-     */
-    public void setPfirst(NodoUsuario pfirst) {
+    public void setPfirst(NodoGeneral pfirst) {
         this.pfirst = pfirst;
     }
 
-    /**
-     * @return the plast
-     */
-    public NodoUsuario getPlast() {
+    public NodoGeneral getPlast() {
         return plast;
     }
 
-    /**
-     * @param plast the plast to set
-     */
-    public void setPlast(NodoUsuario plast) {
+    public void setPlast(NodoGeneral plast) {
         this.plast = plast;
     }
 
-    /**
-     * @return the size
-     */
     public int getSize() {
         return size;
     }
 
-    /**
-     * @param size the size to set
-     */
     public void setSize(int size) {
         this.size = size;
     }
+   
+    
+    
+
+    
     
     
 }

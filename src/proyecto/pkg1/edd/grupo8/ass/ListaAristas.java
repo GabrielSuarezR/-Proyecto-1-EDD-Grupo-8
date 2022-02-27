@@ -11,8 +11,8 @@ package proyecto.pkg1.edd.grupo8.ass;
  * @author gabriel
  */
 public class ListaAristas {
-    private NodoArista pfirst;
-    private NodoArista plast;
+    private NodoGeneral pfirst;
+    private NodoGeneral plast;
     private int size;
 /**
  * ListaAristas 
@@ -28,14 +28,14 @@ public class ListaAristas {
  * @return 
  * NodoArista: retorna el primer nodo de la lista
  */
-    public NodoArista getPfirst() {
+    public NodoGeneral getPfirst() {
         return pfirst;
     }
 /**
  * 
  * @param pfirst 
  */
-    public void setPfirst(NodoArista pfirst) {
+    public void setPfirst(NodoGeneral pfirst) {
         this.pfirst = pfirst;
     }
 /**
@@ -43,14 +43,14 @@ public class ListaAristas {
  * @return 
  * NodoArista: retorna el ultimo nodo de la arista
  */
-    public NodoArista getPlast() {
+    public NodoGeneral getPlast() {
         return plast;
     }
 /**
  * 
  * @param plast 
  */
-    public void setPlast(NodoArista plast) {
+    public void setPlast(NodoGeneral plast) {
         this.plast = plast;
     }
 /**
@@ -85,7 +85,7 @@ public class ListaAristas {
      * @param nodo el nodo que se quiere agregar
      * @return 
      */
-    public void agregarAlFinal(NodoArista nodo){
+    public void agregarAlFinal(NodoGeneral nodo){
         if (estaVacia()) {
             setPfirst(nodo);
             setPlast(nodo);

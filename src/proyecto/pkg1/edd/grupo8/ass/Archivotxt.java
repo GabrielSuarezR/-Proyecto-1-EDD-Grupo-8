@@ -100,7 +100,7 @@ public class Archivotxt {
                             if (divisor.equals("Usuarios")){
                                 String [] SplitUsuario = txtSplit[i].split(",");
                                 SplitUsuario[1]=SplitUsuario[1].replace(" ", "");
-                                NodoUsuario usuario = new NodoUsuario(Integer.parseInt(SplitUsuario[0]),SplitUsuario[1], numero_posicion++);
+                                NodoGeneral usuario = new NodoGeneral(Integer.parseInt(SplitUsuario[0]),SplitUsuario[1], numero_posicion++);
                                 lista_usuarios.agregarAlFinal(usuario);
                                 error1 = "1";
                                 error0 = "0";
@@ -109,9 +109,9 @@ public class Archivotxt {
                                 String [] RelacionesSplit = txtSplit[i].split(",");
                                 RelacionesSplit[1]= RelacionesSplit[1].replace(" ", "");
                                 RelacionesSplit[2]= RelacionesSplit[2].replace(" ", "");
-                                NodoRelaciones relacion = new NodoRelaciones(Integer.parseInt(RelacionesSplit[0]),Integer.parseInt(RelacionesSplit[1]), Integer.parseInt(RelacionesSplit[2])); 
+                                NodoGeneral relacion = new NodoGeneral(Integer.parseInt(RelacionesSplit[0]),Integer.parseInt(RelacionesSplit[1]), Integer.parseInt(RelacionesSplit[2])); 
                                 lista_relaciones.agregarAlFinal(relacion);
-                                NodoArista nodoa = new NodoArista(lista_usuarios.BuscarPosicion(Integer.parseInt(RelacionesSplit[0])),lista_usuarios.BuscarPosicion(Integer.parseInt(RelacionesSplit[1])));
+                                NodoGeneral nodoa = new NodoGeneral(lista_usuarios.BuscarPosicion(Integer.parseInt(RelacionesSplit[0])),lista_usuarios.BuscarPosicion(Integer.parseInt(RelacionesSplit[1])));
                                 aristas.agregarAlFinal(nodoa);
                                 error1 = "2";
                                 error0 = "0";
@@ -127,7 +127,9 @@ public class Archivotxt {
                     int comprobante1 = Integer.parseInt(error1);
         }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "el archivo de texto no es valido");
+            JOptionPane.showMessageDialog(null, "El archivo de texto no es valido");
+            lista_usuarios.vaciar();
+            lista_relaciones.vaciar();
         }
          
     }
@@ -150,17 +152,15 @@ public class Archivotxt {
         grafo.setLista_usuarios(lista_usuarios);
         grafo.setLista_relaciones(lista_relaciones);
         grafo.setLista_aristas(aristas);
-      NodoRelaciones aux= lista_relaciones.getPfirst();
+      NodoGeneral aux= lista_relaciones.getPfirst();
         for (int i = 0; i < lista_relaciones.getSize(); i++) {
             int posicion_1=0;
             int posicion_2=0;
-            System.out.println(aux.getInicio());
             posicion_1= lista_usuarios.BuscarPosicion(aux.getInicio());
             posicion_2= lista_usuarios.BuscarPosicion(aux.getFin());
             grafo.agregar_arista(posicion_1, posicion_2, aux.getTiempo());
             aux=aux.getSiguiente();
         }
-       grafo.ImprimirGrafo();
         return grafo;
     }
     /**
@@ -185,7 +185,7 @@ public class Archivotxt {
                save.write(area.getText());
                save.close();
                JOptionPane.showMessageDialog(null,
-                    "El archivo se a guardado Exitosamente",
+                    "El archivo se ha guardado Exitosamente",
                         "Información",JOptionPane.INFORMATION_MESSAGE);
             }
                  }else if (guarda !=null){
@@ -193,7 +193,7 @@ public class Archivotxt {
             save.write(area.getText());
             save.close();
             JOptionPane.showMessageDialog(null,
-                 "El archivo se a guardado Exitosamente",
+                 "El archivo se ha guardado Exitosamente",
                      "Información",JOptionPane.INFORMATION_MESSAGE);
             
          

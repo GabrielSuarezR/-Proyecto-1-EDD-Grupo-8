@@ -288,7 +288,7 @@ public class VentanaModificarGrafo extends javax.swing.JFrame {
             return;
         }
         if (grafo!=null) {
-            if (!grafo.lista_usuarios.estaVacia()) {
+            if (!grafo.getLista_usuarios().estaVacia()) {
         if (grafo.getLista_usuarios().Buscar_ID(Integer.parseInt(ID.getText()))) {
             JOptionPane.showMessageDialog(null, "El ID del nuevo usuario ingresado no esta disponible");
             return;
@@ -314,29 +314,27 @@ public class VentanaModificarGrafo extends javax.swing.JFrame {
         Archivotxt txt = new Archivotxt();
         String nom = "@"+nombre.getText();
         if (grafo!=null ) {
-            if (!grafo.lista_usuarios.estaVacia()) {
+            if (!grafo.getLista_usuarios().estaVacia()) {
             int posicion = grafo.getLista_usuarios().getPlast().getPosicion();
             posicion +=1; 
-            NodoUsuario nodo = new NodoUsuario(Integer.parseInt(ID.getText()),nom,posicion);
+            NodoGeneral nodo = new NodoGeneral(Integer.parseInt(ID.getText()),nom,posicion);
             grafo.getLista_usuarios().agregarAlFinal(nodo);
-            grafo.getLista_usuarios().ImprimirLista_2();
             int pos= grafo.getLista_usuarios().BuscarPosicion(Integer.parseInt(ID.getText()));
             int pos2= grafo.getLista_usuarios().BuscarPosicion(Integer.parseInt(ID2.getText()));
-            NodoRelaciones nodor = new NodoRelaciones(Integer.parseInt(ID.getText()), Integer.parseInt(ID2.getText()), Integer.parseInt(tiempo.getText()));
-            NodoArista nodoa = new NodoArista(pos, pos2);
+            NodoGeneral nodor = new NodoGeneral(Integer.parseInt(ID.getText()), Integer.parseInt(ID2.getText()), Integer.parseInt(tiempo.getText()));
+            NodoGeneral nodoa = new NodoGeneral(pos, pos2);
             grafo.getLista_relaciones().agregarAlFinal(nodor);
-            grafo.getLista_relaciones().ImprimirLista_2();
             grafo.getLista_aristas().agregarAlFinal(nodoa);
             grafo=txt.cargarMatrizGrafo(grafo.getLista_usuarios(),grafo.getLista_relaciones(),grafo.getLista_aristas());
             }else{
                ListaUsuarios lista_usuarios = new ListaUsuarios();
-            NodoUsuario nodo = new NodoUsuario(Integer.parseInt(ID.getText()),nom,0);
+            NodoGeneral nodo = new NodoGeneral(Integer.parseInt(ID.getText()),nom,0);
             lista_usuarios.agregarAlFinal(nodo);
             ListaRelaciones lista_relaciones = new ListaRelaciones();
-            NodoRelaciones nodor = new NodoRelaciones(Integer.parseInt(ID.getText()), Integer.parseInt(ID.getText()),0);
+            NodoGeneral nodor = new NodoGeneral(Integer.parseInt(ID.getText()), Integer.parseInt(ID.getText()),0);
             lista_relaciones.agregarAlFinal(nodor);
             ListaAristas lista_aristas = new ListaAristas();
-            NodoArista nodoa = new NodoArista(0, 0);
+            NodoGeneral nodoa = new NodoGeneral(0, 0);
             lista_aristas.agregarAlFinal(nodoa);
             grafo=txt.cargarMatrizGrafo(lista_usuarios,lista_relaciones,lista_aristas);
             grafo.getLista_relaciones().vaciar();
@@ -345,17 +343,17 @@ public class VentanaModificarGrafo extends javax.swing.JFrame {
         }
         if (grafo==null) {
             ListaUsuarios lista_usuarios = new ListaUsuarios();
-            NodoUsuario nodo = new NodoUsuario(Integer.parseInt(ID.getText()),nom,0);
+            NodoGeneral nodo = new NodoGeneral(Integer.parseInt(ID.getText()),nom,0);
             lista_usuarios.agregarAlFinal(nodo);
             ListaRelaciones lista_relaciones = new ListaRelaciones();
-            NodoRelaciones nodor = new NodoRelaciones(Integer.parseInt(ID.getText()), Integer.parseInt(ID.getText()),0);
+            NodoGeneral nodor = new NodoGeneral(Integer.parseInt(ID.getText()), Integer.parseInt(ID.getText()),0);
             lista_relaciones.agregarAlFinal(nodor);
             ListaAristas lista_aristas = new ListaAristas();
-            NodoArista nodoa = new NodoArista(0, 0);
+            NodoGeneral nodoa = new NodoGeneral(0, 0);
             lista_aristas.agregarAlFinal(nodoa);
             grafo=txt.cargarMatrizGrafo(lista_usuarios,lista_relaciones,lista_aristas);
-            grafo.lista_relaciones.vaciar();
-            grafo.lista_aristas.vaciar();
+            grafo.getLista_usuarios().vaciar();
+            grafo.getLista_aristas().vaciar();
         }
         nombre.setText("");
         ID.setText("");
@@ -381,7 +379,7 @@ public class VentanaModificarGrafo extends javax.swing.JFrame {
     }//GEN-LAST:event_ID2ActionPerformed
 
     private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
-        if (grafo.lista_usuarios.estaVacia()) {
+        if (grafo.getLista_usuarios().estaVacia()) {
             JOptionPane.showMessageDialog(null, "El grafo se encuentra vacío, no se puede eliminar");
             return;
         }

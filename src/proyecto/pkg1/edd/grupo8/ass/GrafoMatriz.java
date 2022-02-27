@@ -25,9 +25,9 @@ import org.graphstream.ui.view.Viewer;
 public class GrafoMatriz {
     private int num_vertices;
     private int [][] matriz;
-    ListaUsuarios lista_usuarios;
-    ListaRelaciones lista_relaciones;
-    ListaAristas lista_aristas;
+    private ListaUsuarios lista_usuarios;
+    private ListaRelaciones lista_relaciones;
+    private ListaAristas lista_aristas;
     
     /**
      * Constructor con 5 parametros
@@ -309,14 +309,14 @@ public class GrafoMatriz {
      */
     public void IdentificadorPuentes(JTextArea area){
         area.setText("");
-        NodoArista arista = lista_aristas.getPfirst();
+        NodoGeneral arista = lista_aristas.getPfirst();
         int contador = 0;
         for (int i = 0; i < lista_aristas.getSize(); i++) {
             int pos1 = arista.getInicio();
             int pos2 = arista.getFin();
             arista = arista.getSiguiente();
             if ((int) CantidadIslasBFS()[0]< CantidadIslasBFS2(pos1,pos2)) {
-                NodoUsuario persona = lista_usuarios.getPfirst();
+                NodoGeneral persona = lista_usuarios.getPfirst();
                  String persona1="";
                  String persona2="";
                  contador +=1;
@@ -415,14 +415,14 @@ public class GrafoMatriz {
          JOptionPane.showMessageDialog(null, "No se puede eliminar ya que el grafo ya se encuentra vacío ");
          return;
      }
-     NodoUsuario elimusuario = lista_usuarios.getPfirst();
-     NodoUsuario anterior = lista_usuarios.getPfirst();
+     NodoGeneral elimusuario = lista_usuarios.getPfirst();
+     NodoGeneral anterior = lista_usuarios.getPfirst();
      boolean eliminado = false;
      boolean encontrado = false;
         for (int i = 0; i < lista_usuarios.getSize(); i++) {
             if (elimusuario.getID() == id) {
                 encontrado = true;
-                NodoUsuario aux =elimusuario.getSiguiente();
+                NodoGeneral aux =elimusuario.getSiguiente();
                 if (i==0) {
                     lista_usuarios.setPfirst(aux);
                     lista_usuarios.setSize(lista_usuarios.getSize()-1);
@@ -456,8 +456,8 @@ public class GrafoMatriz {
                 anterior = anterior.getSiguiente();
             }
      }
-        NodoRelaciones elimrelacion = lista_relaciones.getPfirst();
-        NodoRelaciones ant = lista_relaciones.getPfirst();
+        NodoGeneral elimrelacion = lista_relaciones.getPfirst();
+        NodoGeneral ant = lista_relaciones.getPfirst();
         lista_aristas.setPfirst(null);
         lista_aristas.setPlast(null);
         lista_aristas.vaciar();
@@ -465,7 +465,7 @@ public class GrafoMatriz {
         for (int i = 0; i < lista_relaciones.getSize(); i++) {
             int si = 0;
           if (elimrelacion.getInicio() == id | elimrelacion.getFin() == id) {
-                NodoRelaciones aux =elimrelacion.getSiguiente();
+                NodoGeneral aux =elimrelacion.getSiguiente();
                 if (elimrelacion == lista_relaciones.getPfirst()) {
                     lista_relaciones.setPfirst(aux);
                     elimrelacion = lista_relaciones.getPfirst();
@@ -488,7 +488,7 @@ public class GrafoMatriz {
             if (si == 0) {
                 
             if (elimrelacion!=null) {
-                NodoRelaciones comp = lista_relaciones.getPfirst();
+                NodoGeneral comp = lista_relaciones.getPfirst();
             if (elimrelacion != comp) {
                 ant = ant.getSiguiente();
             }
@@ -498,16 +498,16 @@ public class GrafoMatriz {
             }
      }
         lista_relaciones.setSize(lista_relaciones.getSize()-nodoelim);
-        NodoRelaciones rela = lista_relaciones.getPfirst();
+        NodoGeneral rela = lista_relaciones.getPfirst();
         for (int i = 0; i < lista_relaciones.getSize(); i++) {
-         NodoArista arista = new NodoArista(lista_usuarios.BuscarPosicion(rela.getInicio()), lista_usuarios.BuscarPosicion(rela.getFin()));
+         NodoGeneral arista = new NodoGeneral(lista_usuarios.BuscarPosicion(rela.getInicio()), lista_usuarios.BuscarPosicion(rela.getFin()));
          lista_aristas.agregarAlFinal(arista);
          rela = rela.getSiguiente();
      }
         if (encontrado==false) {
               JOptionPane.showMessageDialog(null, "El ID indicado no existe");
      }else{
-            JOptionPane.showMessageDialog(null, "eliminado exitosamente");
+            JOptionPane.showMessageDialog(null, "Eliminado exitosamente");
         }
     }
     /**
@@ -519,8 +519,8 @@ public class GrafoMatriz {
         System.setProperty("org.graphstream.ui", "swing");
         Graph graph = new SingleGraph("Grafo");
         
-        NodoUsuario auxUsuario = lista_usuarios.getPfirst();
-        NodoRelaciones auxRelaciones = lista_relaciones.getPfirst();
+        NodoGeneral auxUsuario = lista_usuarios.getPfirst();
+        NodoGeneral auxRelaciones = lista_relaciones.getPfirst();
         
         for (int i = 0; i < lista_usuarios.getSize(); i++) {
             String usuarioId = Integer.toString(auxUsuario.getID());
@@ -528,7 +528,6 @@ public class GrafoMatriz {
             Node addNode = graph.addNode(usuarioId);
             addNode.setAttribute("ui.label", usuarioName);
             auxUsuario = auxUsuario.getSiguiente();
-            
 
         }
          
@@ -548,6 +547,7 @@ public class GrafoMatriz {
         
         
     }
+       
     }
 
         
