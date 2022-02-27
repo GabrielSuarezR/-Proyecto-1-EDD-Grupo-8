@@ -530,17 +530,22 @@ public class GrafoMatriz {
             auxUsuario = auxUsuario.getSiguiente();
 
         }
-         
-        for (int i = 0; i < lista_relaciones.getSize(); i++) {
+        try {
+            for (int i = 0; i < lista_relaciones.getSize(); i++) {
             String tiempo = Integer.toString(auxRelaciones.getTiempo());
             String usuario1 = Integer.toString(auxRelaciones.getInicio());
             String usuario2 = Integer.toString(auxRelaciones.getFin());
             Edge addEdge = graph.addEdge(tiempo+usuario1+usuario2,usuario1 ,usuario2 );
             addEdge.setAttribute("ui.label", tiempo);
             auxRelaciones = auxRelaciones.getSiguiente();
-
         }
         graph.setAttribute("ui.stylesheet", "graph { fill-color: orange; }");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "El grafo no es representable debido a la sobrescripción de una arista");
+            return;
+        }
+ 
+        
           
         Viewer viewer = graph.display();
         viewer.setCloseFramePolicy(Viewer.CloseFramePolicy.HIDE_ONLY);
