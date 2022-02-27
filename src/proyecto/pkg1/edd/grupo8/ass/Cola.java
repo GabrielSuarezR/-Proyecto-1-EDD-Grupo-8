@@ -11,8 +11,8 @@ package proyecto.pkg1.edd.grupo8.ass;
  * @author johnd
  */
 public class Cola<T> {
-   NodoGeneral pfirst;
-   NodoGeneral plast;
+   private NodoGeneral pfirst;
+   private NodoGeneral plast;
    int size;
     /**
      * Constructor con 3 parametros

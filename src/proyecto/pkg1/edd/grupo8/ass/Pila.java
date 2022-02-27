@@ -11,7 +11,7 @@ package proyecto.pkg1.edd.grupo8.ass;
  * @author johnd
  */
 public class Pila<T> {
-    NodoGeneral cima;
+    private NodoGeneral cima;
     int size;
     /**
      * Constructor con 2 parametros
