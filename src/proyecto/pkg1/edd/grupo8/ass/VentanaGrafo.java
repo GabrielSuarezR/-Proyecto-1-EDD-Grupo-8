@@ -8,13 +8,15 @@ package proyecto.pkg1.edd.grupo8.ass;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Clase VentanaGrafo
+ * Ventana en donde se muestran distintas funcionalidades en relacion al grafo
  * @author sebas
  */
 public class VentanaGrafo extends javax.swing.JFrame {
     public static GrafoMatriz grafo;
     /**
-     * Creates new form VentanaGrafo
+     * Constructor con 1 parametro
+     * @param grafo recibe el grafo 
      */
     public VentanaGrafo(GrafoMatriz grafo) {
         initComponents();
@@ -60,7 +62,7 @@ public class VentanaGrafo extends javax.swing.JFrame {
                 exitActionPerformed(evt);
             }
         });
-        jPanel1.add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 60, 30));
+        jPanel1.add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 60, 30));
 
         back.setBackground(new java.awt.Color(51, 51, 51));
         back.setForeground(new java.awt.Color(255, 255, 255));
