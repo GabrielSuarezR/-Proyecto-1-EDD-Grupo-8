@@ -30,13 +30,14 @@ public class Funciones {
      */
     public boolean Validar_Nombre_Usuario(String usuario){
         
-            if ((usuario.contains("@")) || (usuario.contains(",")) || (usuario.isBlank()) || (usuario.isEmpty()) ) {
+            if ((usuario.contains("@")) || (usuario.contains(",")) || (usuario.isBlank()) || (usuario.isEmpty())) {
                 JOptionPane.showMessageDialog(null, "El usuario no puede contener arrobas (@) ni comas (,) o estar vacío");
                 return false;
             }
             return true;
         
     }
+    
     /**
      * Validar_ID
      * verifica si el id del usuario introducido es valido

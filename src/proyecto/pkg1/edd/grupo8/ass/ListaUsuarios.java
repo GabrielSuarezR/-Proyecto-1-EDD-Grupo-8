@@ -86,6 +86,17 @@ public class ListaUsuarios {
         }
         return aux;
     }
+    
+    public boolean Validar_Usuario(String usuario){
+        NodoUsuario aux= getPfirst();
+        while (aux!=null) {            
+            if (aux.getNombreDeUsuario().equals(usuario)) {
+                return true;
+            }
+            aux= aux.getSiguiente();
+        }
+        return false;
+    }
     /**
      * Buscar_ID
      * recibe un id por parametro y busca que el id no sea un id ya ocupado

@@ -208,7 +208,7 @@ public class GrafoMatriz {
             for (int i = 0; i < array_visitado.length; i++) {
                 if (array_visitado[i]==false) {
                     cola.Encolar(i);
-                    recorrido = "\nIsla " + cantidad_islas + ": Usuarios ";
+                    recorrido = recorrido + "\nIsla " + cantidad_islas + ": Usuarios ";
                     break;
             }
             }
@@ -219,7 +219,7 @@ public class GrafoMatriz {
         
         }
         array_object[0] = cantidad_islas;
-        array_object[1] = recorrido + "\n" + "La cantidad de islas por DFS es: " + cantidad_islas+"\n";
+        array_object[1] = recorrido;
         return array_object;
     }
      /**
@@ -307,39 +307,39 @@ public class GrafoMatriz {
      * @param area area de texto de la interfaz donde se imprime el resultado
      * @return 
      */
-//    public void IdentificadorPuentes(JTextArea area){
-//        area.setText("");
-//        NodoArista arista = lista_aristas.getPfirst();
-//        int contador = 0;
-//        for (int i = 0; i < lista_aristas.getSize(); i++) {
-//            int pos1 = arista.getInicio();
-//            int pos2 = arista.getFin();
-//            arista = arista.getSiguiente();
-//            if (CantidadIslasBFS()[0]< CantidadIslasBFS2(pos1,pos2)) {
-//                NodoUsuario persona = lista_usuarios.getPfirst();
-//                 String persona1="";
-//                 String persona2="";
-//                 contador +=1;
-//                for (int j = 0; j < lista_usuarios.getSize(); j++) {
-//                    if (pos1==j) {
-//                        persona1 = persona.getNombreDeUsuario();
-//                    }
-//                    if (pos2==j) {
-//                        persona2 = persona.getNombreDeUsuario();
-//                        persona=persona.getSiguiente();
-//                    }else{
-//                    persona = persona.getSiguiente();
-//                }
-//                }
-//                area.append(persona1+"-----"+persona2+"\n");
-//           
-//            }
-//                
-//        }
-//        String texto = area.getText();
-//        area.setText("Hay "+contador+" Puentes:"+"\n");
-//        area.append(texto);
-//}
+    public void IdentificadorPuentes(JTextArea area){
+        area.setText("");
+        NodoArista arista = lista_aristas.getPfirst();
+        int contador = 0;
+        for (int i = 0; i < lista_aristas.getSize(); i++) {
+            int pos1 = arista.getInicio();
+            int pos2 = arista.getFin();
+            arista = arista.getSiguiente();
+            if ((int) CantidadIslasBFS()[0]< CantidadIslasBFS2(pos1,pos2)) {
+                NodoUsuario persona = lista_usuarios.getPfirst();
+                 String persona1="";
+                 String persona2="";
+                 contador +=1;
+                for (int j = 0; j < lista_usuarios.getSize(); j++) {
+                    if (pos1==j) {
+                        persona1 = persona.getNombreDeUsuario();
+                    }
+                    if (pos2==j) {
+                        persona2 = persona.getNombreDeUsuario();
+                        persona=persona.getSiguiente();
+                    }else{
+                    persona = persona.getSiguiente();
+                }
+                }
+                area.append(persona1+"-----"+persona2+"\n");
+           
+            }
+                
+        }
+        String texto = area.getText();
+        area.setText("Hay "+contador+" Puentes:"+"\n");
+        area.append(texto);
+}
     /**
      * CantidadIslasBFS2 
      * es la misma funcion que el recorrido BFS pero se le

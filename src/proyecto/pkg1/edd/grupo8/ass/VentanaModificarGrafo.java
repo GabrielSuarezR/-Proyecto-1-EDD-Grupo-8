@@ -277,6 +277,12 @@ public class VentanaModificarGrafo extends javax.swing.JFrame {
             return;
         }
         
+        flag_usuario= grafo.getLista_usuarios().Validar_Usuario("@" + nombre.getText());
+        if (flag_usuario==true) {
+            JOptionPane.showMessageDialog(null, "Ese nombre de usuario ya se encuentra registrado");
+            return;
+        }
+        
         boolean flag_id_1= func.Validar_ID(ID.getText());
         if (flag_id_1==false) {
             return;
@@ -358,7 +364,7 @@ public class VentanaModificarGrafo extends javax.swing.JFrame {
         Usuarios.setText("");
         grafo.getLista_usuarios().ImprimirLista(Usuarios);
         grafo.getLista_relaciones().ImprimirLista(Usuarios);
-        
+        JOptionPane.showMessageDialog(null, "Usuario agregado con éxito");
     }//GEN-LAST:event_botonAgregarActionPerformed
 
     private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed

@@ -28,6 +28,8 @@ public class NodoUsuario {
         this.posicion= posicion;
         this.siguiente=null;
     }
+    
+    
 
     public int getID() {
         return ID;
