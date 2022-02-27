@@ -541,7 +541,7 @@ public class GrafoMatriz {
         }
         graph.setAttribute("ui.stylesheet", "graph { fill-color: orange; }");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "El grafo no es representable debido a la sobrescripción de una arista");
+            JOptionPane.showMessageDialog(null, "El grafo no es representable debido a una arista sobrescrita, elimine uno de sus vértices para ver la representación del grafo");
             return;
         }
  
