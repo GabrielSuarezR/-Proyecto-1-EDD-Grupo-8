@@ -26,9 +26,9 @@ import org.graphstream.ui.view.Viewer;
 public class GrafoMatriz {
     private int num_vertices;
     private int [][] matriz;
-    private ListaUsuarios lista_usuarios;
-    private ListaRelaciones lista_relaciones;
-    private ListaAristas lista_aristas;
+    private Lista lista_usuarios;
+    private Lista lista_relaciones;
+    private Lista lista_aristas;
     
     /**
      * Constructor con 5 parametros
@@ -119,7 +119,7 @@ public class GrafoMatriz {
      * @return 
      * ListaUsuarios: lista de usuarios
      */
-    public ListaUsuarios getLista_usuarios() {
+    public Lista getLista_usuarios() {
         return lista_usuarios;
     }
     /**
@@ -128,7 +128,7 @@ public class GrafoMatriz {
      * @param lista_usuarios lista de usuarios
      * @return 
      */
-    public void setLista_usuarios(ListaUsuarios lista_usuarios) {
+    public void setLista_usuarios(Lista lista_usuarios) {
         this.lista_usuarios = lista_usuarios;
     }
     /**
@@ -137,7 +137,7 @@ public class GrafoMatriz {
      * @return 
      * ListaRelaciones: lista de relaciones
      */
-    public ListaRelaciones getLista_relaciones() {
+    public Lista getLista_relaciones() {
         return lista_relaciones;
     }
     
@@ -147,7 +147,7 @@ public class GrafoMatriz {
      * @param lista_relaciones lista de relaciones
      * @return 
      */
-    public void setLista_relaciones(ListaRelaciones lista_relaciones) {
+    public void setLista_relaciones(Lista lista_relaciones) {
         this.lista_relaciones = lista_relaciones;
     }
     /**
@@ -156,7 +156,7 @@ public class GrafoMatriz {
      * @return 
      * ListaAristas: lista de aristas
      */
-    public ListaAristas getLista_aristas() {
+    public Lista getLista_aristas() {
         return lista_aristas;
     }
     /**
@@ -165,7 +165,7 @@ public class GrafoMatriz {
      * @param lista_aristas lista de aristas
      * @return 
      */
-    public void setLista_aristas(ListaAristas lista_aristas) {
+    public void setLista_aristas(Lista lista_aristas) {
         this.lista_aristas = lista_aristas;
     }
     /**

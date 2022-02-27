@@ -14,6 +14,7 @@ public class Cola<T> {
    private NodoGeneral pfirst;
    private NodoGeneral plast;
    private int size;
+
     /**
      * Constructor con 3 parametros
      * @param pfirst primer elemento de la cola

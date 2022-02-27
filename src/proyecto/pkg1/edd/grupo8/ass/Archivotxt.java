@@ -24,9 +24,9 @@ import javax.swing.JTextArea;
 
 public class Archivotxt {
     int numero_posicion=0;
-    ListaUsuarios lista_usuarios= new ListaUsuarios();
-    ListaRelaciones lista_relaciones= new ListaRelaciones();
-    ListaAristas aristas = new ListaAristas();
+    Lista lista_usuarios= new Lista();
+    Lista lista_relaciones= new Lista();
+    Lista lista_aristas = new Lista();
     /**
      * abrirArchivo
      * abre el archivo y convierte su contenido en un string de texto
@@ -86,7 +86,7 @@ public class Archivotxt {
  * @param aristas la lista de aristas
  * 
  */
-    public void lectorString(String txt, ListaUsuarios lista_usuarios,ListaRelaciones lista_relaciones,ListaAristas aristas){
+    public void lectorString(String txt, Lista lista_usuarios,Lista lista_relaciones,Lista aristas){
         try {
         if (!"".equals(txt) && !txt.isEmpty()){
                     String error1 = "Error";
@@ -144,7 +144,7 @@ public class Archivotxt {
      * @return 
      * GrafoMatriz: retorna el grafo 
      */
-    public GrafoMatriz cargarMatrizGrafo(ListaUsuarios lista_usuarios,ListaRelaciones lista_relaciones, ListaAristas aristas){
+    public GrafoMatriz cargarMatrizGrafo(Lista lista_usuarios, Lista lista_relaciones, Lista aristas){
         GrafoMatriz grafo= new GrafoMatriz();
         grafo.setNum_vertices(lista_usuarios.getSize());
         int matriz [][]= new int[lista_usuarios.getSize()][lista_usuarios.getSize()];

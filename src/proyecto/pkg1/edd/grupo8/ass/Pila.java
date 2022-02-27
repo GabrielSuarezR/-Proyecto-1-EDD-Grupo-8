@@ -13,6 +13,7 @@ package proyecto.pkg1.edd.grupo8.ass;
 public class Pila<T> {
     private NodoGeneral cima;
     private int size;
+
     /**
      * Constructor con 2 parametros
      * @param  cima cima de la pila
