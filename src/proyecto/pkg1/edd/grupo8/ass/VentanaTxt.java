@@ -120,9 +120,9 @@ public class VentanaTxt extends javax.swing.JFrame {
         if (respuesta ==0) {
         Archivotxt txt = new Archivotxt();
             if (grafo!=null) {
-        grafo.lista_aristas.vaciar();
-        grafo.lista_usuarios.vaciar();
-        grafo.lista_relaciones.vaciar();
+        grafo.getLista_aristas().vaciar();
+        grafo.getLista_usuarios().vaciar();
+        grafo.getLista_relaciones().vaciar();
             }
         ListaUsuarios listau = new ListaUsuarios();
         ListaRelaciones listar = new ListaRelaciones();

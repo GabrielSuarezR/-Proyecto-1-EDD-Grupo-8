@@ -11,8 +11,8 @@ package proyecto.pkg1.edd.grupo8.ass;
  * @author johnd
  */
 public class Cola<T> {
-   Nodo<T> pfirst;
-   Nodo<T> plast;
+   NodoGeneral pfirst;
+   NodoGeneral plast;
    int size;
     /**
      * Constructor con 3 parametros
@@ -32,7 +32,7 @@ public class Cola<T> {
      * @return 
      * Nodo<T> pfirst: primer elemento de la cola
      */
-    public Nodo<T> getPfirst() {
+    public NodoGeneral getPfirst() {
         return pfirst;
     }
     /**
@@ -41,7 +41,7 @@ public class Cola<T> {
      * @param pfirst
      * @return 
      */
-    public void setPfirst(Nodo<T> pfirst) {
+    public void setPfirst(NodoGeneral pfirst) {
         this.pfirst = pfirst;
     }
     /**
@@ -50,7 +50,7 @@ public class Cola<T> {
      * @return 
      * Nodo<T> plast: ultimo elemento de la cola
      */
-    public Nodo<T> getPlast() {
+    public NodoGeneral getPlast() {
         return plast;
     }
     /**
@@ -59,7 +59,7 @@ public class Cola<T> {
      * @param plast
      * @return 
      */
-    public void setPlast(Nodo<T> plast) {
+    public void setPlast(NodoGeneral plast) {
         this.plast = plast;
     }
     
@@ -110,7 +110,7 @@ public class Cola<T> {
      * @return 
      */
    public void Encolar(int vertice){
-       Nodo nuevo_nodo= new Nodo();
+       NodoGeneral nuevo_nodo= new NodoGeneral();
        nuevo_nodo.setVertice(vertice);
        
        if (pfirst==null) {
@@ -144,7 +144,7 @@ public class Cola<T> {
      */
    public String imprimirCola(){
        String cadena="";
-       Nodo aux= pfirst;
+       NodoGeneral aux= pfirst;
            while (aux!=null) {            
             cadena= cadena + aux.getVertice()+ ", ";
                aux= aux.getSiguiente();

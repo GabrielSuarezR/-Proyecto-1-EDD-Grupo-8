@@ -11,7 +11,7 @@ package proyecto.pkg1.edd.grupo8.ass;
  * @author johnd
  */
 public class Pila<T> {
-    Nodo<T> cima;
+    NodoGeneral cima;
     int size;
     /**
      * Constructor con 2 parametros
@@ -28,7 +28,7 @@ public class Pila<T> {
      * @return 
      * Nodo<T> cima: cima de la pila
      */
-    public Nodo<T> getCima() {
+    public NodoGeneral getCima() {
         return cima;
     }
     /**
@@ -37,7 +37,7 @@ public class Pila<T> {
      * @param cima cima de la pila
      * @return 
      */
-    public void setCima(Nodo<T> cima) {
+    public void setCima(NodoGeneral cima) {
         this.cima = cima;
     }
     /**
@@ -75,7 +75,7 @@ public class Pila<T> {
      * @return 
      */
     public void Apilar(int vertice){
-        Nodo<T> nuevo_nodo= new Nodo<>();
+        NodoGeneral nuevo_nodo= new NodoGeneral();
         nuevo_nodo.setVertice(vertice);
         nuevo_nodo.setSiguiente(cima);
         cima= nuevo_nodo;

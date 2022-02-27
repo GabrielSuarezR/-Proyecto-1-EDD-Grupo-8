@@ -13,8 +13,8 @@ import javax.swing.JTextArea;
  * @author johnd
  */
 public class ListaRelaciones {
-    private NodoRelaciones pfirst;
-    private NodoRelaciones plast;
+    private NodoGeneral pfirst;
+    private NodoGeneral plast;
     private int size;
 /**
  * ListaRelaciones
@@ -40,7 +40,7 @@ public class ListaRelaciones {
      * dependiendo del estado de la lista
      * @param nodo el nodo que se quiere agregar
      */
-    public void agregarAlFinal(NodoRelaciones nodo){
+    public void agregarAlFinal(NodoGeneral nodo){
         if (estaVacia()) {
             setPfirst(nodo);
             setPlast(nodo);
@@ -60,7 +60,7 @@ public class ListaRelaciones {
      */
     public void ImprimirLista(JTextArea texto){
         texto.append("Relaciones"+"\n");
-        NodoRelaciones aux = pfirst;
+        NodoGeneral aux = pfirst;
         while (aux!=null) {
             texto.append(aux.getInicio()+","+aux.getFin()+","+aux.getTiempo()+"\n");
             aux = aux.getSiguiente();
@@ -78,28 +78,28 @@ public class ListaRelaciones {
     /**
      * @return the pfirst
      */
-    public NodoRelaciones getPfirst(){
+    public NodoGeneral getPfirst(){
         return pfirst;
     }
 
     /**
      * @param pfirst the pfirst to set
      */
-    public void setPfirst(NodoRelaciones pfirst){
+    public void setPfirst(NodoGeneral pfirst){
         this.pfirst = pfirst;
     }
 
     /**
      * @return the plast
      */
-    public NodoRelaciones getPlast(){
+    public NodoGeneral getPlast(){
         return plast;
     }
 
     /**
      * @param plast the plast to set
      */
-    public void setPlast(NodoRelaciones plast){
+    public void setPlast(NodoGeneral plast){
         this.plast = plast;
     }
 
@@ -117,19 +117,6 @@ public class ListaRelaciones {
         this.size = size;
     }
     
-    /**
-     * ImprimirLista_2
-     * itera sobre cada nodo de la lista y los va imprimiendo 
-     */
-    public void ImprimirLista_2(){
-        NodoRelaciones aux = pfirst;
-        System.out.println("Relaciones");
-        while (aux!=null) {
-            System.out.println(String.valueOf(aux.getInicio()) + String.valueOf(aux.getFin()) + String.valueOf(aux.getTiempo()));
-            aux = aux.getSiguiente();
-            
-        }
-    }
     
     
 }
