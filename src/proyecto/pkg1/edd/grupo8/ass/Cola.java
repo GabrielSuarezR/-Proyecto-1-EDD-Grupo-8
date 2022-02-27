@@ -7,7 +7,7 @@ package proyecto.pkg1.edd.grupo8.ass;
 
 /**
  * Clase cola
- * descripcion
+ * crea una cola para poder realizar el recorrido por BFS
  * @author johnd
  */
 public class Cola<T> {

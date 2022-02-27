@@ -7,7 +7,7 @@ package proyecto.pkg1.edd.grupo8.ass;
 
 /**
  * Clase Pila
- * descripcion
+ * crea una pila para poder realizar el recorrido por DFS
  * @author johnd
  */
 public class Pila<T> {

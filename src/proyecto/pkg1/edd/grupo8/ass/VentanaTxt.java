@@ -20,10 +20,10 @@ public class VentanaTxt extends javax.swing.JFrame {
     public static String Archtxt;
     public static GrafoMatriz grafo;
     public static GrafoMatriz grafo2;
-
-
+    
     /**
-     * Creates new form Ventana
+     * Constructor con 1 parametro
+     * @param grafo recibe el grafo 
      */
     public VentanaTxt(GrafoMatriz grafo) {
         this.grafo= grafo;
@@ -49,7 +49,7 @@ public class VentanaTxt extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         pantallaTxt = new javax.swing.JTextArea();
         SeleccionarArchivo = new javax.swing.JButton();
-        Actualizar = new javax.swing.JButton();
+        ActualizarArchivo = new javax.swing.JButton();
         exit = new javax.swing.JToggleButton();
         back = new javax.swing.JButton();
 
@@ -79,16 +79,16 @@ public class VentanaTxt extends javax.swing.JFrame {
         });
         jPanel1.add(SeleccionarArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 250, 60));
 
-        Actualizar.setBackground(new java.awt.Color(51, 51, 51));
-        Actualizar.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
-        Actualizar.setForeground(new java.awt.Color(255, 255, 255));
-        Actualizar.setText("ACTUALIZAR ARCHIVO DE TEXTO");
-        Actualizar.addActionListener(new java.awt.event.ActionListener() {
+        ActualizarArchivo.setBackground(new java.awt.Color(51, 51, 51));
+        ActualizarArchivo.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        ActualizarArchivo.setForeground(new java.awt.Color(255, 255, 255));
+        ActualizarArchivo.setText("ACTUALIZAR ARCHIVO DE TEXTO");
+        ActualizarArchivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ActualizarActionPerformed(evt);
+                ActualizarArchivoActionPerformed(evt);
             }
         });
-        jPanel1.add(Actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, 240, 60));
+        jPanel1.add(ActualizarArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, 240, 60));
 
         exit.setBackground(new java.awt.Color(51, 51, 51));
         exit.setForeground(new java.awt.Color(255, 255, 255));
@@ -114,7 +114,11 @@ public class VentanaTxt extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * SeleccionarArchivoActionPerformed
+     * se seleciona el archivo de texto con el cual se va a operar en el 
+     * programa
+     */
     private void SeleccionarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeleccionarArchivoActionPerformed
         int respuesta = JOptionPane.showConfirmDialog(null, "Desea abrir un nuevo archivo?", "Verificacion", ConfirmationCallback.YES_NO_CANCEL_OPTION);
         if (respuesta ==0) {
@@ -138,21 +142,32 @@ public class VentanaTxt extends javax.swing.JFrame {
         }
         }
     }//GEN-LAST:event_SeleccionarArchivoActionPerformed
-
+    /**
+     * exitActionPerformed
+     * finaliza del programa
+     * @return 
+     */
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
         System.exit(0);
     }//GEN-LAST:event_exitActionPerformed
-
+    /**
+     * backActionPerformed
+     * regresa a la VentanaInicio
+     * @return 
+     */
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         this.dispose();
         new VentanaInicio(grafo).setVisible(true);
     }//GEN-LAST:event_backActionPerformed
-
-    private void ActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarActionPerformed
+    /**
+     * ActualizarArchivoActionPerformed
+     * se actualiza el archivo de texto con el cual se trabajo en el programa
+     */
+    private void ActualizarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarArchivoActionPerformed
 
         Archivotxt txt = new Archivotxt();
          txt.guardarArchivo(pantallaTxt);
-    }//GEN-LAST:event_ActualizarActionPerformed
+    }//GEN-LAST:event_ActualizarArchivoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -197,7 +212,7 @@ public class VentanaTxt extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Actualizar;
+    private javax.swing.JButton ActualizarArchivo;
     private javax.swing.JButton SeleccionarArchivo;
     private javax.swing.JButton back;
     private javax.swing.JToggleButton exit;

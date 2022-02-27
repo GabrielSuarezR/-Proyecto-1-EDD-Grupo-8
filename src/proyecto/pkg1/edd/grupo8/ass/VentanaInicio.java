@@ -12,7 +12,8 @@ package proyecto.pkg1.edd.grupo8.ass;
 public class VentanaInicio extends javax.swing.JFrame {
     public static GrafoMatriz grafo;
     /**
-     * Creates new form VentanaInicio
+     * Constructor con 1 parametro
+     * @param grafo recibe el grafo 
      */
     public VentanaInicio(GrafoMatriz grafo) {
         initComponents();
@@ -33,8 +34,8 @@ public class VentanaInicio extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         exit = new javax.swing.JToggleButton();
         jLabel1 = new javax.swing.JLabel();
-        archivoTexto = new javax.swing.JButton();
-        boton = new javax.swing.JButton();
+        IrArchivoTexto = new javax.swing.JButton();
+        IrVentanaGrafo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -58,46 +59,58 @@ public class VentanaInicio extends javax.swing.JFrame {
         jLabel1.setText("SAMAGRAM");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 600, 70));
 
-        archivoTexto.setBackground(new java.awt.Color(51, 51, 51));
-        archivoTexto.setFont(new java.awt.Font("Rockwell", 1, 36)); // NOI18N
-        archivoTexto.setForeground(new java.awt.Color(255, 255, 255));
-        archivoTexto.setText("TXT");
-        archivoTexto.addActionListener(new java.awt.event.ActionListener() {
+        IrArchivoTexto.setBackground(new java.awt.Color(51, 51, 51));
+        IrArchivoTexto.setFont(new java.awt.Font("Rockwell", 1, 36)); // NOI18N
+        IrArchivoTexto.setForeground(new java.awt.Color(255, 255, 255));
+        IrArchivoTexto.setText("TXT");
+        IrArchivoTexto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                archivoTextoActionPerformed(evt);
+                IrArchivoTextoActionPerformed(evt);
             }
         });
-        jPanel1.add(archivoTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, 290, 80));
+        jPanel1.add(IrArchivoTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, 290, 80));
 
-        boton.setBackground(new java.awt.Color(51, 51, 51));
-        boton.setFont(new java.awt.Font("Rockwell", 1, 36)); // NOI18N
-        boton.setForeground(new java.awt.Color(255, 255, 255));
-        boton.setText("GRAFO");
-        boton.addActionListener(new java.awt.event.ActionListener() {
+        IrVentanaGrafo.setBackground(new java.awt.Color(51, 51, 51));
+        IrVentanaGrafo.setFont(new java.awt.Font("Rockwell", 1, 36)); // NOI18N
+        IrVentanaGrafo.setForeground(new java.awt.Color(255, 255, 255));
+        IrVentanaGrafo.setText("GRAFO");
+        IrVentanaGrafo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonActionPerformed(evt);
+                IrVentanaGrafoActionPerformed(evt);
             }
         });
-        jPanel1.add(boton, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, 290, 80));
+        jPanel1.add(IrVentanaGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, 290, 80));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 400));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * exitActionPerformed
+     * finaliza del programa
+     * @return 
+     */
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
         System.exit(0);
     }//GEN-LAST:event_exitActionPerformed
-
-    private void archivoTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_archivoTextoActionPerformed
+    /**
+     * IrArchivoTextoActionPerformed
+     * despliega la ventana donde se carga y actualiza el archivo de texto
+     * @return 
+     */
+    private void IrArchivoTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IrArchivoTextoActionPerformed
         this.dispose();
         new VentanaTxt(grafo).setVisible(true);
-    }//GEN-LAST:event_archivoTextoActionPerformed
-
-    private void botonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonActionPerformed
+    }//GEN-LAST:event_IrArchivoTextoActionPerformed
+    /**
+     * IrVentanaGrafoActionPerformed
+     * despliega la ventana donde se carga y actualiza el archivo de texto
+     * @return 
+     */
+    private void IrVentanaGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IrVentanaGrafoActionPerformed
         this.dispose();
         new VentanaGrafo(grafo).setVisible(true);
-    }//GEN-LAST:event_botonActionPerformed
+    }//GEN-LAST:event_IrVentanaGrafoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -135,8 +148,8 @@ public class VentanaInicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton archivoTexto;
-    private javax.swing.JButton boton;
+    private javax.swing.JButton IrArchivoTexto;
+    private javax.swing.JButton IrVentanaGrafo;
     private javax.swing.JToggleButton exit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

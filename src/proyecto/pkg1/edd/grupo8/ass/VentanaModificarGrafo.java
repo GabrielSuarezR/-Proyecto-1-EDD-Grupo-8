@@ -15,7 +15,9 @@ public class VentanaModificarGrafo extends javax.swing.JFrame {
     public static GrafoMatriz grafo;
     Funciones func;
     /**
-     * Creates new form VentanaModificarGrafo
+     * Constructor con 2 parametros
+     * @param grafo recibe el grafo 
+     * @param func recibe funciones generales
      */
     public VentanaModificarGrafo(GrafoMatriz grafo) {
         this.grafo= grafo;
@@ -44,7 +46,7 @@ public class VentanaModificarGrafo extends javax.swing.JFrame {
         ID = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        ID2 = new javax.swing.JTextField();
+        IDFriend = new javax.swing.JTextField();
         tiempo = new javax.swing.JTextField();
         botonAgregar = new javax.swing.JButton();
         botonVolver = new javax.swing.JButton();
@@ -92,6 +94,11 @@ public class VentanaModificarGrafo extends javax.swing.JFrame {
 
         ID.setBackground(new java.awt.Color(51, 51, 51));
         ID.setForeground(new java.awt.Color(204, 204, 204));
+        ID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IDActionPerformed(evt);
+            }
+        });
         jPanel1.add(ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 120, -1));
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
@@ -104,17 +111,22 @@ public class VentanaModificarGrafo extends javax.swing.JFrame {
         jLabel5.setText("TIEMPO");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 60, -1));
 
-        ID2.setBackground(new java.awt.Color(51, 51, 51));
-        ID2.setForeground(new java.awt.Color(204, 204, 204));
-        ID2.addActionListener(new java.awt.event.ActionListener() {
+        IDFriend.setBackground(new java.awt.Color(51, 51, 51));
+        IDFriend.setForeground(new java.awt.Color(204, 204, 204));
+        IDFriend.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ID2ActionPerformed(evt);
+                IDFriendActionPerformed(evt);
             }
         });
-        jPanel1.add(ID2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, 70, -1));
+        jPanel1.add(IDFriend, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, 70, -1));
 
         tiempo.setBackground(new java.awt.Color(51, 51, 51));
         tiempo.setForeground(new java.awt.Color(204, 204, 204));
+        tiempo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tiempoActionPerformed(evt);
+            }
+        });
         jPanel1.add(tiempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, 70, -1));
 
         botonAgregar.setBackground(new java.awt.Color(51, 51, 51));
@@ -162,6 +174,11 @@ public class VentanaModificarGrafo extends javax.swing.JFrame {
 
         IDelim.setBackground(new java.awt.Color(51, 51, 51));
         IDelim.setForeground(new java.awt.Color(204, 204, 204));
+        IDelim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IDelimActionPerformed(evt);
+            }
+        });
         jPanel1.add(IDelim, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 320, 120, 40));
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
@@ -178,7 +195,7 @@ public class VentanaModificarGrafo extends javax.swing.JFrame {
         jTextArea4.setBackground(new java.awt.Color(51, 51, 51));
         jTextArea4.setColumns(20);
         jTextArea4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 10)); // NOI18N
-        jTextArea4.setForeground(new java.awt.Color(255, 255, 255));
+        jTextArea4.setForeground(new java.awt.Color(204, 204, 204));
         jTextArea4.setRows(5);
         jTextArea4.setText("\n ID => Direccion del Usuario a Eliminar");
         jScrollPane4.setViewportView(jTextArea4);
@@ -219,7 +236,7 @@ public class VentanaModificarGrafo extends javax.swing.JFrame {
         jTextArea2.setBackground(new java.awt.Color(51, 51, 51));
         jTextArea2.setColumns(20);
         jTextArea2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 10)); // NOI18N
-        jTextArea2.setForeground(new java.awt.Color(255, 255, 255));
+        jTextArea2.setForeground(new java.awt.Color(204, 204, 204));
         jTextArea2.setRows(5);
         jTextArea2.setText("  @ => Nombre del Usuario\n  ID => Direccion del Usuario\n  ID Friend => Direccion de Amigo\n  Tiempo => Tiempo de Amistad");
         jScrollPane2.setViewportView(jTextArea2);
@@ -269,7 +286,11 @@ public class VentanaModificarGrafo extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * botonAgregarActionPerformed
+     * agrega nuevos usuarios al archivo de texto
+     * @return 
+     */
     private void botonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarActionPerformed
 
         boolean flag_usuario= func.Validar_Nombre_Usuario(nombre.getText());
@@ -293,12 +314,12 @@ public class VentanaModificarGrafo extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "El ID del nuevo usuario ingresado no esta disponible");
             return;
         }
-        boolean flag_id_2= func.Validar_ID(ID2.getText());
+        boolean flag_id_2= func.Validar_ID(IDFriend.getText());
         if (flag_id_2==false) {
             return;
         }
         
-        if (grafo.getLista_usuarios().Buscar_ID(Integer.parseInt(ID2.getText()))==false) {
+        if (grafo.getLista_usuarios().Buscar_ID(Integer.parseInt(IDFriend.getText()))==false) {
             JOptionPane.showMessageDialog(null, "El ID Friend ingresado no se encuentra registrado");
             return;
         }
@@ -320,8 +341,8 @@ public class VentanaModificarGrafo extends javax.swing.JFrame {
             NodoGeneral nodo = new NodoGeneral(Integer.parseInt(ID.getText()),nom,posicion);
             grafo.getLista_usuarios().agregarAlFinal(nodo);
             int pos= grafo.getLista_usuarios().BuscarPosicion(Integer.parseInt(ID.getText()));
-            int pos2= grafo.getLista_usuarios().BuscarPosicion(Integer.parseInt(ID2.getText()));
-            NodoGeneral nodor = new NodoGeneral(Integer.parseInt(ID.getText()), Integer.parseInt(ID2.getText()), Integer.parseInt(tiempo.getText()));
+            int pos2= grafo.getLista_usuarios().BuscarPosicion(Integer.parseInt(IDFriend.getText()));
+            NodoGeneral nodor = new NodoGeneral(Integer.parseInt(ID.getText()), Integer.parseInt(IDFriend.getText()), Integer.parseInt(tiempo.getText()));
             NodoGeneral nodoa = new NodoGeneral(pos, pos2);
             grafo.getLista_relaciones().agregarAlFinal(nodor);
             grafo.getLista_aristas().agregarAlFinal(nodoa);
@@ -357,27 +378,43 @@ public class VentanaModificarGrafo extends javax.swing.JFrame {
         }
         nombre.setText("");
         ID.setText("");
-        ID2.setText("");
+        IDFriend.setText("");
         tiempo.setText("");
         Usuarios.setText("");
         grafo.getLista_usuarios().ImprimirLista(Usuarios);
         grafo.getLista_relaciones().ImprimirListaRelaciones(Usuarios);
         JOptionPane.showMessageDialog(null, "Usuario agregado con éxito");
     }//GEN-LAST:event_botonAgregarActionPerformed
-
+    /**
+     * nombreActionPerformed
+     * aqui se introduce el nombre del nuevo usuario
+     * @return 
+     */
     private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nombreActionPerformed
-
+    /**
+     * botonVolverActionPerformed
+     * regresa a la VentanaGrafo
+     * @return 
+     */
     private void botonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverActionPerformed
-        new VentanaInicio(grafo).setVisible(true);
+        new VentanaGrafo(grafo).setVisible(true);
         dispose();
     }//GEN-LAST:event_botonVolverActionPerformed
-
-    private void ID2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ID2ActionPerformed
+    /**
+     * IDFriendActionPerformed
+     * aqui se ingresa el ID del amigo con el que el usuario se va a relacionar
+     * @return 
+     */
+    private void IDFriendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDFriendActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ID2ActionPerformed
-
+    }//GEN-LAST:event_IDFriendActionPerformed
+    /**
+     * botonEliminarActionPerformed
+     * elimina usuarios del archivo de texto
+     * @return 
+     */
     private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
         if (grafo.getLista_usuarios().estaVacia()) {
             JOptionPane.showMessageDialog(null, "El grafo se encuentra vacío, no se puede eliminar");
@@ -396,6 +433,31 @@ public class VentanaModificarGrafo extends javax.swing.JFrame {
         grafo.getLista_usuarios().ImprimirLista(Usuarios);
         grafo.getLista_relaciones().ImprimirListaRelaciones(Usuarios);
     }//GEN-LAST:event_botonEliminarActionPerformed
+    /**
+     * IDActionPerformed
+     * aqui se ingresa el ID del nuevo usuario
+     * @return 
+     */
+    private void IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_IDActionPerformed
+    /**
+     * tiempoActionPerformed
+     * aqui se ingresa el tiempo de relacion que tiene el nuevo usuario con
+     * su amigo
+     * @return 
+     */
+    private void tiempoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tiempoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tiempoActionPerformed
+    /**
+     * IDelimActionPerformed
+     * aqui se ingresa el ID del usuario a eliminar
+     * @return 
+     */
+    private void IDelimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDelimActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_IDelimActionPerformed
 
     /**
      * @param args the command line arguments
@@ -434,7 +496,7 @@ public class VentanaModificarGrafo extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ID;
-    private javax.swing.JTextField ID2;
+    private javax.swing.JTextField IDFriend;
     private javax.swing.JTextField IDelim;
     private javax.swing.JTextArea Usuarios;
     private javax.swing.JButton botonAgregar;

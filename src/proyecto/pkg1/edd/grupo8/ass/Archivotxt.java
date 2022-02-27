@@ -78,7 +78,7 @@ public class Archivotxt {
         }  
 /**
  * lectorString
- * agarra el string que contiene la informacion del archivo de texto, y va 
+ * toma el string que contiene la informacion del archivo de texto, y va 
  * iterando linea por linea, definiendo valores y cargando las listas de info
  * @param txt string del archivo de texto
  * @param lista_usuarios la lista de usuarios

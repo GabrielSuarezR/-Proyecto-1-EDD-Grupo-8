@@ -9,8 +9,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
 /**
- *Clase ListaUsuarios
- * crea la lista de usuarios
+ * Clase Lista
+ * crea la lista con los nombres de los usuarios, sus id, relaciones
  * @author johnd
  */
 public class Lista {
@@ -18,8 +18,10 @@ public class Lista {
     private NodoGeneral plast;
     private int size;
 /**
- * ListaUsuarios
- * constructor de la clase
+ * Contructor con 3 parametros
+ * @param pfirst primer elemento de la lista
+ * @param plast ultimo elemento de la lista
+ * @param size tamaño de la lista
  */
     public Lista() {
         this.pfirst = null;
@@ -65,7 +67,7 @@ public class Lista {
     }
     /**
      * BuscarPosicion
-     * recibe como parametro un id y buscar cual es la proxima posicion en la 
+     * recibe como parametro un id y busca cual es la proxima posicion en la 
      * lista de usuarios para el id
      * @param id id del nuevo usuario
      * @return 
@@ -78,7 +80,14 @@ public class Lista {
         }
         return aux.getPosicion();
     }
-    
+     /**
+     * BuscarNombreUsuario
+     * recibe como parametro una posicion y busca cual es el nombre del usuario 
+     * para esa posicion 
+     * @param pos posicion en la cola
+     * @return 
+     * NodoGeneral: retorna el nombre de usuario para una posicion
+     */
     public NodoGeneral BuscarNombreUsuario(int pos){
         NodoGeneral aux= getPfirst();
         while ( aux.getPosicion()!=pos ) { 
@@ -86,7 +95,13 @@ public class Lista {
         }
         return aux;
     }
-    
+     /**
+     * Validar_Usuario
+     * valida que no puedan haber dos usuarios iguales
+     * @param usuario nombre del usuario
+     * @return 
+     * boolean: retorna true o false si el usuario existe
+     */
     public boolean Validar_Usuario(String usuario){
         NodoGeneral aux= getPfirst();
         while (aux!=null) {            
@@ -133,7 +148,12 @@ public class Lista {
             
         }
     }
-    
+     /**
+     * ImprimirListaRelaciones
+     * itera sobre cada nodo de la lista de relaciones y los va imprimiendo en un area de 
+     * texto que es pasada como parametro
+     * @param texto area de texto donde se imprime la lista
+     */
     public void ImprimirListaRelaciones(JTextArea texto){
         texto.append("Relaciones"+"\n");
         NodoGeneral aux = pfirst;
@@ -143,27 +163,57 @@ public class Lista {
             
         }
     }
-
+    /**
+     * getPfirst
+     * retorna el primer elemento de la lista
+     * @return 
+     * NodoGeneral pfirst: primer elemento de la lista
+     */
     public NodoGeneral getPfirst() {
         return pfirst;
     }
-
+    /**
+     * setPfirst
+     * establece el primer elemento de la lista
+     * @param pfirst primer elemento de la lista
+     * @return 
+     */
     public void setPfirst(NodoGeneral pfirst) {
         this.pfirst = pfirst;
     }
-
+    /**
+     * getPlast
+     * retorna el ultimo elemento de la lista
+     * @return 
+     * NodoGeneral plast: ultimo elemento de la lista
+     */
     public NodoGeneral getPlast() {
         return plast;
     }
-
+    /**
+     * setPlast
+     * establece el ultimo elemento de la lista
+     * @param plast: ultimo elemento de la lista
+     * @return 
+     */
     public void setPlast(NodoGeneral plast) {
         this.plast = plast;
     }
-
+    /**
+     * getSize
+     * retorna el tamaño de la lista
+     * @return 
+     * int size: tamaño de la lista
+     */
     public int getSize() {
         return size;
     }
-
+    /**
+     * setSize
+     * establece el tamaño de la lista
+     * @param size tamaño de la lista
+     * @return 
+     */
     public void setSize(int size) {
         this.size = size;
     }

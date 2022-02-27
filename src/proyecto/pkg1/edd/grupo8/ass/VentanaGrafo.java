@@ -156,7 +156,12 @@ public class VentanaGrafo extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * mostrarIslasBFSActionPerformed
+     * muestra el recorrido que se hace por las islas por BFS y la cantidad 
+     * total de islas que hay
+     * @return 
+     */
     private void mostrarIslasBFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarIslasBFSActionPerformed
         if (grafo != null && !grafo.getLista_usuarios().estaVacia()) {
             pantallaGrafo.setText("");
@@ -166,7 +171,12 @@ public class VentanaGrafo extends javax.swing.JFrame {
             pantallaGrafo.setText("No hay Islas existentes");
         }
     }//GEN-LAST:event_mostrarIslasBFSActionPerformed
-
+    /**
+     * mostrarIslasDFSActionPerformed
+     * muestra el recorrido que se hace por las islas por DFS y la cantidad 
+     * total de islas que hay
+     * @return 
+     */
     private void mostrarIslasDFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarIslasDFSActionPerformed
         if (grafo != null && !grafo.getLista_usuarios().estaVacia()) {
             pantallaGrafo.setText("");
@@ -175,12 +185,22 @@ public class VentanaGrafo extends javax.swing.JFrame {
             pantallaGrafo.setText("No hay Islas existentes");
         }
     }//GEN-LAST:event_mostrarIslasDFSActionPerformed
-
+    /**
+     * modificarGrafoActionPerformed
+     * despliega otra ventana en la cual se pueden añadir y eliminar usuarios
+     * del archivo de texto 
+     * @return 
+     */
     private void modificarGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarGrafoActionPerformed
         this.dispose();
         new VentanaModificarGrafo(grafo).setVisible(true);
     }//GEN-LAST:event_modificarGrafoActionPerformed
-
+    /**
+     * mostrarPuentesActionPerformed
+     * muestra la cantidad de puentes en el grafo y los usuarios que los 
+     * conforman
+     * @return 
+     */
     private void mostrarPuentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarPuentesActionPerformed
         if (grafo != null) {
             grafo.IdentificadorPuentes(pantallaGrafo);
@@ -188,7 +208,11 @@ public class VentanaGrafo extends javax.swing.JFrame {
             pantallaGrafo.setText("No hay usuarios en la base de datos");
         }
     }//GEN-LAST:event_mostrarPuentesActionPerformed
-
+    /**
+     * mostrarGrafoActionPerformed
+     * muestra una representacion grafica del grafo 
+     * @return 
+     */
     private void mostrarGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarGrafoActionPerformed
         if (grafo != null && !grafo.getLista_usuarios().estaVacia()) {
             grafo.mostrarGrafo();
@@ -196,12 +220,20 @@ public class VentanaGrafo extends javax.swing.JFrame {
             pantallaGrafo.setText("No hay usuarios en la base de datos");
         }
     }//GEN-LAST:event_mostrarGrafoActionPerformed
-
+    /**
+     * backActionPerformed
+     * vuelve a la ventana de inicio del programa
+     * @return 
+     */
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         this.dispose();
         new VentanaInicio(grafo).setVisible(true);
     }//GEN-LAST:event_backActionPerformed
-
+    /**
+     * exitActionPerformed
+     * finaliza del programa
+     * @return 
+     */
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
         System.exit(0);
     }//GEN-LAST:event_exitActionPerformed
