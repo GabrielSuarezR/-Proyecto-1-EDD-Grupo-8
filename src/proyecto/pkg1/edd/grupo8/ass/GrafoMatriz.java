@@ -228,8 +228,8 @@ public class GrafoMatriz {
      * Indica si algún vértice aún no ha sido visitado en el recorrido
      * @param array_visitado
      * @return 
-     * boolean true:
-     * boolean false:
+     * boolean true: el vértice aún no se ha visitado
+     * boolean false: ya se visitó el vértice
      */
     public boolean Vertices_por_visitar(boolean array_visitado[]){
         for (int i = 0; i < array_visitado.length; i++) {
